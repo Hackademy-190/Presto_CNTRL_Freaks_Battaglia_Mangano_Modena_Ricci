@@ -1,0 +1,18 @@
+.navbar-cus {
+    background: transparent;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.scrollNav {
+    background: rgba(12, 12, 12, 0.2);
+    backdrop-filter: blur(10px);
+    transition: background-color .5s ease-in-out;
+    -webkit-transition: background-color .5s ease-in-out;
+    -moz-transition: background-color .5s ease-in-out;
+    -ms-transition: background-color .5s ease-in-out;
+    -o-transition: background-color .5s ease-in-out;
+    z-index: 999;
+}

@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-cus p-3" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Presto</a>
+        <a class="navbar-brand ubuntu-medium-italic fs-2" href="#">Presto</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
                         aria-expanded="false">
                         Login/Registrati
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu mt-3">
                         <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
                         <li><a class="dropdown-item" href="{{ route('register') }}">Registrati</a></li>
                         <li><a class="dropdown-item" href="#"

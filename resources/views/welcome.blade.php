@@ -1,3 +1,4 @@
 <x-layout>
-    <h1>ciao</h1>
+    <div class="container-fluid bg-hero vh-100"></div>
+    <div class="vh-100"></div>
 </x-layout>

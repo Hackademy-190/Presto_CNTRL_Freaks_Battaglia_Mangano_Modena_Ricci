@@ -1,146 +1,83 @@
-/* login */
-.login-container {
-    background: white;
-    padding: 40px;
-    width: 350px;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+:root {
+    --color-s: #2B4150;
+    --color-p: #FFFDEB;
+    --color-a: #B86500;
+    --color-shadow: #464646bb;
 }
 
-.login-container h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    font-weight: 600;
-    color: #333;
+.color-s {
+    color: var(--color-s);
 }
 
-.form-group {
-    margin-bottom: 18px;
+.color-p {
+    color: var(--color-p);
 }
 
-label {
-    font-size: 14px;
-    color: #444;
+.color-a {
+    color: var(--color-a);
+}
+
+.bg-s {
+    background: var(--color-s);
+}
+
+.bg-p {
+    background: var(--color-p);
+}
+
+.bg-a {
+    background: var(--color-a);
+}
+
+.ubuntu-light {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.ubuntu-regular {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.ubuntu-medium {
+    font-family: "Ubuntu", sans-serif;
     font-weight: 500;
+    font-style: normal;
 }
 
-input {
-    width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 15px;
+.ubuntu-bold {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
-input:focus {
-    border-color: #000;
-    outline: none;
+.ubuntu-light-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: italic;
 }
 
-.btn-login {
-    width: 100%;
-    padding: 12px;
-    background: black;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.2s;
+.ubuntu-regular-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: italic;
 }
 
-.btn-login:hover {
-    background: #333;
-}
-
-.extra-links {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-.extra-links a {
-    color: black;
-    text-decoration: none;
+.ubuntu-medium-italic {
+    font-family: "Ubuntu", sans-serif;
     font-weight: 500;
+    font-style: italic;
 }
 
-.extra-links a:hover {
-    text-decoration: underline;
+.ubuntu-bold-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: italic;
 }
 
 
-/* register */
-.register-container {
-    background: white;
-    padding: 40px;
-    width: 380px;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.register-container h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    font-weight: 600;
-    color: #333;
-}
-
-.form-group {
-    margin-bottom: 18px;
-}
-
-label {
-    font-size: 14px;
-    color: #444;
-    font-weight: 500;
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 15px;
-}
-
-input:focus {
-    border-color: #000;
-    outline: none;
-}
-
-.btn-register {
-    width: 100%;
-    padding: 12px;
-    background: black;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.2s;
-}
-
-.btn-register:hover {
-    background: #333;
-}
-
-.extra-links {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-.extra-links a {
-    color: black;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.extra-links a:hover {
-    text-decoration: underline;
+body {
+    background-color: var(--color-s);
 }
