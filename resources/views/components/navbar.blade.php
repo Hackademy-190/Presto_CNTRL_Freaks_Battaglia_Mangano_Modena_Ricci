@@ -12,7 +12,7 @@
                 </li>
                 @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Aggiungi articolo</a>
+                    <a class="nav-link" href="{{route('advertisement.create')}}">Aggiungi articolo</a>
                 </li>
                 @endauth
                 <li class="nav-item">
