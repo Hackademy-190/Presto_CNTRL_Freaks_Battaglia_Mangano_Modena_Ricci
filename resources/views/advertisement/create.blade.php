@@ -9,7 +9,7 @@
                     <div class="card-body p-4 p-md-5">
                         <div class="text-center mb-4">
 
-                            <h1 class="fw-bold">
+                            <h1 class="ubuntu-bold">
                                 Crea il tuo annuncio
                             </h1>
 

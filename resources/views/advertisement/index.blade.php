@@ -6,7 +6,7 @@
                 <div class="card">
                     <img src="https://picsum.photos/180/100" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $advertisement->title }}</h5>
+                            <h5 class="card-title ubuntu-medium text-uppercase">{{ $advertisement->title }}</h5>
                             <p class="card-text">{{ $advertisement->description }}</p>
                             <p class="card-text">{{ $advertisement->price }} €</p>
                             <p class="card-text">{{ $advertisement->category->name }}</p>

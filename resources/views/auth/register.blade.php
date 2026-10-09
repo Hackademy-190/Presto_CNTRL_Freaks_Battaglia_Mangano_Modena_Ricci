@@ -11,7 +11,7 @@
                     <div class="card-body p-4 p-md-5">
 
                         <div class="text-center mb-4">
-                            <h1 class="fw-bold">Registrati</h1>
+                            <h1 class="ubuntu-bold">Registrati</h1>
 
                             <p class="text-muted">
                                 Crea il tuo account inserendo i dati richiesti.

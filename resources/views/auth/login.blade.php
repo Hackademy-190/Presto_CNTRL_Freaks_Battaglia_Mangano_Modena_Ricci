@@ -12,7 +12,7 @@
 
                         <div class="text-center mb-4">
 
-                            <h1 class="fw-bold">
+                            <h1 class="ubuntu-bold">
                                 Accedi
                             </h1>
 

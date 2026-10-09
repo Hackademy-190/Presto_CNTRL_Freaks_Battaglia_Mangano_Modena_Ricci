@@ -8,15 +8,15 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('welcome') }}">Home</a>
+                    <a class="nav-link {{ request()->routeIs('welcome') ? 'active' : '' }}" aria-current="page" href="{{ route('welcome') }}">Home</a>
                 </li>
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('advertisement.create') }}">Aggiungi articolo</a>
+                        <a class="nav-link {{ request()->routeIs('advertisement.create') ? 'active' : '' }}" href="{{ route('advertisement.create') }}">Aggiungi articolo</a>
                     </li>
                 @endauth
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('advertisement.index') }}">Articoli</a>
+                    <a class="nav-link {{ request()->routeIs('advertisement.index') ? 'active' : '' }}" href="{{ route('advertisement.index') }}">Articoli</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
