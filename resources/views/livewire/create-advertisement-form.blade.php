@@ -49,6 +49,16 @@
             @enderror
         </div>
 
+        {{-- Categories --}}
+        <div class="mb-3">
+            <select id="category" wire:model="category" class="form-control">
+                <option value="" disabled selected  >Seleziona una categoria</option>
+                @foreach ( $categories as $category )
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <button type="submit">
             Crea annuncio
         </button>
