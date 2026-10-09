@@ -11,9 +11,9 @@
                     <a class="nav-link active" aria-current="page" href="{{ route('welcome') }}">Home</a>
                 </li>
                 @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('advertisement.create')}}">Aggiungi articolo</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('advertisement.create') }}">Aggiungi articolo</a>
+                    </li>
                 @endauth
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('advertisement.index') }}">Articoli</a>
@@ -21,17 +21,24 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Login/Registrati
+                        @auth
+                            Ciao {{ auth()->user()->name }}!
+                        @else
+                            Login/Registrati
+                        @endauth
                     </a>
                     <ul class="dropdown-menu mt-3">
-                        <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
-                        <li><a class="dropdown-item" href="{{ route('register') }}">Registrati</a></li>
-                        <li><a class="dropdown-item" href="#"
-                                onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a>
-                                <form action="{{route('logout')}}" method= "POST" id="form-logout" class="d-none">
+                        @guest
+                            <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+                            <li><a class="dropdown-item" href="{{ route('register') }}">Registrati</a></li>
+                        @else
+                            <li><a class="dropdown-item" href="#"
+                                    onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a>
+                                <form action="{{ route('logout') }}" method= "POST" id="form-logout" class="d-none">
                                     @csrf
                                 </form>
-                        </li>
+                            </li>
+                        @endguest
                     </ul>
                 </li>
             </ul>
