@@ -29,8 +29,8 @@
 
         <div class="mb-3">
             <label for="price" class="form-label">Prezzo</label>
-
-            <input id="price" type="number" step="0.01" wire:model.live="price">
+            
+            <input type="number" wire:model="price" min="0" step="0.01" class="form-control">
 
             @error('price')
                 <span>{{ $message }}</span>

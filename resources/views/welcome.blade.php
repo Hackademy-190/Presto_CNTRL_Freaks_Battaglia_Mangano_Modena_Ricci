@@ -6,14 +6,11 @@
                 <div class="row align-items-center min-vh-75">
 
                     <!-- Testo della Hero -->
-                    <div class="col-lg-7 hero-content">
-
-                        
-
+                    <div class="col-lg-7 hero-content">                       
                         <h1 class="hero-title">
-                            Ogni oggetto ha una
-                            <span>seconda storia.</span>
+                            Ogni oggetto ha una    
                         </h1>
+                        <h1 class="hero-title span-cust pb-3 px-2"> seconda storia.</h1>
 
                         <p class="hero-description">
                             Scopri occasioni uniche, acquista in modo
@@ -28,7 +25,7 @@
                                 <span aria-hidden="true">&rarr;</span>
                             </a>
 
-                            <a href="{{ route('register') }}"
+                            <a href="{{ route('advertisement.create') }}"
                                 class="btn btn-hero-secondary ">
                                 Inizia a vendere
                             </a>
@@ -37,18 +34,10 @@
                         <p class="hero-caption">
                             Un buon acquisto, una nuova storia.
                         </p>
-
-                    </div>
-
-                    
-
+                    </div>                  
                 </div>
             </div>
         </section>
-
-        <a href="{{ route('advertisement.create') }}" class="btn bg-s" data-bs-theme="dark">
-            Crea annuncio
-        </a>
 
     </div>
     <div class="container py-5">
