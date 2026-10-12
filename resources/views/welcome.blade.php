@@ -51,10 +51,10 @@
                         <p class="card-text">{{ $advertisement->description }}</p>
                         <p class="card-text">{{ $advertisement->price }} €</p>
                         <p class="card-text">{{ $advertisement->category->name }}</p>
-                        <p><a class="" href="">Visualizza articolo</a></p>
-                        <button type="submit" class="btn bg-s" data-bs-theme="dark">
+                        <p><a class="" href="{{ route('advertisement.show', $advertisement) }}">Visualizza articolo</a></p>
+                        {{-- <button type="submit" class="btn bg-s" data-bs-theme="dark">
                             Acquista
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
             </div>
