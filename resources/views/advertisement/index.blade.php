@@ -1,6 +1,12 @@
 <x-layout>
     <div class="container py-5">
         <div class="row vh-100 align-items-center py-5 g-3">
+            <div class="col-12">
+                @foreach ($categories as $category)
+                <a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a>
+                @endforeach
+              
+            </div>
             @foreach ($advertisements as $advertisement)
                 <div class="col-12 col-md-4">
                     <div class="card">
