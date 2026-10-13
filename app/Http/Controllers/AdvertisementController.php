@@ -20,7 +20,7 @@ class AdvertisementController extends Controller implements HasMiddleware
   }
   public function index ()
   {
-    $advertisements = Advertisement::orderBy('created_at', 'desc')->paginate(6);
+    $advertisements = Advertisement::where('is_accepted', true)->orderBy('created_at', 'desc')->paginate(6);
     return view  ('advertisement.index', compact('advertisements'));
   }
 

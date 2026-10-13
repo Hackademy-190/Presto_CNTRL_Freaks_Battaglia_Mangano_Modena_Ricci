@@ -11,6 +11,7 @@
                             <li><p>Blog</p></li>
                             <li><p>Lavora con noi</p></li>
                         </ul>
+
                 </div>
 
                 <!-- Colonna 3 Supporto -->
@@ -32,6 +33,15 @@
                             <p aria-label="LinkedIn">LinkedIn</p>
                         </div>
                 </div>
+
+                {{-- tasto per diventare revisore  --}}
+                <div class="col-md-4 offset-md-1 mb-3 text-center">
+                            <h5>Vuoi diventare revisore?</h5>
+                            <p>Cliccando il bottone sottostante farai richiesta al nostro Admin</p>
+                            <a href="{{ route('become.revisor')}}" class="btn btn-success">Diventa revisore</a>
+                </div>
+                
+
         </div>
                 <div class="footer-bottom">
                     <p>&copy; 2026 TuoBrand. Tutti i diritti riservati.</p>
