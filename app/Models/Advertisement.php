@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Laravel\Scout\Searchable;
 
 #[Fillable(['title', 'description', 'price', 'user_id', 'category_id'])]
 class Advertisement extends Model
 {
+    use Searchable;
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -28,4 +31,15 @@ class Advertisement extends Model
     {
         return Advertisement::where('is_accepted', null)->count();
     }
+
+    public function toSearchableArray()
+   {
+    return  [
+         'id' => $this->id,
+         'title' => $this->title,
+         'description' => $this->description,
+         'category' => $this->category->name,
+    ];
+    }
+
 }

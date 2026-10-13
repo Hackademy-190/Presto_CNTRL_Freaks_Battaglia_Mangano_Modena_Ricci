@@ -71,6 +71,48 @@
                         @endguest
                     </ul>
                 </li>
+                {{-- <form class="d-flex ms-auto" role="search" action="{{ route('advertisement.search') }}" method="GET">
+                  <div class="input-group">
+                   <input type="search" name="query" class="form-control" placeholder="Search" aria-label="search">
+                   <button type="submit" class="input-group-text btn btn-outline-success" id="basic-addon2">
+                   Search
+                   </button>
+                   </div>
+                </form> --}}
+
+
+                {{-- barra ricerca con radio button  --}}
+                <form class="d-flex flex-column ms-auto" role="search" action="{{ route('advertisement.search') }}" method="GET">
+    
+                    <!-- Campo di ricerca principale -->
+    <div class="input-group">
+        <input type="search" name="query" class="form-control" placeholder="Cerca un annuncio..." aria-label="search" value="{{ request('query') }}">
+        <button type="submit" class="input-group-text btn btn-outline-success">
+            Cerca
+        </button>
+    </div>
+
+    <!-- Opzioni di scelta (Radio Button) posizionate sotto -->
+    <div class="d-flex justify-content-start gap-3 mt-2 text-white small">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="field" id="searchAll" value="all" {{ request('field', 'all') === 'all' ? 'checked' : '' }}>
+            <label class="form-check-label" for="searchAll">Tutto</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="field" id="searchTitle" value="title" {{ request('field') === 'title' ? 'checked' : '' }}>
+            <label class="form-check-label" for="searchTitle">Solo Titolo</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="field" id="searchCategory" value="category" {{ request('field') === 'category' ? 'checked' : '' }}>
+            <label class="form-check-label" for="searchCategory">Solo Categoria</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="field" id="searchDescription" value="description" {{ request('field') === 'description' ? 'checked' : '' }}>
+            <label class="form-check-label" for="searchDescription">Solo Corpo (Descrizione)</label>
+        </div>
+    </div>
+</form>
+
             </ul>
         </div>
     </div>
