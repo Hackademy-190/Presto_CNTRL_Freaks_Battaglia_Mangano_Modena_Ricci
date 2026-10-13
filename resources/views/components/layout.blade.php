@@ -21,11 +21,12 @@
     <x-navbar />
 
     <div>
-
         {{ $slot }}
     </div>
 
     @livewireScripts
+
+    <x-footer />
 </body>
 
 </html>
