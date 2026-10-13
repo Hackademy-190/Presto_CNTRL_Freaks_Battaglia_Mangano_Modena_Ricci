@@ -1,11 +1,11 @@
 <x-layout>
     <!-- Messaggio Revisor error -->
-    @if(session()->has('errorMessage'))
-<div class="alert alert-danger text-center shadow rounded w-50">
-    {{session('errorMessage')}}
-</div>
-@endif
-<!-- Fine Messaggio revisor error -->
+    @if (session()->has('errorMessage'))
+        <div class="alert alert-danger text-center shadow rounded w-50">
+            {{ session('errorMessage') }}
+        </div>
+    @endif
+    <!-- Fine Messaggio revisor error -->
 
     <div class="snap-container bg-hero">
 
@@ -27,14 +27,12 @@
                         </p>
 
                         <div class="hero-actions">
-                            <a href="{{ route('advertisement.index') }}"
-                                class="btn btn-hero-primary">
+                            <a href="{{ route('advertisement.index') }}" class="btn btn-hero-primary">
                                 Esplora gli oggetti
                                 <span aria-hidden="true">&rarr;</span>
                             </a>
 
-                            <a href="{{ route('advertisement.create') }}"
-                                class="btn btn-hero-secondary ">
+                            <a href="{{ route('advertisement.create') }}" class="btn btn-hero-secondary ">
                                 Inizia a vendere
                             </a>
                         </div>
@@ -55,23 +53,26 @@
                 </header>
                 <div class="row g-2 justify-content-center">
                     @foreach ($advertisements as $advertisement)
-                    <div class="col-6 col-md-4">
-                        <div class="card ad-card">
-                            <img src="https://picsum.photos/180/100" class="card-img-top ad-card-image" alt="{{ $advertisement->title }}">
-                            <div class="card-body ad-card-body">
-                                <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">{{ $advertisement->title }}</h5>
-                                <p class="card-text ad-card-description">{{ $advertisement->description }}</p>
-                                <div>
-                                    <span class="ad-card-price">{{ $advertisement->price }} €</span>
-                                    <span class="ad-card-category">{{ $advertisement->category->name }}</span>
+                        <div class="col-6 col-md-4">
+                            <div class="card ad-card">
+                                <img src="https://picsum.photos/180/100" class="card-img-top ad-card-image"
+                                    alt="{{ $advertisement->title }}">
+                                <div class="card-body ad-card-body">
+                                    <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">
+                                        {{ $advertisement->title }}</h5>
+                                    <p class="card-text ad-card-description">{{ $advertisement->description }}</p>
+                                    <div>
+                                        <span class="ad-card-price">{{ $advertisement->price }} €</span>
+                                        <span class="ad-card-category">{{ $advertisement->category->name }}</span>
+                                    </div>
+                                    <a class="ad-card-link"
+                                        href="{{ route('advertisement.show', $advertisement) }}">Visualizza articolo</a>
+                                    <button type="submit" class="btn btn-sm ad-card-action" data-bs-theme="dark">
+                                        Acquista
+                                    </button>
                                 </div>
-                                <a class="ad-card-link" href="{{ route('advertisement.show', $advertisement) }}">Visualizza articolo</a>
-                                <button type="submit" class="btn btn-sm ad-card-action" data-bs-theme="dark">
-                                    Acquista
-                                </button>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>

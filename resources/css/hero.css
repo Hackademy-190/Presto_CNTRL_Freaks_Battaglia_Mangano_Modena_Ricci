@@ -138,22 +138,34 @@
     background-color: var(--color-s);
     color: var(--color-p);
     border: 1px solid var(--color-s);
+    box-shadow: 0px 4px 8px var(--color-p);
+    transform: translateY(-4px);
 }
 
 .btn-hero-primary:hover {
-    background-color: #3C5845;
+    background-color: var(--dark-s);
     color: var(--color-p);
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0px;
+    transform: scale(0.98);
+    transition: transform 0.4s ease, background-color 0.4s ease;
 }
 
 .btn-hero-secondary {
-    background-color: transparent;
-    color: var(--color-a);
-    border: 1px solid var(--color-s);
+    background-color: var(--color-a);
+    color: var(--color-p);
+    border: 1px solid var(--color-a);
+    box-shadow: 0px 4px 8px var(--color-p);
+    transform: translateY(-4px);
 }
 
 .btn-hero-secondary:hover {
-    background-color: var(--color-s);
     color: var(--color-p);
+    background-color: var(--dark-a);
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0px;
+    transform: scale(0.98);
+    transition: transform 0.4s ease, background-color 0.4s ease;
 }
 
 /* Testo inferiore */
@@ -217,11 +229,11 @@
     transition: transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1), opacity 650ms ease;
 }
 
-.ad-card > .ad-card-image {
+.ad-card>.ad-card-image {
     z-index: 0;
 }
 
-.ad-card > .ad-card-body {
+.ad-card>.ad-card-body {
     z-index: 2;
 }
 
@@ -409,6 +421,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .ad-card,
     .ad-card::before,
     .ad-card .ad-card-action,
