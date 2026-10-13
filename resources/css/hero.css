@@ -1,6 +1,5 @@
 .bg-hero {
-    background:url('../../public/media/bg-hero5.1.jpg');
-    filter: sepia(30%) saturate(120%);
+    background-image: url('../../public/media/bg-hero.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -29,14 +28,8 @@
     margin-bottom: 24px;
 }
 
-.span-cust 
-{
-    display: inline-block;
-    color: black;
-    background-color: var(--color-p);
-    background-size:contain;
-    mix-blend-mode: screen;
-    /* text-shadow: 0px 4px 8px var(--color-s); */
+.hero-title span {
+    color: var(--color-a);
 }
 
 /* Descrizione */
@@ -67,34 +60,22 @@
     background-color: var(--color-s);
     color: var(--color-p);
     border: 1px solid var(--color-s);
-    box-shadow: 0px 4px 8px var(--color-p);
-    transform: translateY(-4px);
 }
 
 .btn-hero-primary:hover {
-    background-color: var(--dark-s);
+    background-color: #3C5845;
     color: var(--color-p);
-    transform: translateY(4px);
-    box-shadow: 0px 0px 0px;
-    transform: scale(0.98);
-    transition: transform 0.4s ease, background-color 0.4s ease;
 }
 
 .btn-hero-secondary {
-    background-color: var(--color-a);
-    color: var(--color-p);
-    border: 1px solid var(--color-a);
-    box-shadow: 0px 4px 8px var(--color-p);
-    transform: translateY(-4px);
+    background-color: transparent;
+    color: var(--color-a);
+    border: 1px solid var(--color-s);
 }
 
 .btn-hero-secondary:hover {
+    background-color: var(--color-s);
     color: var(--color-p);
-    background-color: var(--dark-a);
-    transform: translateY(4px);
-    box-shadow: 0px 0px 0px;
-    transform: scale(0.98);
-    transition: transform 0.4s ease, background-color 0.4s ease;
 }
 
 /* Testo inferiore */
@@ -104,7 +85,6 @@
     font-size: 0.85rem;
     color: var(--color-p);
 }
-
 
 
 /* Responsive */
