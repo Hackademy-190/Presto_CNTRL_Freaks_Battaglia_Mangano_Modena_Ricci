@@ -82,5 +82,36 @@
 
 
 body {
-    background-color: var(--color-s);
+    background:radial-gradient(circle at center, rgba(44, 44, 44, 0) 0%, rgba(44, 44, 44, 0.45) 80%), var(--color-s);
+}
+
+.snap-container {
+    height: 100vh;
+    height: 100svh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100vh;
+    min-height: 100svh;
+    box-sizing: border-box;
+}
+
+@media (max-width: 767.98px) {
+    .snap-container {
+        height: auto;
+        min-height: 100svh;
+        overflow: visible;
+        scroll-snap-type: none;
+        scroll-behavior: auto;
+    }
+
+    .snap-section {
+        scroll-snap-align: none;
+        scroll-snap-stop: normal;
+    }
 }
