@@ -1,9 +1,17 @@
 .bg-hero {
-    background:url('../../public/media/bg-hero5.1.jpg');
-    filter: sepia(30%) saturate(120%);
+    background:
+        linear-gradient(rgba(8, 11, 10, 0.44), rgba(8, 11, 10, 0.62)),
+        url('../../public/media/bg-hero5.1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+@media (max-width: 767.98px) {
+    .bg-hero {
+        background-attachment: fixed;
+        background-position: 72% center;
+    }
 }
 
 /* Hero section */
@@ -12,6 +20,333 @@
     color: var(--color-p);
     padding: 100px 0 80px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    box-sizing: border-box;
+}
+
+.home-advertisements {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.home-advertisements .row {
+    align-content: center;
+}
+
+.home-advertisements-heading {
+    width: 100%;
+    margin: 0 auto 1.25rem;
+    color: var(--color-p);
+    text-align: center;
+}
+
+.home-advertisements-heading h2 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.home-advertisements-heading p {
+    margin: 0;
+    color: rgba(255, 253, 235, 0.9);
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    line-height: 1.4;
+}
+
+.home-advertisements {
+    --home-card-bg: rgba(14, 17, 16, 0.95);
+    --home-card-border: rgba(202, 199, 174, 0.3);
+    --home-card-text: #f4f1df;
+    --home-card-muted: #d3d2c8;
+}
+
+.home-ad-card {
+    position: relative;
+    display: flex;
+    height: clamp(16rem, 42svh, 20rem);
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--home-card-border);
+    border-radius: 1rem;
+    background: var(--home-card-bg);
+    color: var(--home-card-text);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035), 0 0.4rem 1.2rem rgba(0, 0, 0, 0.3);
+}
+
+.home-ad-card-image {
+    display: block;
+    flex: 0 0 auto;
+    width: 100%;
+    height: clamp(7rem, 19svh, 10rem);
+    object-fit: cover;
+    border-radius: 0.95rem 0.95rem 0 0;
+}
+
+.home-ad-card-body {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: visible;
+    padding: 0.65rem 0.8rem 0.75rem;
+}
+
+.home-ad-card-body .card-title {
+    display: -webkit-box;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    color: var(--home-card-text);
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    text-transform: none;
+    margin-bottom: 0.35rem;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.home-ad-card-body .card-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.home-ad-card-body .card-title a:hover {
+    text-decoration: underline;
+    text-decoration-color: rgba(244, 241, 223, 0.55);
+}
+
+.home-ad-card-description {
+    display: -webkit-box;
+    width: 100%;
+    overflow: hidden;
+    color: var(--home-card-muted);
+    font-size: 0.9rem;
+    line-height: 1.3;
+    margin-bottom: 0.35rem;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.home-ad-card-meta {
+    display: flex;
+    flex: 0 0 auto;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    overflow: hidden;
+    color: var(--home-card-text);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0.15rem 0 0.45rem;
+}
+
+.home-ad-card-meta span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.home-ad-card-meta span:nth-child(2) {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 1;
+    display: inline-flex;
+    max-width: calc(100% - 1.5rem);
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.3rem;
+    background: rgba(24, 28, 24, 0.82);
+    color: var(--home-card-text);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.home-ad-card-meta span:nth-child(2)::before {
+    width: 0.45rem;
+    height: 0.45rem;
+    flex: 0 0 auto;
+    border: 1px solid currentColor;
+    content: "";
+    transform: rotate(45deg);
+}
+
+.home-ad-card-link {
+    flex: 0 0 auto;
+    overflow: hidden;
+    color: var(--home-card-muted);
+    font-size: 0.78rem;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: auto;
+    margin-bottom: 0.35rem;
+}
+
+.home-ad-card-action {
+    flex: 0 0 auto;
+    border: 1px solid rgba(202, 199, 174, 0.28);
+    background: rgba(166, 164, 133, 0.2);
+    color: var(--home-card-text);
+    padding: 0.25rem 0.55rem;
+    font-size: 0.75rem;
+    line-height: 1.2;
+}
+
+.home-ad-card-action:hover {
+    border-color: rgba(202, 199, 174, 0.5);
+    background: rgba(166, 164, 133, 0.32);
+    color: var(--home-card-text);
+}
+
+@media (min-width: 1200px) {
+    .home-advertisements {
+        padding: 0;
+    }
+
+    .home-advertisements .col-md-4 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+    .home-ad-card {
+        height: clamp(17rem, calc((100svh - 2rem) / 2), 24rem);
+    }
+
+    .home-ad-card-image {
+        flex: 0 0 45%;
+        height: auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .home-ad-card-body {
+        padding: 0.5rem 0.6rem;
+    }
+
+    .home-ad-card-body .card-title {
+        font-size: 0.95rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .home-ad-card-description {
+        font-size: 0.75rem;
+        line-height: 1.2;
+        margin-bottom: 0.2rem;
+        -webkit-line-clamp: 1;
+    }
+
+    .home-ad-card-meta {
+        font-size: 1rem;
+        margin: 0.1rem 0 0.25rem;
+    }
+
+    .home-ad-card-link {
+        font-size: 0.7rem;
+    }
+
+    .home-ad-card-action {
+        padding: 0.15rem 0.4rem;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .home-advertisements {
+        align-items: flex-start;
+        padding: 0.75rem 0;
+    }
+
+    .home-advertisements .container {
+        max-width: 34rem;
+    }
+
+    .home-advertisements .row {
+        --bs-gutter-y: 0.75rem;
+        align-content: flex-start;
+    }
+
+    .home-advertisements .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .home-ad-card {
+        height: auto;
+        min-height: 0;
+    }
+
+    .home-ad-card-image {
+        height: clamp(10rem, 48vw, 14rem);
+    }
+
+    .home-ad-card-body {
+        padding: 0.75rem 0.9rem;
+    }
+
+    .home-ad-card-body .card-title {
+        font-size: 1.1rem;
+    }
+
+    .home-ad-card-description {
+        font-size: 0.85rem;
+        line-height: 1.3;
+        -webkit-line-clamp: 2;
+    }
+
+    .home-ad-card-meta {
+        font-size: 1.1rem;
+    }
+
+    .home-ad-card-link {
+        font-size: 0.78rem;
+    }
+
+    .home-ad-card-action {
+        padding: 0.2rem 0.45rem;
+        font-size: 0.75rem;
+    }
+
+    .home-ad-card-meta span:nth-child(2) {
+        top: 0.65rem;
+        left: 0.65rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .home-ad-card-body {
+        padding: 0.65rem 0.75rem;
+    }
+
+    .home-ad-card-body .card-title {
+        font-size: 1rem;
+    }
+
+    .home-ad-card-description {
+        font-size: 0.8rem;
+    }
+
+    .home-ad-card-meta {
+        font-size: 1rem;
+    }
+
+    .home-ad-card-link {
+        font-size: 0.75rem;
+    }
+
+    .home-ad-card-action {
+        font-size: 0.72rem;
+    }
 }
 
 .min-vh-75 {
