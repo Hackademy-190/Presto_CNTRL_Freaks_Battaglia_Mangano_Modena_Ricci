@@ -1,5 +1,10 @@
 <x-layout>
     <div class="container py-5">
+        <div class="row py-4">
+            <div class="col-12">
+                <x-category-nav />
+            </div>
+        </div>
         <div class="row justify-content-center align-items-stretch py-4 g-4">
             @foreach ($category->advertisements as $advertisement)
                 <div class="col-12 col-md-4">

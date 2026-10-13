@@ -9,7 +9,7 @@
 
     <div class="snap-container bg-hero">
 
-        <section class="hero-marketplace snap-section">
+        <section class="hero-marketplace">
             <div class="container">
                 <div class="row align-items-center">
 
