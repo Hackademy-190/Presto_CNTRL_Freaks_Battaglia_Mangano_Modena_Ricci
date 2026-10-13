@@ -116,17 +116,17 @@
                 <div class="row g-2 justify-content-center">
                     @foreach ($advertisements as $advertisement)
                     <div class="col-6 col-md-4">
-                        <div class="card home-ad-card">
-                            <img src="https://picsum.photos/180/100" class="card-img-top home-ad-card-image" alt="{{ $advertisement->title }}">
-                            <div class="card-body home-ad-card-body">
-                                <h5 class="card-title ubuntu-medium text-uppercase">{{ $advertisement->title }}</h5>
-                                <p class="card-text home-ad-card-description">{{ $advertisement->description }}</p>
-                                <div class="home-ad-card-meta">
-                                    <span>{{ $advertisement->price }} €</span>
-                                    <span>{{ $advertisement->category->name }}</span>
+                        <div class="card ad-card">
+                            <img src="https://picsum.photos/180/100" class="card-img-top ad-card-image" alt="{{ $advertisement->title }}">
+                            <div class="card-body ad-card-body">
+                                <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">{{ $advertisement->title }}</h5>
+                                <p class="card-text ad-card-description">{{ $advertisement->description }}</p>
+                                <div>
+                                    <span class="ad-card-price">{{ $advertisement->price }} €</span>
+                                    <span class="ad-card-category">{{ $advertisement->category->name }}</span>
                                 </div>
-                                <a class="home-ad-card-link" href="{{ route('advertisement.show', $advertisement) }}">Visualizza articolo</a>
-                                <button type="submit" class="btn bg-s btn-sm home-ad-card-action" data-bs-theme="dark">
+                                <a class="ad-card-link" href="{{ route('advertisement.show', $advertisement) }}">Visualizza articolo</a>
+                                <button type="submit" class="btn btn-sm ad-card-action" data-bs-theme="dark">
                                     Acquista
                                 </button>
                             </div>
