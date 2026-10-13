@@ -12,7 +12,7 @@ class AdvertisementController extends Controller implements HasMiddleware
   public static function middleware(): array
   {
       return [
-          new Middleware('auth', except:['index']),
+          new Middleware('auth', except:['index','show']),
       ];
   }
   public function create (){
@@ -20,7 +20,7 @@ class AdvertisementController extends Controller implements HasMiddleware
   }
   public function index ()
   {
-    $advertisements = Advertisement::orderBy('created_at', 'desc')->get();
+    $advertisements = Advertisement::orderBy('created_at', 'desc')->paginate(6);
     return view  ('advertisement.index', compact('advertisements'));
   }
 

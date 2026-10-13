@@ -11,33 +11,51 @@
                     <a class="nav-link {{ request()->routeIs('welcome') ? 'active' : '' }}" aria-current="page" href="{{ route('welcome') }}">Home</a>
                 </li>
                 @auth
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('advertisement.create') ? 'active' : '' }}" href="{{ route('advertisement.create') }}">Aggiungi articolo</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('advertisement.create') ? 'active' : '' }}" href="{{ route('advertisement.create') }}">Aggiungi articolo</a>
+                </li>
                 @endauth
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('advertisement.index') ? 'active' : '' }}" href="{{ route('advertisement.index') }}">Articoli</a>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Categorie
+                    </a>
+                    <ul class="dropdown-menu">
+                        @foreach ($categories as $category)
+                        <li><a class="dropdown-item text-capitalize"
+                                href="{{ route('categories.show', ['category'=> $category]) }}">{{ $category->name }}</a>
+                        </li>
+                        @if (!$loop->last)
+                        <hr class="dropdown-divider">
+                        @endif
+                        @endforeach
+                    </ul>
+                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         @auth
-                            Ciao {{ auth()->user()->name }}!
+                        Ciao {{ auth()->user()->name }}!
                         @else
-                            Login/Registrati
+                        Login/Registrati
                         @endauth
                     </a>
                     <ul class="dropdown-menu mt-3">
                         @guest
-                            <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
-                            <li><a class="dropdown-item" href="{{ route('register') }}">Registrati</a></li>
+                        <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+                        <li><a class="dropdown-item" href="{{ route('register') }}">Registrati</a></li>
                         @else
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a>
-                                <form action="{{ route('logout') }}" method= "POST" id="form-logout" class="d-none">
-                                    @csrf
-                                </form>
-                            </li>
+                        <li><a class="dropdown-item" href="#"
+                                onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a>
+                            <form action="{{ route('logout') }}" method="POST" id="form-logout" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
                         @endguest
                     </ul>
                 </li>
