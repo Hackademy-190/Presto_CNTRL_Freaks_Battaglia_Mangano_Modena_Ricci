@@ -35,6 +35,18 @@
                         @endforeach
                     </ul>
                 </li>
+                <!-- Accesso revisor reviews -->
+                @auth
+                @if(auth()->user()->is_revisor)
+                <li class="nav-item">
+                    <a class="nav-link btn btn" href="{{route('revisor.index')}}">Dashboard revisore
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{\App\Models\Advertisement::toBeRevisedCount()}}
+                        </span>
+                    </a>
+                </li>
+                @endif
+                @endauth
+                <!-- Fine accesso revisor reviews -->
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+
 
 class AdvertisementController extends Controller implements HasMiddleware
 {
@@ -28,4 +28,5 @@ class AdvertisementController extends Controller implements HasMiddleware
   {
     return view ('advertisement.show', compact('advertisement'));
   }
+
 }

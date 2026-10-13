@@ -1,4 +1,11 @@
 <x-layout>
+    <!-- Messaggio Revisor error -->
+    @if(session()->has('errorMessage'))
+<div class="alert alert-danger text-center shadow rounded w-50">
+    {{session('errorMessage')}}
+</div>
+@endif
+<!-- Fine Messaggio revisor error -->
     <div class="container-fluid bg-hero vh-100">
 
         <section class="hero-marketplace">
@@ -6,9 +13,9 @@
                 <div class="row align-items-center min-vh-75">
 
                     <!-- Testo della Hero -->
-                    <div class="col-lg-7 hero-content">                       
+                    <div class="col-lg-7 hero-content">
                         <h1 class="hero-title">
-                            Ogni oggetto ha una    
+                            Ogni oggetto ha una
                         </h1>
                         <h1 class="hero-title span-cust pb-3 px-2"> seconda storia.</h1>
 
@@ -34,7 +41,7 @@
                         <p class="hero-caption">
                             Un buon acquisto, una nuova storia.
                         </p>
-                    </div>                  
+                    </div>
                 </div>
             </div>
         </section>

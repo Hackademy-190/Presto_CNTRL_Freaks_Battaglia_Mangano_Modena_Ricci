@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
-use Illuminate\Http\Request;
+
+
 
 class PublicController extends Controller
 {
