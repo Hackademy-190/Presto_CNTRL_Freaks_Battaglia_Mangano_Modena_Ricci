@@ -48,6 +48,15 @@ class RevisorController extends Controller
             ->with('message', "L'articolo $advertisement->title è sotto revisione.");
     }
 
+
+    public function show(Advertisement $advertisement)
+    {
+        
+        return view('revisor.show', compact('advertisement'));
+
+
+    }
+
     // Fine logiche revisione annunci
 
 
@@ -63,7 +72,7 @@ class RevisorController extends Controller
     public function makeRevisor(User $user)
     {
         Artisan::call('app:make-user-revisor', ['email' => $user->email]);
-        return redirect()->back();
+        return redirect()->route('welcome')->with('message', 'Revisore accettato');
     }
 
     // Fine Logiche mail-revisor

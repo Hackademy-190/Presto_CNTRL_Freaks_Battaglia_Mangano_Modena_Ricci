@@ -30,7 +30,7 @@
                                     <span class="ad-card-category">{{ $advertisement_to_check->category->name }}</span>
                                 </div>
                                 <a class="ad-card-link"
-                                    href="{{ route('advertisement.show', $advertisement_to_check) }}">Visualizza articolo</a>
+                                    href="{{ route('revisor.show', ['advertisement'=>$advertisement_to_check]) }}">Visualizza articolo</a>
                                 <div class="d-flex pb-4 justify-content-around">
                                     <form action="{{route('reject',['advertisement'=>$advertisement_to_check])}}" method="POST">
                                         @csrf
@@ -77,7 +77,7 @@
                         <span class="ad-card-category">{{ $advertisement_already_checked->category->name }}</span>
                     </div>
                     <a class="ad-card-link"
-                        href="{{ route('advertisement.show', $advertisement_already_checked) }}">Visualizza articolo</a>
+                        href="{{ route('revisor.show', ['advertisement'=>$advertisement_already_checked]) }}">Visualizza articolo</a>
                     <div class="d-flex pb-4 justify-content-around">
                         <form action="{{route('revision',['advertisement'=>$advertisement_already_checked])}}" method="POST">
                             @csrf
