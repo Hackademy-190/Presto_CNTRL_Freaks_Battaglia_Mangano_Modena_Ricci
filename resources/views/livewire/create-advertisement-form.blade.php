@@ -13,7 +13,7 @@
             <input id="title" type="text" wire:model.live="title">
 
             @error('title')
-                <span>{{ $message }}</span>
+                <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
 
@@ -23,7 +23,7 @@
             <textarea id="description" wire:model.live="description"></textarea>
 
             @error('description')
-                <span>{{ $message }}</span>
+                <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
 
@@ -33,7 +33,7 @@
             <input type="number" wire:model="price" min="0" step="0.01" class="form-control">
 
             @error('price')
-                <span>{{ $message }}</span>
+                <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
 
@@ -45,6 +45,9 @@
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
+            @error('category')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
         
         <div class="d-grid">
