@@ -1,15 +1,10 @@
 <x-layout>
-
-
-
-
-
     <div class="container py-5">
         <div class="row align-items-stretch py-4 g-4">
             <div class="col-12">
                 <x-category-nav />
                 {{-- @foreach ($categories as $category)
-                    <a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a>
+                <a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a>
                 @endforeach --}}
 
             </div>
@@ -20,12 +15,13 @@
                             alt="{{ $advertisement->title }}">
                         <div class="card-body ad-card-body">
                             <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">
-                                {{ $advertisement->title }}</h5>
+                                {{ $advertisement->title }}
+                            </h5>
                             <p class="card-text ad-card-description">{{ $advertisement->description }}</p>
                             <p class="card-text ad-card-price">{{ $advertisement->price }} €</p>
                             <p class="card-text ad-card-category">{{ $advertisement->category->name }}</p>
-                            <p class="ad-card-link"><a
-                                    href="{{ route('advertisement.show', $advertisement) }}">Visualizza articolo</a></p>
+                            <p class="ad-card-link"><a href="{{ route('advertisement.show', $advertisement) }}">Visualizza
+                                    articolo</a></p>
                             <button type="button" class="btn ad-card-action" data-bs-theme="dark">
                                 Acquista
                             </button>
@@ -40,5 +36,4 @@
             {{ $advertisements->links() }}
         </div>
     </div>
-
 </x-layout>

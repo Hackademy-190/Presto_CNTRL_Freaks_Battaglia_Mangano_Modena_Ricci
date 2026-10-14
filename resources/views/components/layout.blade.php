@@ -19,20 +19,20 @@
 </head>
 
 <body>
-    <x-navbar />
+        <x-navbar />
+        <div>
+            {{ $slot }}
+        </div>
 
-    <div>
-        {{ $slot }}
-    </div>
+        
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+        @livewireScripts
 
+        <x-footer />
     
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-    @livewireScripts
-
-    <x-footer />
 </body>
 
 </html>
