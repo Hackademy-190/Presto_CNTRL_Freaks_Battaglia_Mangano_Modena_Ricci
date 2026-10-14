@@ -2,7 +2,7 @@
     <div class="container mt-5">
         <div class="row py-5">
             <div class="col-12">
-                <a href="{{ url()->previous(route('revisor.index')) }}" class="btn btn-outline-light mb-3">
+                <a href="{{ (route('revisor.index')) }}" class="btn btn-outline-light mb-3 show-back-link">
                     &larr; Torna indietro
                 </a>
             </div>
@@ -66,7 +66,7 @@
                         <form action="{{ route('revision', ['advertisement' => $advertisement]) }}" method="POST">
                             @csrf
                             @method('patch')
-                            <button class="btn btn-success py-2 px-5 fw-bold ">Revisiona</button>
+                            <button class="btn ad-card-action w-100 py-2 fw-bold">Revisiona</button>
                         </form>
                     @endif
                 </div>

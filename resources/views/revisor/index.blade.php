@@ -33,7 +33,7 @@
                                         <form class="flex-fill" action="{{ route('accept', ['advertisement' => $advertisement_to_check]) }}" method="POST">
                                             @csrf
                                             @method('patch')
-                                            <button class="btn btn-success w-100 py-2 fw-bold">Accetta</button>
+                                            <button class="btn w-100 py-2 fw-bold">Accetta</button>
                                         </form>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                                         <form class="w-100" action="{{ route('revision', ['advertisement' => $advertisement_already_checked]) }}" method="POST">
                                             @csrf
                                             @method('patch')
-                                            <button class="btn btn-success w-100 py-2 fw-bold">Modifica Revisione</button>
+                                            <button class="btn w-100 py-2 fw-bold">Modifica Revisione</button>
                                         </form>
                                     </div>
                                 </div>

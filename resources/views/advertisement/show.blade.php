@@ -2,7 +2,7 @@
     <div class="container mt-5">
         <div class="row py-5">
             <div class="col-12">
-                <a href="{{ url()->previous(route('advertisement.index')) }}" class="btn btn-outline-light mb-3">
+                <a href="{{ (route('advertisement.index')) }}" class="btn btn-outline-light mb-3 show-back-link">
                     &larr; Torna indietro
                 </a>
             </div>

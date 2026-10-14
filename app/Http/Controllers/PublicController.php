@@ -25,39 +25,6 @@ class PublicController extends Controller
     // $advertisements = Advertisement::search($query)->where('is_accepted', true)->paginate(10);
     // return view('advertisement.searched', ['advertisements' => $advertisements, 'query' => $query]);
 
-    
-    //   tntsearch ed eloquent 
-
-    // $query = $request->input('query');
-    // $searchField = $request->input('field', 'all'); // Predefinito su 'all' se non viene premuto nulla
-
-    // // STRADA A: Se l'utente vuole cercare OVUNQUE, usiamo Laravel Scout (TNTSearch)
-    // if ($searchField === 'all' || !$searchField) {
-    //     $advertisements = Advertisement::search($query)->where('is_accepted', true)->paginate(10);
-    // } 
-    // // STRADA B: Se sceglie un radio specifico, usiamo Eloquent
-    // else {
-    //     $advertisements = Advertisement::where('is_accepted', true)
-    //         ->where(function($q) use ($searchField, $query) {
-    //             if ($searchField === 'category') {
-    //                 // Entra nella relazione e cerca nella colonna 'name' della tabella categories
-    //                 $q->whereHas('category', function($catQuery) use ($query) {
-    //                     $catQuery->where('name', 'LIKE', "%{$query}%");
-    //                 });
-    //             } else {
-    //                 // Cerca dinamicamente in 'title' o 'description'
-    //                 $q->where($searchField, 'LIKE', "%{$query}%");
-    //             }
-    //         })
-    //         ->paginate(10);
-    // }
-
-    // // Restituiamo la vista mandando le variabili necessarie
-    // return view('advertisement.searched', compact('advertisements', 'query', 'searchField'));
-
-
-    // solo tntsearch 
-
     $query = $request->input('query');
     if(!$query){ $advertisements = Advertisement::where('is_accepted', true)->orderBy('created_at', 'desc')->take(4)->get();
                  return view('welcome', compact('advertisements'));}

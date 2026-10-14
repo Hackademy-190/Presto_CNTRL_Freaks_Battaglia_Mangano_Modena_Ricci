@@ -1,7 +1,7 @@
 :root {
-    --color-s: #2B4150;
+    --color-s: #151414;
     --color-p: #FFFDEB;
-    --color-a: #B86500;
+    --color-a: #ffac47;
     --color-shadow: #464646bb;
 
     --dark-a: #A35A00;
@@ -374,6 +374,10 @@ html {
 
 
 /* carosello */
+
+.show-back-link {
+    margin-top: 5rem;
+}
 
 .car-01__viewer {
     width: min(440px, 100%);
