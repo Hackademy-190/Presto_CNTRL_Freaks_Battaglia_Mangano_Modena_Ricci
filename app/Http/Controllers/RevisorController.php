@@ -48,6 +48,15 @@ class RevisorController extends Controller
             ->with('message', "L'articolo $advertisement->title è sotto revisione.");
     }
 
+
+    public function show(Advertisement $advertisement)
+    {
+        
+        return view('revisor.show', compact('advertisement'));
+
+
+    }
+
     // Fine logiche revisione annunci
 
 
