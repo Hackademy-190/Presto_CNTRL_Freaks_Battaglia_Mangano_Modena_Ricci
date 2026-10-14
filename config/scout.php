@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('SCOUT_DRIVER', 'tntsearch'),
+    'driver' => env('SCOUT_DRIVER', 'collection'),
 
     /*
     |--------------------------------------------------------------------------
@@ -261,8 +261,8 @@ return [
             // ],
         ],
     ],
-
-
+ 
+    
 
     'tntsearch' => [
         'storage' => storage_path(), //place where the index files will be stored
