@@ -1,6 +1,6 @@
 <x-layout>
     <div class="container-fluid mt-5">
-        <h1 class="revisor-dashboard-label mt-2">Revisor dashboard</h1>
+        <h1 class="revisor-dashboard-label mt-5">Revisor dashboard</h1>
         <section class="snap-section home-advertisements py-5">
             <div class="container">
                 <header class="home-advertisements-heading mt-5">

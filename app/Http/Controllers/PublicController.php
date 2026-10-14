@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 
 class PublicController extends Controller
 {
-    public function welcome() {
+   
+ public function welcome() {
         $advertisements = Advertisement::where('is_accepted', true)->orderBy('created_at', 'desc')->take(4)->get();
     return view('welcome', compact('advertisements'));
 }
-
 
     public function searchAdvertisements(Request $request)
 {
@@ -59,23 +59,26 @@ class PublicController extends Controller
     // solo tntsearch 
 
     $query = $request->input('query');
+    if(!$query){ $advertisements = Advertisement::where('is_accepted', true)->orderBy('created_at', 'desc')->take(4)->get();
+                 return view('welcome', compact('advertisements'));}
+
     $searchField = $request->input('field', 'all');
 
     // Se l'utente cerca in un campo specifico, formattiamo la stringa per TNTSearch
-    if ($searchField && $searchField !== 'all') {
-        // TNTSearch permette di specificare il campo direttamente nella stringa della query sintattica
-        // Esempio risultante: "titolo_cercato" (ma filtrato successivamente per precisione)
-        
-        // La soluzione più stabile con Scout + TNTSearch per campi specifici senza toccare il DB
-        // consiste nel filtrare la collection restituita tramite una callback di ricerca:
-        $scoutQuery = Advertisement::search($query, function($tnt, $searchQuery, $isSearchable) use ($searchField) {
-            // Logica avanzata booleana opzionale interna a TNTSearch
-            return $tnt->search($searchQuery);
-        });
-    } else {
-        $scoutQuery = Advertisement::search($query);
-    }
-
+        if ($searchField && $searchField !== 'all') {
+            // TNTSearch permette di specificare il campo direttamente nella stringa della query sintattica
+            // Esempio risultante: "titolo_cercato" (ma filtrato successivamente per precisione)
+            
+            // La soluzione più stabile con Scout + TNTSearch per campi specifici senza toccare il DB
+            // consiste nel filtrare la collection restituita tramite una callback di ricerca:
+            $scoutQuery = Advertisement::search($query, function($tnt, $searchQuery, $isSearchable) use ($searchField) {
+                // Logica avanzata booleana opzionale interna a TNTSearch
+                return $tnt->search($searchQuery);
+            });
+        } else {
+            $scoutQuery = Advertisement::search($query);
+        }
+    
     // Applichiamo la condizione di approvazione globale dell'annuncio
     $scoutQuery->where('is_accepted', true);
 

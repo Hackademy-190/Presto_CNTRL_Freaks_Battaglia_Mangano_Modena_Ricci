@@ -51,8 +51,7 @@
                 <div class="col-xl-4 col-md-4">
                     <div class="footer-widget">
                         <div class="footer-logo">
-                            <a href="index.html"><img src="https://i.ibb.co/QDy827D/ak-logo.png" class="img-fluid"
-                                    alt="logo"></a>
+                            <a href="index.html"><img src="{{ asset('media/Logo.png') }}" width="150px" height="150px" class=" p-1 rounded" alt="Logo"></a>
                         </div>
                         <div class="footer-text">
                             <p>Il sito offre un’esperienza di acquisto semplice e veloce, con prodotti selezionati e

@@ -472,3 +472,9 @@ html {
         transition: none;
     }
 }
+
+/* Logo Background Color */
+.logo_color
+{
+    background-color: var(--color-p);
+}
