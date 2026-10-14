@@ -1,12 +1,45 @@
 const navbar = document.querySelector('.navbar-cus');
+const navbarCollapse = navbar?.querySelector('.navbar-collapse');
+let isNavbarCollapseOpen = navbarCollapse?.classList.contains('show') ?? false;
 
-window.onscroll = () => {
-    if(window.scrollY > 0){
-        navbar.classList.add('scrollNav');
-    }else{
-        navbar.classList.remove('scrollNav');
+const updateNavbarBackground = () => {
+    if (window.scrollY > 0 || isNavbarCollapseOpen) {
+        navbar?.classList.add('scrollNav');
+    } else {
+        navbar?.classList.remove('scrollNav');
     }
 };
+
+navbarCollapse?.addEventListener('show.bs.collapse', () => {
+    isNavbarCollapseOpen = true;
+    updateNavbarBackground();
+});
+
+navbarCollapse?.addEventListener('hidden.bs.collapse', () => {
+    isNavbarCollapseOpen = false;
+    updateNavbarBackground();
+});
+
+window.addEventListener('scroll', updateNavbarBackground);
+updateNavbarBackground();
+
+const searchInput = navbar?.querySelector('#query');
+const searchClearButton = navbar?.querySelector('.search-clear');
+
+if (searchInput && searchClearButton) {
+    const updateSearchClearButton = () => {
+        searchClearButton.hidden = searchInput.value.length === 0;
+    };
+
+    searchInput.addEventListener('input', updateSearchClearButton);
+    searchClearButton.addEventListener('click', () => {
+        searchInput.value = '';
+        searchInput.focus();
+        updateSearchClearButton();
+    });
+
+    updateSearchClearButton();
+}
 
 const categoryContainer = document.querySelector('.container-category');
 const categoryOutline = categoryContainer?.querySelector('.outline');

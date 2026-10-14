@@ -147,6 +147,33 @@ html {
     padding: 0.5em;
 }
 
+@media (max-width: 767.98px) {
+  .outline {
+    display: none;
+  }
+
+    .container-category {
+        justify-content: flex-start;
+        gap: 0.25rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+    }
+
+    .container-category::-webkit-scrollbar {
+        display: none;
+    }
+
+    .btn-category {
+        flex: 0 0 auto;
+        padding: 0.5em 0.75em;
+    }
+
+    .btn-category a {
+        white-space: nowrap;
+    }
+}
+
 .btn-category {
     padding: 0.5em 1.5em;
     color: #fff;
@@ -172,6 +199,16 @@ html {
 
 .btn-category:hover {
     background: #fff3;
+}
+
+@media (max-width: 767.98px) {
+  .btn-category:hover {
+    background: transparent;
+  }
+
+  .btn-category a:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
 }
 
 /* Footer */
