@@ -378,6 +378,90 @@
     text-underline-offset: 0.15em;
 }
 
+.index-pagination .page-item:not(:first-child):not(:last-child):not(.disabled) .page-link {
+    min-width: 2.5rem;
+    margin: 0 0.2rem;
+    border: 1px solid rgba(255, 253, 235, 0.2);
+    border-radius: 0.45rem;
+    background: var(--dark-s);
+    color: var(--color-p);
+    text-align: center;
+}
+
+.index-pagination-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.index-pagination-summary {
+    margin: 0;
+    color: rgba(255, 253, 235, 0.78);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.index-pagination-summary strong {
+    color: var(--color-p);
+    font-weight: 700;
+}
+
+.index-pagination-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.15rem;
+    margin-bottom: 0;
+}
+
+.index-pagination .page-item:not(:first-child):not(:last-child):not(.disabled):not(.active) .page-link:hover {
+    border-color: var(--color-a);
+    background: var(--color-s);
+    color: var(--color-p);
+}
+
+.index-pagination .page-item.active:not(:first-child):not(:last-child) .page-link {
+    border-color: var(--color-a);
+    background: var(--color-a);
+    color: var(--color-p);
+}
+
+.index-pagination .page-item:not(:first-child):not(:last-child) .page-link:focus {
+    box-shadow: 0 0 0 0.2rem rgba(184, 101, 0, 0.25);
+}
+
+.index-pagination .page-item:first-child .page-link,
+.index-pagination .page-item:last-child .page-link {
+    display: inline-flex;
+    min-height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid rgba(255, 253, 235, 0.2);
+    border-radius: 0.45rem;
+    background: var(--dark-s);
+    color: var(--color-p);
+}
+
+.index-pagination .page-item:not(.disabled):first-child .page-link:hover,
+.index-pagination .page-item:not(.disabled):last-child .page-link:hover {
+    border-color: var(--color-a);
+    background: var(--color-s);
+    color: var(--color-p);
+}
+
+.index-pagination .page-item.disabled:first-child .page-link,
+.index-pagination .page-item.disabled:last-child .page-link {
+    background: rgba(36, 54, 66, 0.55);
+    color: rgba(255, 253, 235, 0.45);
+}
+
+.index-pagination .page-item:first-child .page-link:focus,
+.index-pagination .page-item:last-child .page-link:focus {
+    box-shadow: 0 0 0 0.2rem rgba(184, 101, 0, 0.25);
+}
+
 .ad-card .ad-card-action,
 .ad-card .btn {
     flex: 0 0 auto;

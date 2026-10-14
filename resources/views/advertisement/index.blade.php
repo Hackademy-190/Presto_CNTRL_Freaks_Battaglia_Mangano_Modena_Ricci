@@ -37,8 +37,8 @@
         </div>
     </div>
     <div class="d-flex justify-content-center mt-5">
-        <div class="mt-5">
-            {{ $advertisements->links() }}
+        <div class="index-pagination my-5">
+            {{ $advertisements->links('pagination.index') }}
         </div>
     </div>
 </x-layout>

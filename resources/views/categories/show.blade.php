@@ -2,6 +2,9 @@
         <div class="container py-5">
             <div class="row py-4">
                 <div class="col-12">
+                    <a href="{{ url()->previous(route('advertisement.index')) }}" class="btn btn-outline-light mb-3">
+                        &larr; Torna indietro
+                    </a>
                     <x-category-nav />
                 </div>
             </div>

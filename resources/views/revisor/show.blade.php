@@ -1,6 +1,11 @@
 <x-layout>
     <div class="container mt-5">
         <div class="row py-5">
+            <div class="col-12">
+                <a href="{{ url()->previous(route('revisor.index')) }}" class="btn btn-outline-light mb-3">
+                    &larr; Torna indietro
+                </a>
+            </div>
             <div class="col-12 col-md-6 d-flex justify-content-center mt-5">
                 <div class="car-01__viewer">
                     <input type="radio" name="car-01" id="car-01-1" class="car-01__radio" checked>
