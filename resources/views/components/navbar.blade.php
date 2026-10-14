@@ -42,7 +42,7 @@
                 @auth
                 @if (auth()->user()->is_revisor)
                 <li class="nav-item">
-                    <a class="nav-link btn btn" href="{{ route('revisor.index') }}">Dashboard revisore
+                    <a class="nav-link btn position-relative" href="{{ route('revisor.index') }}">Dashboard revisore
                         @livewire('revisor-counter')
                     </a>
                 </li>
