@@ -21,6 +21,11 @@
                         </div>
                     @endif
                     {{-- fine snippet email  --}}
+
+                    @error('generico')
+                      <div class="alert alert-danger text-center shadow rounded w-50">{{ $message }}</div>
+                    @enderror
+
                     <!-- Testo della Hero -->
                     <div class="col-lg-7 hero-content">
                         <h1 class="hero-title">
