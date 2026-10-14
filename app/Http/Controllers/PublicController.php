@@ -26,8 +26,9 @@ class PublicController extends Controller
     // return view('advertisement.searched', ['advertisements' => $advertisements, 'query' => $query]);
 
     $query = $request->input('query');
-    if(!$query){ $advertisements = Advertisement::where('is_accepted', true)->orderBy('created_at', 'desc')->take(4)->get();
-                 return view('welcome', compact('advertisements'));}
+    if(!$query){ 
+                 return back()->withErrors(['generico'=> 'Campo di ricerca vuoto']);
+                 }
 
     $searchField = $request->input('field', 'all');
 
