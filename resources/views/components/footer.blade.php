@@ -55,9 +55,10 @@
                                     alt="logo"></a>
                         </div>
                         <div class="footer-text">
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor
-                                incididuntut consec tetur adipisicing
-                                elit,Lorem ipsum dolor sit amet.
+                            <p>Il sito offre un’esperienza di acquisto semplice e veloce, con prodotti selezionati e
+                                descrizioni accurate per aiutare ogni cliente a scegliere ciò che serve. L’intero
+                                catalogo è aggiornato regolarmente per garantire qualità, convenienza e affidabilità in
+                                ogni ordine.
                             </p>
                         </div>
                     </div>
@@ -83,7 +84,7 @@
                         <div class="footer-text mb-25">
                             <p>Cliccando il bottone sottostante farai richiesta al nostro Admin</p>
                         </div>
-                        <a href="{{ route('become.revisor')}}" class="btn bg-a" data-bs-theme="dark">Diventa
+                        <a href="{{ route('become.revisor') }}" class="btn bg-a" data-bs-theme="dark">Diventa
                             revisore</a>
                     </div>
                 </div>
@@ -93,7 +94,7 @@
     {{-- Copyright --}}
     <div class="copyright-area">
         <div class="copyright-text text-center">
-            <p>Copyright &copy; 2018, All Right Reserved</p>
+            <p>Copyright &copy; 2026, All Right Reserved</p>
         </div>
     </div>
 </footer>

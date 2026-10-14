@@ -1,6 +1,9 @@
 <x-layout>
     <div class="container py-5">
-        <div class="row align-items-stretch py-4 g-4">
+        <header class="home-advertisements-heading mt-5">
+            <h2 class="pt-5">Articoli in vendita</h2>
+        </header>
+        <div class="row align-items-stretch pb-4 g-4">
             <div class="col-12">
                 <x-category-nav />
                 {{-- @foreach ($categories as $category)
@@ -17,14 +20,16 @@
                             <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">
                                 {{ $advertisement->title }}
                             </h5>
-                            <p class="card-text ad-card-description">{{ $advertisement->description }}</p>
+                            <p class="card-text ad-card-description">{{ Str::limit($advertisement->description, 100) }}
+                            </p>
                             <p class="card-text ad-card-price">{{ $advertisement->price }} €</p>
                             <p class="card-text ad-card-category">{{ $advertisement->category->name }}</p>
-                            <p class="ad-card-link"><a href="{{ route('advertisement.show', $advertisement) }}">Visualizza
+                            <p class="ad-card-link"><a
+                                    href="{{ route('advertisement.show', $advertisement) }}">Visualizza
                                     articolo</a></p>
-                            <button type="button" class="btn ad-card-action" data-bs-theme="dark">
+                            {{-- <button type="button" class="btn ad-card-action" data-bs-theme="dark">
                                 Acquista
-                            </button>
+                            </button> --}}
                         </div>
                     </div>
                 </div>

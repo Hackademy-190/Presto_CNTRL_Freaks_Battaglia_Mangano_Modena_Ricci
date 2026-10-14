@@ -17,8 +17,8 @@ class RevisorController extends Controller
 
     public function index()
     {
-        $advertisements_to_check = Advertisement::where('is_accepted', null)->get();
-        $advertisements_already_checked = Advertisement::whereIn('is_accepted', [true, false])->get();
+        $advertisements_to_check = Advertisement::where('is_accepted', null)->orderBy('created_at', 'desc')->get();
+        $advertisements_already_checked = Advertisement::whereIn('is_accepted', [true, false])->orderBy('updated_at', 'desc')->get();
         return view('revisor.index', compact('advertisements_to_check', 'advertisements_already_checked'));
 
 

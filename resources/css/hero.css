@@ -58,6 +58,22 @@
     line-height: 1.4;
 }
 
+.revisor-dashboard-label {
+    position: fixed;
+    top: 5.5rem;
+    left: 1rem;
+    z-index: 998;
+    margin: 0;
+    padding: 0.4rem 0.7rem;
+    border-left: 3px solid var(--color-a);
+    border-radius: 0 0.35rem 0.35rem 0;
+    background: rgba(12, 12, 12, 0.55);
+    color: var(--color-a);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
 @media (min-width: 1200px) {
     .home-advertisements {
         padding: 0;
@@ -286,15 +302,15 @@
 }
 
 .ad-card .ad-card-description {
-    display: -webkit-box;
+    display: block;
     width: 100%;
     overflow: hidden;
     margin-bottom: 0.45rem;
     color: rgba(255, 255, 255, 0.82);
     font-size: 0.9rem;
     line-height: 1.35;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .ad-card .ad-card-price {

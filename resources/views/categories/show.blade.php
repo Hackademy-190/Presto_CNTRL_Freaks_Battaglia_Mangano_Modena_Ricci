@@ -12,13 +12,13 @@
                             <img src="https://picsum.photos/180/100" class="card-img-top ad-card-image" alt="{{ $advertisement->title }}">
                             <div class="card-body ad-card-body">
                                 <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">{{ $advertisement->title }}</h5>
-                                <p class="card-text ad-card-description">{{ $advertisement->description }}</p>
+                                <p class="card-text ad-card-description">{{ Str::limit($advertisement->description, 100) }}</p>
                                 <p class="card-text ad-card-price">{{ $advertisement->price }} €</p>
                                 <p class="card-text ad-card-category">{{ $advertisement->category->name }}</p>
                                 <p class="ad-card-link"><a href="{{ route('advertisement.show', $advertisement) }}">Visualizza articolo</a></p>
-                                <button type="button" class="btn ad-card-action" data-bs-theme="dark">
+                                {{-- <button type="button" class="btn ad-card-action" data-bs-theme="dark">
                                     Acquista
-                                </button>
+                                </button> --}}
                             </div>
                         </div>
                     </div>

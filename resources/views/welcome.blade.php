@@ -1,26 +1,26 @@
 <x-layout>
-    <!-- Messaggio Revisor error -->
-    @if (session()->has('errorMessage'))
-        <div class="alert alert-danger text-center shadow rounded w-50">
-            {{ session('errorMessage') }}
-        </div>
-    @endif
-    <!-- Fine Messaggio revisor error -->
-    
-    {{-- snippet email  --}}
-    @if (session()->has('message'))
-    <div class="alert alert-success text-center shadow rounded w-50">
-        {{session('message')}}
-    </div>
-    @endif
-    {{-- fine snippet email  --}}
+
 
     <div class="snap-container bg-hero">
 
         <section class="hero-marketplace">
             <div class="container">
                 <div class="row align-items-center">
+                    <!-- Messaggio Revisor error -->
+                    @if (session()->has('errorMessage'))
+                        <div class="alert alert-danger text-center shadow rounded w-50">
+                            {{ session('errorMessage') }}
+                        </div>
+                    @endif
+                    <!-- Fine Messaggio revisor error -->
 
+                    {{-- snippet email  --}}
+                    @if (session()->has('message'))
+                        <div class="alert alert-success text-center shadow rounded w-50">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+                    {{-- fine snippet email  --}}
                     <!-- Testo della Hero -->
                     <div class="col-lg-7 hero-content">
                         <h1 class="hero-title">
@@ -68,16 +68,17 @@
                                 <div class="card-body ad-card-body">
                                     <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">
                                         {{ $advertisement->title }}</h5>
-                                    <p class="card-text ad-card-description">{{ $advertisement->description }}</p>
+                                    <p class="card-text ad-card-description">
+                                        {{ Str::limit($advertisement->description, 100) }}</p>
                                     <div>
                                         <span class="ad-card-price">{{ $advertisement->price }} €</span>
                                         <span class="ad-card-category">{{ $advertisement->category->name }}</span>
                                     </div>
                                     <a class="ad-card-link"
                                         href="{{ route('advertisement.show', $advertisement) }}">Visualizza articolo</a>
-                                    <button type="submit" class="btn btn-sm ad-card-action" data-bs-theme="dark">
+                                    {{-- <button type="submit" class="btn btn-sm ad-card-action" data-bs-theme="dark">
                                         Acquista
-                                    </button>
+                                    </button> --}}
                                 </div>
                             </div>
                         </div>
