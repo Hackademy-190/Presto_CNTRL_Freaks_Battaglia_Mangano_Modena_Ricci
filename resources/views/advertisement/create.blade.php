@@ -3,7 +3,7 @@
 
     <div class="container py-5">
 
-        <div class="row justify-content-center align-items-center vh-100">
+        <div class="row justify-content-center align-items-center min-vh-100">
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="card shadow border-0">
                     <div class="card-body p-4 p-md-5">
@@ -18,8 +18,9 @@
                             </p>
 
                         </div>
-
-                        <livewire:create-advertisement-form />
+                        <div class="">
+                            <livewire:create-advertisement-form />
+                        </div>
 
                     </div>
                 </div>

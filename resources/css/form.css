@@ -22,3 +22,10 @@ input:focus {
     background: var(--color-a);
     color: var(--color-p);
 }
+.img-preview{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 120px;
+    width: 120px;
+}

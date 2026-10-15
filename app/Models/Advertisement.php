@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Scout\Searchable;
 
 #[Fillable(['title', 'description', 'price', 'user_id', 'category_id'])]
@@ -41,5 +42,9 @@ class Advertisement extends Model
             'description' => $this->description,
             'category' => $this->category->name,
         ];
+    }
+    
+    public function images (): HasMany{
+        return $this->hasMany(Image::class);
     }
 }

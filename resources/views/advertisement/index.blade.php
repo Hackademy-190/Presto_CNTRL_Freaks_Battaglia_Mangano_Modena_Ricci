@@ -18,7 +18,7 @@
             @foreach ($advertisements as $advertisement)
                 <div class="col-12 col-md-4">
                     <div class="card ad-card">
-                        <img src="https://picsum.photos/180/100" class="card-img-top ad-card-image"
+                        <img src="{{$advertisement->image}}" class="card-img-top ad-card-image"
                             alt="{{ $advertisement->title }}">
                         <div class="card-body ad-card-body">
                             <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">
