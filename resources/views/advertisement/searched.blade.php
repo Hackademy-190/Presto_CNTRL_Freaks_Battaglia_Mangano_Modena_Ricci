@@ -5,7 +5,7 @@
                <h1 class="display-4 color-p">Risultati per la ricerca "<span class="fst-italic">{{ $query }}</span>"</h1>
             </div>
          </div>
-        <div class="row height-custom justify-content-center align-items-center py-5">
+        <div class="row height-custom justify-content-center align-items-center py-5 g-4">
             @forelse ($advertisements as $advertisement)
                 <div class="col-12 col-md-3 ">
                     <div class="card ad-card">

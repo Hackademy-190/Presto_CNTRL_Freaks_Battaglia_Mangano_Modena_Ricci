@@ -2,10 +2,10 @@
     <div class="container py-5">
         
         <header class="home-advertisements-heading mt-5">
+            <h2 class="pt-5">Articoli in vendita</h2>
             @error('generico')
                 <div class="alert alert-danger text-center shadow rounded w-50">{{ $message }}</div>
             @enderror
-            <h2 class="pt-5">Articoli in vendita</h2>
         </header>
         <div class="row align-items-stretch pb-4 g-4">
             <div class="col-12">
