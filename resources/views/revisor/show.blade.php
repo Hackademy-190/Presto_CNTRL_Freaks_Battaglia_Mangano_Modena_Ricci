@@ -7,7 +7,7 @@
                 </a>
             </div>
             <div class="col-12 col-md-6 d-flex justify-content-center mt-5">
-                <div class="car-01__viewer">
+                {{-- <div class="car-01__viewer">
                     <input type="radio" name="car-01" id="car-01-1" class="car-01__radio" checked>
                     <input type="radio" name="car-01" id="car-01-2" class="car-01__radio">
                     <input type="radio" name="car-01" id="car-01-3" class="car-01__radio">
@@ -36,7 +36,45 @@
                                 src="https://picsum.photos/seed/sneaker-d/160/160" width="160" height="160"
                                 alt="" aria-hidden="true"></label>
                     </div>
+                </div> --}}
+
+                {{-- @foreach ($advertisement->images as $key => $image )
+                    <div class="carousel-item @if($loop->first) active @endif">
+                        <img src="{{ $image->getUrl(300, 300) }}" class="d-block w-100 rounded shadow"
+                            alt="Immagine  {{ $key + 1 }} dell'articolo {{ $advertisement->title }}">
+                    </div>
+                    
+                @endforeach --}}
+
+                <div id="advertisementCarousel" class="carousel slide" data-bs-ride="false">
+                    <div class="carousel-inner">
+                        @forelse ($advertisement->images as $image)
+                            <div class="carousel-item @if ($loop->first) active @endif">
+                                <img
+                                    src="{{ $image->getUrl(300, 300) }}"
+                                    class="d-block w-100 rounded shadow"
+                                    alt="Immagine {{ $loop->iteration }} dell'articolo {{ $advertisement->title }}"
+                                >
+                            </div>
+                        @empty
+                            <p>Nessuna immagine disponibile.</p>
+                        @endforelse
+                    </div>
+
+                    @if ($advertisement->images->count() > 1)
+                        <button class="carousel-control-prev" type="button"
+                            data-bs-target="#advertisementCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Precedente</span>
+                        </button>
+                        <button class="carousel-control-next" type="button"
+                            data-bs-target="#advertisementCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Successiva</span>
+                        </button>
+                    @endif
                 </div>
+
             </div>
             <div class="col-12 col-md-6 mt-5">
                 <div class="color-p">
