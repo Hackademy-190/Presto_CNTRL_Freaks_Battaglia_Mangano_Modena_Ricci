@@ -10,6 +10,7 @@
                     @forelse ($advertisements_to_check as $advertisement_to_check)
                     <div class="col-12 col-md-4">
                         <div class="card ad-card">
+                            <!-- crop img  -->
                             <img src="{{ $advertisement_to_check->images->isNotEmpty() ? $advertisement_to_check->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}"
      class="card-img-top" alt="Immagine dell'annuncio {{ $advertisement_to_check->title }}">
                             <div class="card-body ad-card-body">
