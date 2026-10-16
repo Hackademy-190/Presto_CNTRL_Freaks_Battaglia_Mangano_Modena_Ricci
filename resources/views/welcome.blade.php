@@ -68,10 +68,10 @@
                     @foreach ($advertisements as $advertisement)
                         <div class="col-6 col-md-4">
                             <div class="card ad-card">
-                                <img src="https://picsum.photos/180/100" class="card-img-top ad-card-image"
-                                    alt="{{ $advertisement->title }}">
+                                <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}"
+                                class="card-img-top" alt="Immagine dell'annuncio {{ $advertisement->title }}">
                                 <div class="card-body ad-card-body">
-                                    <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">
+                                    <h5 class="card-title ubuntu-medium text-uppercase ad-card-title text-truncate d-block">
                                         {{ $advertisement->title }}</h5>
                                     <p class="card-text ad-card-description">
                                         {{ Str::limit($advertisement->description, 100) }}</p>
