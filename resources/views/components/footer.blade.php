@@ -55,10 +55,12 @@
                                     height="150px" class=" p-1 rounded" alt="Logo"></a>
                         </div>
                         <div class="footer-text">
-                            <p>Il sito offre un’esperienza di acquisto semplice e veloce, con prodotti selezionati e
-                                descrizioni accurate per aiutare ogni cliente a scegliere ciò che serve. L’intero
-                                catalogo è aggiornato regolarmente per garantire qualità, convenienza e affidabilità in
-                                ogni ordine.
+                            <p>Kintsugi è il marketplace dove l’usato ritrova valore.
+                                Crediamo che ogni oggetto meriti una seconda vita: ciò che è stato vissuto non è un
+                                difetto, ma una storia da continuare.
+                                Su Kintsugi trovi articoli selezionati, sostenibili e convenienti, pronti a diventare
+                                parte di nuove esperienze.
+                                Perché la bellezza non è nel nuovo: è in ciò che continua.
                             </p>
                         </div>
                     </div>
@@ -78,7 +80,8 @@
                 </div>
                 <div class="col-xl-4 col-md-4">
                     @if (Auth::check() && Auth::user()->is_revisor)
-                        <img src="{{ asset('media/badge.svg') }}" class="ms-5" alt="" style="width: 300px; height: 300px;">
+                        <img src="{{ asset('media/badge.svg') }}" class="ms-5" alt=""
+                            style="width: 300px; height: 300px;">
                     @else
                         <div class="footer-widget">
                             <div class="footer-widget-heading">
