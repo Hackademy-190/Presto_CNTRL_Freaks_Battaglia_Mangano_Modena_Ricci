@@ -18,8 +18,9 @@
             @foreach ($advertisements as $advertisement)
                 <div class="col-12 col-md-4">
                     <div class="card ad-card">
-                        <img src="{{$advertisement->images}}" class="card-img-top ad-card-image"
-                            alt="{{ $advertisement->title }}">
+                        <!-- ad-card-image rimosso dopo il crop delle immagini, check fe -->
+                        <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}"
+                                class="card-img-top" alt="Immagine dell'annuncio {{ $advertisement->title }}">
                         <div class="card-body ad-card-body">
                             <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">
                                 {{ $advertisement->title }}

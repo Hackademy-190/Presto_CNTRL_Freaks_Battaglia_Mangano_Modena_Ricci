@@ -57,7 +57,7 @@
                                 >
                             </div>
                         @empty
-                            <p>Nessuna immagine disponibile.</p>
+                            <p class="text-light">Nessuna immagine disponibile.</p>
                         @endforelse
                     </div>
 
