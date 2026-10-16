@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="row justify-content-center align-items-stretch py-4 g-4">
-                @foreach ($category->advertisements as $advertisement)
+                @forelse ($category->advertisements as $advertisement)
                     <div class="col-12 col-md-4">
                         <div class="card ad-card">
                             <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
@@ -26,7 +26,11 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                     @empty
+                        <header class="home-advertisements-heading  mt-5">
+                            <h3>Non ci sono annunci disponibili</h3>
+                        </header>
+                @endforelse
             </div>
         </div>
 </x-layout>

@@ -15,7 +15,7 @@
                 @endforeach --}}
 
             </div>
-            @foreach ($advertisements as $advertisement)
+            @forelse ($advertisements as $advertisement)
                 <div class="col-12 col-md-4">
                     <div class="card ad-card">
                         <!-- ad-card-image rimosso dopo il crop delle immagini, check fe -->
@@ -38,7 +38,11 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+                @empty
+                <header class="home-advertisements-heading  mt-5">
+                    <h3>Non ci sono annunci disponibili</h3>
+                </header>
+            @endforelse
         </div>
     </div>
     <div class="d-flex justify-content-center mt-5">

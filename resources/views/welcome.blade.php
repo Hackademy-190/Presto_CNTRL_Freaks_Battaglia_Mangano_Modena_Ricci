@@ -65,7 +65,7 @@
                     <p>Esplora gli oggetti in cerca di una seconda storia.</p>
                 </header>
                 <div class="row g-2 justify-content-center">
-                    @foreach ($advertisements as $advertisement)
+                    @forelse ($advertisements as $advertisement)
                         <div class="col-6 col-md-4">
                             <div class="card ad-card">
                                 <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
@@ -87,7 +87,11 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                        @empty                            
+                        <header class="home-advertisements-heading  mt-5">
+                            <h3>Non ci sono annunci disponibili</h3>
+                        </header>
+                    @endforelse
                 </div>
             </div>
         </section>
