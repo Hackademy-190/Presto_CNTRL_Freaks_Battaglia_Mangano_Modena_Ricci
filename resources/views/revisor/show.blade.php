@@ -91,18 +91,18 @@
                         <form action="{{ route('reject', ['advertisement' => $advertisement]) }}" method="POST">
                             @csrf
                             @method('patch')
-                            <button class="btn btn-danger py-2 px-5 fw-bold ">Rifiuta</button>
+                            <button class="btn btn-danger py-2 mt-4 px-5 fw-bold ">Rifiuta</button>
                         </form>
                         <form action="{{ route('accept', ['advertisement' => $advertisement]) }}" method="POST">
                             @csrf
                             @method('patch')
-                            <button class="btn btn-success py-2 px-5 fw-bold ">Accetta</button>
+                            <button class="btn btn-success py-2 mt-4 px-5 fw-bold ">Accetta</button>
                         </form>
                     @else
                         <form action="{{ route('revision', ['advertisement' => $advertisement]) }}" method="POST">
                             @csrf
                             @method('patch')
-                            <button class="btn ad-card-action w-100 py-2 fw-bold">Revisiona</button>
+                            <button class="btn ad-card-action w-100 py-2 mt-4 fw-bold">Revisiona</button>
                         </form>
                     @endif
                 </div>

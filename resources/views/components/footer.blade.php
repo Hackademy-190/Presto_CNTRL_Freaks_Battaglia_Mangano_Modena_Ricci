@@ -101,7 +101,7 @@
     {{-- Copyright --}}
     <div class="copyright-area">
         <div class="copyright-text text-center">
-            <p>Copyright &copy; 2026, All Right Reserved</p>
+            <p>Copyright &copy; 2026, All Rights Reserved</p>
         </div>
     </div>
 </footer>
