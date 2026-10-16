@@ -19,7 +19,7 @@
                 <div class="col-12 col-md-4">
                     <div class="card ad-card">
                         <!-- ad-card-image rimosso dopo il crop delle immagini, check fe -->
-                        <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}"
+                        <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
                                 class="card-img-top" alt="Immagine dell'annuncio {{ $advertisement->title }}">
                         <div class="card-body ad-card-body">
                             <h5 class="card-title ubuntu-medium text-uppercase ad-card-title text-truncate d-block">

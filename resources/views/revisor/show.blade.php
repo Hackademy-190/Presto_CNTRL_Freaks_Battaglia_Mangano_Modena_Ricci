@@ -51,7 +51,7 @@
                         @forelse ($advertisement->images as $image)
                             <div class="carousel-item @if ($loop->first) active @endif">
                                 <img
-                                    src="{{ $image->getUrl(300, 300) }}"
+                                    src="{{ $image->getUrl(600, 600) }}"
                                     class="d-block w-100 rounded shadow"
                                     alt="Immagine {{ $loop->iteration }} dell'articolo {{ $advertisement->title }}"
                                 >

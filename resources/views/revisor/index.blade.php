@@ -11,7 +11,7 @@
                     <div class="col-12 col-md-4">
                         <div class="card ad-card">
                             <!-- crop img  -->
-                            <img src="{{ $advertisement_to_check->images->isNotEmpty() ? $advertisement_to_check->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}"
+                            <img src="{{ $advertisement_to_check->images->isNotEmpty() ? $advertisement_to_check->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
                                 class="card-img-top" alt="Immagine dell'annuncio {{ $advertisement_to_check->title }}">
                             <div class="card-body ad-card-body">
                                 <h5 class="card-title ubuntu-medium text-uppercase ad-card-title text-truncate d-block">
@@ -52,7 +52,7 @@
                     @forelse ($advertisements_already_checked as $advertisement_already_checked)
                     <div class="col-12 col-md-4">
                         <div class="card ad-card">
-                            <img src="{{ $advertisement_already_checked->images->isNotEmpty() ? $advertisement_already_checked->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}"
+                            <img src="{{ $advertisement_already_checked->images->isNotEmpty() ? $advertisement_already_checked->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
                                 class="card-img-top" alt="Immagine dell'annuncio {{ $advertisement_already_checked->title }}">
                             <div class="card-body ad-card-body">
                                 <h5 class="card-title ubuntu-medium text-uppercase ad-card-title text-truncate d-block">

@@ -55,8 +55,11 @@
         <!-- {{-- inserimento immagini --}} -->
         <div class="mb-3">
             <input type="file" wire:model.live="temporary_images" multiple
-            class="form-control shadow @error('temporary_images.*') is-invalid @enderror" placeholder="/public/media/images.jpg" />
+            class="form-control shadow @error('temporary_images.*') is-invalid @enderror @error('images.*') is-invalid @enderror" placeholder="/public/media/images.jpg" />
             @error('temporary_images.*')
+            <p class="fst-italic text-danger">{{ $message }}</p>
+            @enderror
+            @error('images.*')
             <p class="fst-italic text-danger">{{ $message }}</p>
             @enderror
             @error('temporary_images')
