@@ -146,6 +146,13 @@
                 </li>
                 {{-- barra ricerca con radio button  --}}
 
+                <!-- scelta lingua -->
+                <li class="nav-item">
+                  <x-_locale lang="it"/>
+                  <x-_locale lang="uk"/>
+                  <x-_locale lang="es"/>
+                </li>
+
             </ul>
 
         </div>

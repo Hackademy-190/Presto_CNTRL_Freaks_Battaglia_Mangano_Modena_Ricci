@@ -70,4 +70,11 @@ class PublicController extends Controller
     return view('advertisement.searched', compact('advertisements', 'query', 'searchField'));
 }
 
+
+    public function setLanguage($lang)
+{
+      session()->put('locale', $lang);
+      return redirect()->back();
+ }
+ 
 }
