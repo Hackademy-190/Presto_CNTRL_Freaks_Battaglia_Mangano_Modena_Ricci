@@ -2,9 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Jobs\ResizeImage;
 use App\Models\Advertisement;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -32,40 +30,24 @@ class CreateAdvertisementForm extends Component
     {
         // dd($this->title, $this->description, $this->price, $this->category);
         $this->validate();
+        $this->advertisement = Advertisement::create([
 
-    $advertisement = Advertisement::create([
-        'title' => $this->title,
-        'description' => $this->description,
-        'price' => $this->price,
-        'category_id' => $this->category,
-        'user_id' => Auth::id(),
-    ]);
+            'title' => $this->title,
+            'description' => $this->description,
+            'price' => $this->price,
+            'category_id' => $this->category,
+            'user_id' => Auth::id()
 
-        // if (count($this->images) > 0) {
-        //     foreach ($this->images as $image) {
-        //         $this->advertisement->images()->create(['path' => $image->store('images', 'public')]);
-        //     }
-        // }
-
-
-        // session()->flash('success', 'Annuncio creato con successo');
-        // $this->resetInputs();
-
-           foreach ($this->images as $image) {
-        $directory = "advertisement/{$advertisement->id}";
-        $newImage = $advertisement->images()->create([
-            'path' => $image->store($directory, 'public'),
         ]);
+        if (count($this->images) > 0) {
+            foreach ($this->images as $image) {
+                $this->advertisement->images()->create(['path' => $image->store('images', 'public')]);
+            }
+        }
 
-        dispatch(new ResizeImage($newImage->path, 300, 300));
-    }
 
-    if ($this->images !== []) {
-        File::deleteDirectory(storage_path('app/livewire-tmp'));
-    }
-
-    session()->flash('success', 'Articolo creato correttamente');
-    $this->resetInputs();
+        session()->flash('success', 'Annuncio creato con successo');
+        $this->resetInputs();
     }
 
 
