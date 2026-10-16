@@ -14,7 +14,7 @@
                             <img src="{{ $advertisement_to_check->images->isNotEmpty() ? $advertisement_to_check->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}"
                                 class="card-img-top" alt="Immagine dell'annuncio {{ $advertisement_to_check->title }}">
                             <div class="card-body ad-card-body">
-                                <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">
+                                <h5 class="card-title ubuntu-medium text-uppercase ad-card-title text-truncate d-block">
                                     {{ $advertisement_to_check->title }}
                                 </h5>
                                 <p class="card-text ad-card-description">
@@ -23,19 +23,12 @@
                                 <p class="card-text ad-card-price">{{ $advertisement_to_check->price }} €</p>
                                 <p class="card-text ad-card-category">{{ $advertisement_to_check->category->name }}</p>
                                 <p class="ad-card-link">
-                                    <a href="{{ route('revisor.show', ['advertisement' => $advertisement_to_check]) }}">Visualizza articolo</a>
+                                    "Da revisionare"
                                 </p>
                                 <div class="d-flex w-100 gap-2 mt-auto pt-3">
-                                    <form class="flex-fill" action="{{ route('reject', ['advertisement' => $advertisement_to_check]) }}" method="POST">
-                                        @csrf
-                                        @method('patch')
-                                        <button class="btn btn-danger w-100 py-2 fw-bold">Rifiuta</button>
-                                    </form>
-                                    <form class="flex-fill" action="{{ route('accept', ['advertisement' => $advertisement_to_check]) }}" method="POST">
-                                        @csrf
-                                        @method('patch')
-                                        <button class="btn w-100 py-2 fw-bold">Accetta</button>
-                                    </form>
+                                    
+                                        <button class="btn w-100 py-2 "><a  href="{{ route('revisor.show', ['advertisement' => $advertisement_to_check]) }}" class="text-decoration-none text-light">Vai alla revisione</a></button>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -62,7 +55,7 @@
                             <img src="{{ $advertisement_already_checked->images->isNotEmpty() ? $advertisement_already_checked->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}"
                                 class="card-img-top" alt="Immagine dell'annuncio {{ $advertisement_already_checked->title }}">
                             <div class="card-body ad-card-body">
-                                <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">
+                                <h5 class="card-title ubuntu-medium text-uppercase ad-card-title text-truncate d-block">
                                     {{ $advertisement_already_checked->title }}
                                 </h5>
                                 <p class="card-text ad-card-description">
