@@ -10,7 +10,7 @@
                         <div class="text-center mb-4">
 
                             <h1 class="ubuntu-bold">
-                                Crea il tuo annuncio
+                                {{ __('ui.createAdvertisement') }}
                             </h1>
 
                             <p class="text-muted">

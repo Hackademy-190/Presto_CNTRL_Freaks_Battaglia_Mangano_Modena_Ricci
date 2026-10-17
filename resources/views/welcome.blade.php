@@ -29,9 +29,9 @@
                     <!-- Testo della Hero -->
                     <div class="col-lg-7 hero-content">
                         <h1 class="hero-title">
-                            Ogni oggetto ha una
+                            {{ __('ui.everyItem') }}
                         </h1>
-                        <h1 class="hero-title span-cust pb-3 px-2"> seconda storia.</h1>
+                        <h1 class="hero-title span-cust pb-3 px-2"> {{ __('ui.secondStory') }} </h1>
 
                         <p class="hero-description">
                             Scopri occasioni uniche, acquista in modo
