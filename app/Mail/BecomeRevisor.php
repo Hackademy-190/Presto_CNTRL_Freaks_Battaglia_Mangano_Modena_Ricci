@@ -26,7 +26,7 @@ class BecomeRevisor extends Mailable
     {
         return new Envelope(
             from: Auth::user()->email,
-            subject: __('ui.reviewerApplicationSubject', ['name' => $this->user->name]),
+            subject: __('ui.reviewerApplicationSubject', ['name' => $this->user->name], 'it'),
         );
     }
 

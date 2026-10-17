@@ -26,13 +26,13 @@ class CreateAdvertisementForm extends Component
 
     #[Validate([
         'images' => 'array|max:6',
-        'images.*' => 'image|max:20480',
+        'images.*' => 'image|max:4096',
     ])]
     public $images = [];
 
     #[Validate([
         'temporary_images' => 'array|max:6',
-        'temporary_images.*' => 'image|max:20480',
+        'temporary_images.*' => 'image|max:4096',
     ])]
     public $temporary_images = [];
 

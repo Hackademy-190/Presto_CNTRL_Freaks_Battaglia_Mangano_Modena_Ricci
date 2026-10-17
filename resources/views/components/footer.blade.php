@@ -84,7 +84,7 @@
                             <div class="footer-text mb-25">
                                 <p>{{ __('ui.reviewerRequestIntro') }}</p>
                             </div>
-                            <a href="{{ route('become.revisor') }}" class="btn bg-a" data-bs-theme="light">Diventa
+                            <a href="{{ route('become.revisor') }}" class="btn bg-a" data-bs-theme="light">
                                 {{ __('ui.becomeReviewer') }}</a>
                         </div>
                     @endif
