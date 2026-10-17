@@ -5,30 +5,26 @@
                 <h1 class="display-4 color-p">{{ __('ui.searchResults', ['query' => $query]) }}</h1>
             </div>
         </div>
-        <div class="row height-custom justify-content-center align-items-center py-5 g-4">
+        <div class="row ad-card-grid ad-card-grid--four height-custom align-items-center py-5 g-4">
             @forelse ($advertisements as $advertisement)
-            <div class="col-12 col-md-3 ">
+            <div class="col-12 col-md-3 ad-card-grid-item">
                 <div class="card ad-card">
                     <a href="{{ route('advertisement.show', $advertisement) }}" class="d-block">
                         <img src="https://picsum.photos/180/100" class="card-img-top ad-card-image"
                             alt="{{ $advertisement->title }}">
                     </a>
                     <div class="card-body ad-card-body">
-                        <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">
-                            <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset">
+                        <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset d-block">
+                            <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">
                                 {{ $advertisement->title }}
-                            </a>
-                        </h5>
-                        <p class="card-text ad-card-description">
-                            <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset">
+                            </h5>
+                            <p class="card-text ad-card-description">
                                 {{ Str::limit($advertisement->description, 100) }}
-                            </a>
-                        </p>
-                        <p class="card-text ad-card-price">
-                            <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset">
+                            </p>
+                            <p class="card-text ad-card-price">
                                 {{ $advertisement->price }} €
-                            </a>
-                        </p>
+                            </p>
+                        </a>
                         <p class="card-text ad-card-category">{{ __('ui.' . $advertisement->category->name) }}</p>
                         <p class="ad-card-link"><a href="{{ route('advertisement.show', $advertisement) }}">{{ __('ui.viewListing') }}</a></p>
                         {{-- <button type="button" class="btn ad-card-action" data-bs-theme="dark">

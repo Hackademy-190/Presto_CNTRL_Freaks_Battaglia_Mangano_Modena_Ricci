@@ -319,6 +319,27 @@ html {
     overflow: hidden;
 }
 
+.ad-card-grid {
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .ad-card-grid--three:has(> .ad-card-grid-item:nth-child(3n + 1 of .ad-card-grid-item):last-child):has(> .ad-card-grid-item:nth-child(n + 4 of .ad-card-grid-item):last-child) > .ad-card-grid-item:last-child,
+    .ad-card-grid--four:has(> .ad-card-grid-item:nth-child(4n + 1 of .ad-card-grid-item):last-child):has(> .ad-card-grid-item:nth-child(n + 5 of .ad-card-grid-item):last-child) > .ad-card-grid-item:last-child {
+        margin-right: auto;
+    }
+
+    .ad-card-grid--home:has(> .ad-card-grid-item:nth-child(3n + 1 of .ad-card-grid-item):last-child):has(> .ad-card-grid-item:nth-child(n + 4 of .ad-card-grid-item):last-child) > .ad-card-grid-item:last-child {
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .ad-card-grid--home:has(> .ad-card-grid-item:nth-child(2n + 1 of .ad-card-grid-item):last-child):has(> .ad-card-grid-item:nth-child(n + 3 of .ad-card-grid-item):last-child) > .ad-card-grid-item:last-child {
+        margin-right: auto;
+    }
+}
+
 .subscribe-form input {
     width: 100%;
     padding: 14px 28px;
