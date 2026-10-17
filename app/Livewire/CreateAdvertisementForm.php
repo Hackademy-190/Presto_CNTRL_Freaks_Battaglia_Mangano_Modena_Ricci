@@ -24,13 +24,13 @@ class CreateAdvertisementForm extends Component
     #[Validate('required')]
     public $category = '';
     #[Validate([
-        'images' => 'required|array|max:4',
+        'images' => 'required|array|max:6',
         'images.*' => 'image|max:4096',
     ])]
     public $images = [];
 
     #[Validate([
-        'temporary_images' => 'array|max:4',
+        'temporary_images' => 'array|max:6',
         'temporary_images.*' => 'image|max:4096',
     ])]
     public $temporary_images = [];
@@ -96,11 +96,11 @@ class CreateAdvertisementForm extends Component
         if ($this->validate(
             [
                 'temporary_images.*' => 'image|max:4096',
-                'temporary_images' => 'array|max:4',
+                'temporary_images' => 'array|max:6',
             ]
         )) {
-            if (count($this->images) + count($this->temporary_images) > 4) {
-                $this->addError('temporary_images', 'Puoi caricare al massimo 4 immagini.');
+            if (count($this->images) + count($this->temporary_images) > 6) {
+                $this->addError('temporary_images', 'Puoi caricare al massimo 6 immagini.');
                 $this->temporary_images = [];
 
                 return;
