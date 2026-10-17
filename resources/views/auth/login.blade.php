@@ -13,11 +13,11 @@
                         <div class="text-center mb-4">
 
                             <h1 class="ubuntu-bold">
-                                Accedi
+                                {{ __('ui.login') }}
                             </h1>
 
                             <p class="text-muted">
-                                Inserisci le tue credenziali per accedere al tuo account.
+                                {{ __('ui.loginIntro') }}
                             </p>
 
                         </div>
@@ -50,11 +50,11 @@
                             <div class="mb-3">
 
                                 <label for="email" class="form-label">
-                                    Email
+                                    {{ __('ui.email') }}
                                 </label>
 
                                 <input type="email" id="email" name="email"
-                                    value="{{ old('email') }}" placeholder="Inserisci la tua email" autofocus
+                                    value="{{ old('email') }}" placeholder="{{ __('ui.enterEmail') }}" autofocus
                                     autocomplete="email">
 
                             </div>
@@ -63,18 +63,18 @@
                             <div class="mb-3">
 
                                 <label for="password" class="form-label">
-                                    Password
+                                    {{ __('ui.password') }}
                                 </label>
 
                                 <input type="password" id="password" name="password"
-                                    placeholder="Inserisci la tua password" autocomplete="current-password">
+                                    placeholder="{{ __('ui.enterPassword') }}" autocomplete="current-password">
 
                             </div>
 
                             <div class="d-grid">
 
                                 <button type="submit" class="btn bg-s" data-bs-theme="dark">
-                                    Accedi
+                                    {{ __('ui.login') }}
                                 </button>
 
                             </div>
@@ -85,11 +85,11 @@
                         <div class="text-center mt-4">
 
                             <span class="text-muted">
-                                Non hai ancora un account?
+                                {{ __('ui.noAccountYet') }}
                             </span>
 
                             <a href="{{ route('register') }}" class="text-decoration-none">
-                                Registrati
+                                {{ __('ui.register') }}
                             </a>
 
                         </div>

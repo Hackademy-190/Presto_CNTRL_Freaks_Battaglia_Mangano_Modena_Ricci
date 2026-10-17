@@ -2,7 +2,7 @@
     <div class="container-fluid ">
         <div class="row py-5 justify-content-center align-items-center text-center mt-5">
             <div class="col-12">
-                <h1 class="display-4 color-p">Risultati per la ricerca "<span class="fst-italic">{{ $query }}</span>"</h1>
+                <h1 class="display-4 color-p">{{ __('ui.searchResults', ['query' => $query]) }}</h1>
             </div>
         </div>
         <div class="row height-custom justify-content-center align-items-center py-5 g-4">
@@ -17,8 +17,8 @@
                         </h5>
                         <p class="card-text ad-card-description">{{ Str::limit($advertisement->description, 100) }}</p>
                         <p class="card-text ad-card-price">{{ $advertisement->price }} €</p>
-                        <p class="card-text ad-card-category">{{ $advertisement->category->name }}</p>
-                        <p class="ad-card-link"><a href="{{ route('advertisement.show', $advertisement) }}">Visualizza articolo</a></p>
+                        <p class="card-text ad-card-category">{{ __('ui.' . $advertisement->category->name) }}</p>
+                        <p class="ad-card-link"><a href="{{ route('advertisement.show', $advertisement) }}">{{ __('ui.viewListing') }}</a></p>
                         {{-- <button type="button" class="btn ad-card-action" data-bs-theme="dark">
                                                             Acquista
                                                         </button> --}}
@@ -27,8 +27,8 @@
             </div>
             @empty
             <div class="col-12">
-                <h3 class="text-center">
-                    Nessun articolo corrisponde alla tua ricerca
+                <h3 class="text-center text-light">
+                    {{ __('ui.noSearchResults') }}
                 </h3>
             </div>
             @endforelse

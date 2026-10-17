@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Lang;
 use Laravel\Scout\Searchable;
 
 #[Fillable(['title', 'description', 'price', 'user_id', 'category_id'])]
@@ -17,15 +18,17 @@ class Advertisement extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
-    
+
     public function setAccepted($value)
     {
         $this->is_accepted = $value;
         $this->save();
+
         return true;
     }
 
@@ -36,15 +39,26 @@ class Advertisement extends Model
 
     public function toSearchableArray()
     {
-        return  [
+        $categoryNames = [$this->category->name];
+
+        foreach (['it', 'en', 'es'] as $locale) {
+            $translationKey = 'ui.'.$this->category->name;
+
+            if (Lang::has($translationKey, $locale)) {
+                $categoryNames[] = __($translationKey, [], $locale);
+            }
+        }
+
+        return [
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'category' => $this->category->name,
+            'category' => implode(' ', array_unique($categoryNames)),
         ];
     }
-    
-    public function images (): HasMany{
+
+    public function images(): HasMany
+    {
         return $this->hasMany(Image::class);
     }
 }

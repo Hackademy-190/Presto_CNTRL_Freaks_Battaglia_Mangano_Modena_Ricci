@@ -1,8 +1,7 @@
 @if ($paginator->hasPages())
-    <nav class="index-pagination-nav" role="navigation" aria-label="{{ __('Pagination Navigation') }}">
+    <nav class="index-pagination-nav" role="navigation" aria-label="{{ __('ui.paginationNavigation') }}">
         <p class="index-pagination-summary">
-            Risultati <strong>{{ $paginator->firstItem() }}–{{ $paginator->lastItem() }}</strong>
-            di <strong>{{ $paginator->total() }}</strong>
+            {{ __('ui.results', ['first' => $paginator->firstItem(), 'last' => $paginator->lastItem(), 'total' => $paginator->total()]) }}
         </p>
 
         <ul class="pagination index-pagination-links">
@@ -13,7 +12,7 @@
             @else
                 <li class="page-item">
                     <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev"
-                        aria-label="{{ __('pagination.previous') }}">&lsaquo;</a>
+                        aria-label="{{ __('ui.previousPage') }}">&lsaquo;</a>
                 </li>
             @endif
 
@@ -33,7 +32,7 @@
                         @else
                             <li class="page-item">
                                 <a class="page-link" href="{{ $url }}"
-                                    aria-label="{{ __('Go to page :page', ['page' => $page]) }}">{{ $page }}</a>
+                                    aria-label="{{ __('ui.goToPage', ['page' => $page]) }}">{{ $page }}</a>
                             </li>
                         @endif
                     @endforeach
@@ -43,7 +42,7 @@
             @if ($paginator->hasMorePages())
                 <li class="page-item">
                     <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next"
-                        aria-label="{{ __('pagination.next') }}">&rsaquo;</a>
+                        aria-label="{{ __('ui.nextPage') }}">&rsaquo;</a>
                 </li>
             @else
                 <li class="page-item disabled" aria-disabled="true">

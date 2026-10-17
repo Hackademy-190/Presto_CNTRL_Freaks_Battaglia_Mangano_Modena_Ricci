@@ -4,7 +4,6 @@ namespace App\Mail;
 
 use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
@@ -27,7 +26,7 @@ class BecomeRevisor extends Mailable
     {
         return new Envelope(
             from: Auth::user()->email,
-            subject: "Rendi revisore l'utente " . $this->user->name,
+            subject: __('ui.reviewerApplicationSubject', ['name' => $this->user->name]),
         );
     }
 

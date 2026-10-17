@@ -14,7 +14,7 @@
                             </h1>
 
                             <p class="text-muted">
-                                Inserisci i dettagli del tuo articolo e pubblicalo in pochi secondi.
+                                {{ __('ui.createListingIntro') }}
                             </p>
 
                         </div>

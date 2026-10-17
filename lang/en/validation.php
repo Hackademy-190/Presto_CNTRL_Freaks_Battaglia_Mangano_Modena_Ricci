@@ -163,7 +163,7 @@ return [
     'string' => 'The :attribute field must be a string.',
     'timezone' => 'The :attribute field must be a valid timezone.',
     'unique' => 'The :attribute has already been taken.',
-    'uploaded' => 'The :attribute failed to upload.',
+    'uploaded' => 'The file exceeds 4096 KB.',
     'uppercase' => 'The :attribute field must be uppercase.',
     'url' => 'The :attribute field must be a valid URL.',
     'ulid' => 'The :attribute field must be a valid ULID.',
@@ -197,6 +197,19 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'name',
+        'email' => 'email address',
+        'password' => 'password',
+        'password_confirmation' => 'password confirmation',
+        'title' => 'title',
+        'description' => 'description',
+        'price' => 'price',
+        'category' => 'category',
+        'images' => 'images',
+        'images.*' => 'image',
+        'temporary_images' => 'temporary images',
+        'temporary_images.*' => 'temporary image',
+    ],
 
 ];

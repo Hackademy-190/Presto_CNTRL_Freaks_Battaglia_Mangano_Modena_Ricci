@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
-
-
 class RevisorController extends Controller
 {
     // Logiche revisione annunci
@@ -19,63 +17,63 @@ class RevisorController extends Controller
     {
         $advertisements_to_check = Advertisement::where('is_accepted', null)->orderBy('updated_at', 'desc')->get();
         $advertisements_already_checked = Advertisement::whereIn('is_accepted', [true, false])->orderBy('updated_at', 'desc')->get();
-        return view('revisor.index', compact('advertisements_to_check', 'advertisements_already_checked'));
 
+        return view('revisor.index', compact('advertisements_to_check', 'advertisements_already_checked'));
 
     }
 
     public function accept(Advertisement $advertisement)
     {
         $advertisement->setAccepted(true);
+
         return redirect()
             ->back()
-            ->with('message', "L'articolo $advertisement->title è stato approvato");
+            ->with('message', __('ui.reviewerApproved', ['title' => $advertisement->title]));
     }
 
     public function reject(Advertisement $advertisement)
     {
         $advertisement->setAccepted(false);
+
         return redirect()
             ->back()
-            ->with('message', "L'articolo $advertisement->title non è stato approvato");
+            ->with('message', __('ui.reviewerRejected', ['title' => $advertisement->title]));
     }
 
     public function revision(Advertisement $advertisement)
     {
         $advertisement->setAccepted(null);
+
         return redirect()
             ->back()
-            ->with('message', "L'articolo $advertisement->title è sotto revisione.");
+            ->with('message', __('ui.reviewerPending', ['title' => $advertisement->title]));
     }
-
 
     public function show(Advertisement $advertisement)
     {
-        
-        return view('revisor.show', compact('advertisement'));
 
+        return view('revisor.show', compact('advertisement'));
 
     }
 
     // Fine logiche revisione annunci
-
 
     // Logiche mail-revisor
 
     public function becomeRevisor()
     {
         Mail::to(config('mail.admin_address'))->send(new BecomeRevisor(Auth::user()));
-        return redirect()->route('welcome')->with('message', 'Complimenti, Hai richiesto di diventare revisore');
-    }
 
+        return redirect()->route('welcome')->with('message', __('ui.reviewerRequestSent'));
+    }
 
     public function makeRevisor(User $user)
     {
         Artisan::call('app:make-user-revisor', ['email' => $user->email]);
-        return redirect()->route('welcome')->with('message', 'Revisore accettato');
+
+        return redirect()->route('welcome')->with('message', __('ui.reviewerRoleGranted'));
     }
 
     // Fine Logiche mail-revisor
-
 
 }

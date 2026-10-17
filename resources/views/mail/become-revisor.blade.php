@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
@@ -10,12 +10,12 @@
 
 <body>
     <div>
-        <h1>Un utente ha chiesto di lavorare con noi</h1>
-        <h2>Ecco i suoi dati:</h2>
-        <p>Nome: {{ $user->name }}</p>
-        <p>Email: {{ $user->email }}</p>
-        <p>Se vuoi renderl* revisore, clicca qui:</p>
-        <a href="{{route('make.revisor', compact('user'))}}">Rendi revisore</a>
+        <h1>{{ __('ui.userRequestedToWorkWithUs') }}</h1>
+        <h2>{{ __('ui.hereAreTheirDetails') }}</h2>
+        <p>{{ __('ui.name') }}: {{ $user->name }}</p>
+        <p>{{ __('ui.email') }}: {{ $user->email }}</p>
+        <p>{{ __('ui.makeUserReviewer') }}</p>
+        <a href="{{ route('make.revisor', compact('user')) }}">{{ __('ui.makeReviewer') }}</a>
     </div>
 </body>
 

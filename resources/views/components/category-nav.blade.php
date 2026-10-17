@@ -1,7 +1,7 @@
 <div class="nav-category mt-5">
     <div class="container-category">
         @foreach ($categories as $category)
-            <div class="btn-category"><a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></div>
+            <div class="btn-category"><a href="{{ route('categories.show', $category) }}">{{ __('ui.' . $category->name) }}</a></div>
         @endforeach
         <svg class="outline" overflow="visible" width="400" height="60" viewBox="0 0 400 60"
             xmlns="http://www.w3.org/2000/svg">

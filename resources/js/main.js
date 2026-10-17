@@ -23,6 +23,22 @@ navbarCollapse?.addEventListener('hidden.bs.collapse', () => {
 window.addEventListener('scroll', updateNavbarBackground);
 updateNavbarBackground();
 
+document.addEventListener('change', (event) => {
+    const input = event.target;
+
+    if (!(input instanceof HTMLInputElement) || input.type !== 'file' || input.id !== 'temporary_images') {
+        return;
+    }
+
+    const fileName = input.closest('.image-upload-control')?.querySelector('[data-file-name]');
+
+    if (fileName) {
+        fileName.textContent = Array.from(input.files ?? [], (file) => file.name).join(', ')
+            || fileName.dataset.emptyLabel
+            || '';
+    }
+});
+
 const searchInput = navbar?.querySelector('#query');
 const searchClearButton = navbar?.querySelector('.search-clear');
 

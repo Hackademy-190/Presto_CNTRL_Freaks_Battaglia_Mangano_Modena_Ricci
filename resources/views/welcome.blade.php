@@ -34,24 +34,22 @@
                         <h1 class="hero-title span-cust pb-3 px-2"> {{ __('ui.secondStory') }} </h1>
 
                         <p class="hero-description">
-                            Scopri occasioni uniche, acquista in modo
-                            più consapevole e dai una nuova vita agli
-                            oggetti che meritano di essere ritrovati.
+                            {{ __('ui.exploreUniqueFinds') }}
                         </p>
 
                         <div class="hero-actions">
                             <a href="{{ route('advertisement.index') }}" class="btn btn-hero-primary">
-                                Esplora gli oggetti
+                                {{ __('ui.exploreListings') }}
                                 <span aria-hidden="true">&rarr;</span>
                             </a>
 
                             <a href="{{ route('advertisement.create') }}" class="btn btn-hero-secondary ">
-                                Inizia a vendere
+                                {{ __('ui.startSelling') }}
                             </a>
                         </div>
 
                         <p class="hero-caption">
-                            Un buon acquisto, una nuova storia.
+                            {{ __('ui.goodPurchase') }}
                         </p>
                     </div>
                 </div>
@@ -61,15 +59,15 @@
         <section class="snap-section home-advertisements">
             <div class="container">
                 <header class="home-advertisements-heading">
-                    <h2>Annunci in primo piano</h2>
-                    <p>Esplora gli oggetti in cerca di una seconda storia.</p>
+                    <h2>{{ __('ui.featuredListings') }}</h2>
+                    <p>{{ __('ui.secondStoryListings') }}</p>
                 </header>
                 <div class="row g-2 justify-content-center">
                     @forelse ($advertisements as $advertisement)
                         <div class="col-6 col-md-4">
                             <div class="card ad-card">
                                 <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
-                                class="card-img-top" alt="Immagine dell'annuncio {{ $advertisement->title }}">
+                                class="card-img-top" alt="{{ __('ui.listingImageAlt', ['title' => $advertisement->title]) }}">
                                 <div class="card-body ad-card-body">
                                     <h5 class="card-title ubuntu-medium text-uppercase ad-card-title text-truncate d-block">
                                         {{ $advertisement->title }}</h5>
@@ -77,10 +75,10 @@
                                         {{ Str::limit($advertisement->description, 100) }}</p>
                                     <div>
                                         <span class="ad-card-price">{{ $advertisement->price }} €</span>
-                                        <span class="ad-card-category">{{ $advertisement->category->name }}</span>
+                                        <span class="ad-card-category">{{ __('ui.' . $advertisement->category->name) }}</span>
                                     </div>
                                     <a class="ad-card-link"
-                                        href="{{ route('advertisement.show', $advertisement) }}">Visualizza articolo</a>
+                                        href="{{ route('advertisement.show', $advertisement) }}">{{ __('ui.viewListing') }}</a>
                                     {{-- <button type="submit" class="btn btn-sm ad-card-action" data-bs-theme="dark">
                                         Acquista
                                     </button> --}}
@@ -89,7 +87,7 @@
                         </div>
                         @empty                            
                         <header class="home-advertisements-heading  mt-5">
-                            <h3>Non ci sono annunci disponibili</h3>
+                            <h3>{{ __('ui.noListingsAvailable') }}</h3>
                         </header>
                     @endforelse
                 </div>

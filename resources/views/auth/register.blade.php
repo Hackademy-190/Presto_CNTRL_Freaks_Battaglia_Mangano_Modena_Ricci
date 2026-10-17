@@ -11,10 +11,10 @@
                     <div class="card-body p-4 p-md-5">
 
                         <div class="text-center mb-4">
-                            <h1 class="ubuntu-bold">Registrati</h1>
+                            <h1 class="ubuntu-bold">{{ __('ui.register') }}</h1>
 
                             <p class="text-muted">
-                                Crea il tuo account inserendo i dati richiesti.
+                                {{ __('ui.registerIntro') }}
                             </p>
                         </div>
 
@@ -44,11 +44,11 @@
                             <div class="mb-3">
 
                                 <label for="name" class="form-label">
-                                    Nome
+                                    {{ __('ui.name') }}
                                 </label>
 
                                 <input type="text" id="name" name="name"
-                                    value="{{ old('name') }}" placeholder="Inserisci il tuo nome" autofocus>
+                                    value="{{ old('name') }}" placeholder="{{ __('ui.enterName') }}" autofocus>
 
                             </div>
 
@@ -56,11 +56,11 @@
                             <div class="mb-3">
 
                                 <label for="email" class="form-label">
-                                    Email
+                                    {{ __('ui.email') }}
                                 </label>
 
                                 <input type="email" id="email" name="email"
-                                    value="{{ old('email') }}" placeholder="Inserisci la tua email">
+                                    value="{{ old('email') }}" placeholder="{{ __('ui.enterEmail') }}">
 
                             </div>
 
@@ -68,11 +68,11 @@
                             <div class="mb-3">
 
                                 <label for="password" class="form-label">
-                                    Password
+                                    {{ __('ui.password') }}
                                 </label>
 
                                 <input type="password" id="password" name="password"
-                                    placeholder="Inserisci la password" autocomplete="new-password">
+                                    placeholder="{{ __('ui.enterNewPassword') }}" autocomplete="new-password">
 
                             </div>
 
@@ -80,11 +80,11 @@
                             <div class="mb-4">
 
                                 <label for="password_confirmation" class="form-label">
-                                    Conferma password
+                                    {{ __('ui.confirmPassword') }}
                                 </label>
 
                                 <input type="password" id="password_confirmation"
-                                    name="password_confirmation" placeholder="Ripeti la password"
+                                    name="password_confirmation" placeholder="{{ __('ui.repeatPassword') }}"
                                     autocomplete="new-password">
 
                             </div>
@@ -93,7 +93,7 @@
                             <div class="d-grid">
 
                                 <button type="submit" class="btn bg-s" data-bs-theme="dark">
-                                    Registrati
+                                    {{ __('ui.register') }}
                                 </button>
 
                             </div>
@@ -104,11 +104,11 @@
                         <div class="text-center mt-4">
 
                             <span class="text-muted">
-                                Hai già un account?
+                                {{ __('ui.alreadyHaveAccount') }}
                             </span>
 
                             <a href="{{ route('login') }}" class="text-decoration-none">
-                                Accedi
+                                {{ __('ui.login') }}
                             </a>
 
                         </div>

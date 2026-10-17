@@ -22,6 +22,37 @@ input:focus {
     background: var(--color-a);
     color: var(--color-p);
 }
+
+.image-upload-label:focus-within {
+    outline: 2px solid var(--color-a);
+    outline-offset: 2px;
+}
+
+.image-upload-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.image-upload-label,
+.image-upload-label:hover,
+.image-upload-label:focus {
+    color: #fff;
+}
+
+.image-upload-filename {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    overflow: hidden;
+    color: #666;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .img-preview{
     background-position: center;
     background-repeat: no-repeat;

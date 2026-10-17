@@ -3,7 +3,7 @@
         <div class="row py-5">
             <div class="col-12">
                 <a href="{{ (route('revisor.index')) }}" class="btn btn-outline-light mb-3 show-back-link">
-                    &larr; Torna indietro
+                    &larr; {{ __('ui.back') }}
                 </a>
             </div>
            <div class="col-12 col-md-6 d-flex justify-content-center mt-5">
@@ -18,7 +18,7 @@
                             @checked($loop->first)
                         >
                     @empty
-                        <p>Nessuna immagine disponibile.</p>
+                        <p>{{ __('ui.noImageAvailable') }}</p>
                     @endforelse
 
                     @if ($advertisement->images->isNotEmpty())
@@ -28,7 +28,7 @@
                                     class="car-01__main {{ $loop->first ? 'is-active' : '' }}"
                                     data-image-index="{{ $loop->index }}"
                                     src="{{ $image->getUrl(600, 600) }}"
-                                    alt="Immagine {{ $loop->iteration }} dell'articolo {{ $advertisement->title }}"
+                                    alt="{{ __('ui.listingImageNumberAlt', ['number' => $loop->iteration, 'title' => $advertisement->title]) }}"
                                 >
                             @endforeach
                         </div>
@@ -78,9 +78,9 @@
                 <div class="color-p">
                     <h1 class="color-a">{{ $advertisement->title }}</h1>
                     <p class="card-text">{{ $advertisement->description }}</p>
-                    <p class="card-text"><span class="color-a">Prezzo:</span>{{ ' ' . $advertisement->price }} €</p>
+                    <p class="card-text"><span class="color-a">{{ __('ui.price') }}:</span>{{ ' ' . $advertisement->price }} €</p>
                     <p class="card-text"> <span
-                            class="color-a">Categoria:</span>{{ ' ' . $advertisement->category->name }}</p>
+                            class="color-a">{{ __('ui.category') }}:</span>{{ ' ' . __('ui.' . $advertisement->category->name) }}</p>
                     {{-- <button type="submit" class="btn bg-s" data-bs-theme="dark">
                         Acquista
                     </button> --}}
@@ -91,18 +91,18 @@
                         <form action="{{ route('reject', ['advertisement' => $advertisement]) }}" method="POST">
                             @csrf
                             @method('patch')
-                            <button class="btn btn-danger py-2 mt-4 px-5 fw-bold ">Rifiuta</button>
+                            <button class="btn btn-danger py-2 mt-4 px-5 fw-bold ">{{ __('ui.reject') }}</button>
                         </form>
                         <form action="{{ route('accept', ['advertisement' => $advertisement]) }}" method="POST">
                             @csrf
                             @method('patch')
-                            <button class="btn btn-success py-2 mt-4 px-5 fw-bold ">Accetta</button>
+                            <button class="btn btn-success py-2 mt-4 px-5 fw-bold ">{{ __('ui.approve') }}</button>
                         </form>
                     @else
                         <form action="{{ route('revision', ['advertisement' => $advertisement]) }}" method="POST">
                             @csrf
                             @method('patch')
-                            <button class="btn ad-card-action w-100 py-2 mt-4 fw-bold">Revisiona</button>
+                            <button class="btn ad-card-action w-100 py-2 mt-4 fw-bold">{{ __('ui.sendBackToReview') }}</button>
                         </form>
                     @endif
                 </div>

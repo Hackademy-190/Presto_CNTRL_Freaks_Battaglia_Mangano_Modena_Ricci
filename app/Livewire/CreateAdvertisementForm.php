@@ -23,15 +23,16 @@ class CreateAdvertisementForm extends Component
 
     #[Validate('required')]
     public $category = '';
+
     #[Validate([
-        'images' => 'required|array|max:6',
-        'images.*' => 'image|max:4096',
+        'images' => 'array|max:6',
+        'images.*' => 'image|max:20480',
     ])]
     public $images = [];
 
     #[Validate([
         'temporary_images' => 'array|max:6',
-        'temporary_images.*' => 'image|max:4096',
+        'temporary_images.*' => 'image|max:20480',
     ])]
     public $temporary_images = [];
 
@@ -72,7 +73,7 @@ class CreateAdvertisementForm extends Component
             File::deleteDirectory(storage_path('app/livewire-tmp'));
         }
 
-        session()->flash('success', 'Articolo creato correttamente');
+        session()->flash('success', __('ui.listingCreated'));
         $this->resetInputs();
     }
 
@@ -95,12 +96,12 @@ class CreateAdvertisementForm extends Component
     {
         if ($this->validate(
             [
-                'temporary_images.*' => 'image|max:4096',
+                'temporary_images.*' => 'image|max:20480',
                 'temporary_images' => 'array|max:6',
             ]
         )) {
             if (count($this->images) + count($this->temporary_images) > 6) {
-                $this->addError('temporary_images', 'Puoi caricare al massimo 6 immagini.');
+                $this->addError('temporary_images', __('ui.maxImages'));
                 $this->temporary_images = [];
 
                 return;
