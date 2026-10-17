@@ -53,6 +53,10 @@ input:focus {
     white-space: nowrap;
 }
 
+.create-advertisement-layout {
+    min-height: max(0px, calc(100vh - 12rem));
+}
+
 .img-preview{
     background-position: center;
     background-repeat: no-repeat;

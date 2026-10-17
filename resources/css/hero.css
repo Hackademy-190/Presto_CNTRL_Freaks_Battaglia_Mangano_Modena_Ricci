@@ -276,6 +276,11 @@
     object-fit: cover;
 }
 
+.ad-card .card-img-top {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 .ad-card .ad-card-body {
     display: flex;
     height: auto;
@@ -284,21 +289,23 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0.8rem 0.9rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .ad-card .ad-card-title {
-    display: -webkit-box;
+    display: block;
     width: 100%;
     max-width: 100%;
     overflow: hidden;
     margin-bottom: 0.4rem;
+    text-overflow: ellipsis;
     color: #fff;
     font-size: clamp(1rem, 1.5vw, 1.3rem);
     font-weight: 700;
     line-height: 1.15;
     text-transform: none;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    white-space: nowrap;
 }
 
 .ad-card .ad-card-description {

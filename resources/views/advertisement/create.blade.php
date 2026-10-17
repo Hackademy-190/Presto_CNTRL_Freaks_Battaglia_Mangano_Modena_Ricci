@@ -1,9 +1,9 @@
 <x-layout>
 
 
-    <div class="container py-5">
+    <div class="container py-5 mt-5">
 
-        <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="row justify-content-center align-items-center create-advertisement-layout">
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="card shadow border-0">
                     <div class="card-body p-4 p-md-5">

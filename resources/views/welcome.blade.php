@@ -66,15 +66,27 @@
                     @forelse ($advertisements as $advertisement)
                         <div class="col-6 col-md-4">
                             <div class="card ad-card">
-                                <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
-                                class="card-img-top" alt="{{ __('ui.listingImageAlt', ['title' => $advertisement->title]) }}">
+                                <a href="{{ route('advertisement.show', $advertisement) }}" class="d-block">
+                                    <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
+                                    class="card-img-top" alt="{{ __('ui.listingImageAlt', ['title' => $advertisement->title]) }}">
+                                </a>
                                 <div class="card-body ad-card-body">
                                     <h5 class="card-title ubuntu-medium text-uppercase ad-card-title text-truncate d-block">
-                                        {{ $advertisement->title }}</h5>
+                                        <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset">
+                                            {{ $advertisement->title }}
+                                        </a>
+                                    </h5>
                                     <p class="card-text ad-card-description">
-                                        {{ Str::limit($advertisement->description, 100) }}</p>
+                                        <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset">
+                                            {{ Str::limit($advertisement->description, 100) }}
+                                        </a>
+                                    </p>
                                     <div>
-                                        <span class="ad-card-price">{{ $advertisement->price }} €</span>
+                                        <span class="ad-card-price">
+                                            <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset">
+                                                {{ $advertisement->price }} €
+                                            </a>
+                                        </span>
                                         <span class="ad-card-category">{{ __('ui.' . $advertisement->category->name) }}</span>
                                     </div>
                                     <a class="ad-card-link"
@@ -82,7 +94,7 @@
                                     {{-- <button type="submit" class="btn btn-sm ad-card-action" data-bs-theme="dark">
                                         Acquista
                                     </button> --}}
-                                </div>
+                            </div>
                             </div>
                         </div>
                         @empty                            

@@ -419,20 +419,22 @@ html {
 }
 
 .car-01__thumbs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
     margin-top: 14px;
 }
 
 .car-01__thumb {
     display: block;
+    flex: 0 1 calc((100% - 30px) / 4);
     aspect-ratio: 1/1;
     border-radius: 11px;
     overflow: hidden;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: border-color .2s, transform .2s;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
     background: #e6e8ec;
 }
 
@@ -445,20 +447,28 @@ html {
 
 .car-01__thumb:hover {
     transform: translateY(-2px);
+    border-color: rgba(255, 172, 71, .7);
+    box-shadow: 0 8px 18px rgba(16, 24, 40, .16);
 }
 
 .car-01__radio:nth-of-type(1):checked~.car-01__stage .car-01__main:nth-child(1),
 .car-01__radio:nth-of-type(2):checked~.car-01__stage .car-01__main:nth-child(2),
 .car-01__radio:nth-of-type(3):checked~.car-01__stage .car-01__main:nth-child(3),
-.car-01__radio:nth-of-type(4):checked~.car-01__stage .car-01__main:nth-child(4) {
+.car-01__radio:nth-of-type(4):checked~.car-01__stage .car-01__main:nth-child(4),
+.car-01__radio:nth-of-type(5):checked~.car-01__stage .car-01__main:nth-child(5),
+.car-01__radio:nth-of-type(6):checked~.car-01__stage .car-01__main:nth-child(6) {
     opacity: 1;
 }
 
 .car-01__radio:nth-of-type(1):checked~.car-01__thumbs .car-01__thumb:nth-child(1),
 .car-01__radio:nth-of-type(2):checked~.car-01__thumbs .car-01__thumb:nth-child(2),
 .car-01__radio:nth-of-type(3):checked~.car-01__thumbs .car-01__thumb:nth-child(3),
-.car-01__radio:nth-of-type(4):checked~.car-01__thumbs .car-01__thumb:nth-child(4) {
-    border-color: var(--accent);
+.car-01__radio:nth-of-type(4):checked~.car-01__thumbs .car-01__thumb:nth-child(4),
+.car-01__radio:nth-of-type(5):checked~.car-01__thumbs .car-01__thumb:nth-child(5),
+.car-01__radio:nth-of-type(6):checked~.car-01__thumbs .car-01__thumb:nth-child(6) {
+    border-color: var(--color-a);
+    box-shadow: 0 8px 18px rgba(16, 24, 40, .2);
+    transform: translateY(-2px);
 }
 
 .car-01__radio:focus-visible~.car-01__thumbs .car-01__thumb {
@@ -468,8 +478,10 @@ html {
 .car-01__radio:nth-of-type(1):focus-visible~.car-01__thumbs .car-01__thumb:nth-child(1),
 .car-01__radio:nth-of-type(2):focus-visible~.car-01__thumbs .car-01__thumb:nth-child(2),
 .car-01__radio:nth-of-type(3):focus-visible~.car-01__thumbs .car-01__thumb:nth-child(3),
-.car-01__radio:nth-of-type(4):focus-visible~.car-01__thumbs .car-01__thumb:nth-child(4) {
-    outline: 3px solid var(--accent);
+.car-01__radio:nth-of-type(4):focus-visible~.car-01__thumbs .car-01__thumb:nth-child(4),
+.car-01__radio:nth-of-type(5):focus-visible~.car-01__thumbs .car-01__thumb:nth-child(5),
+.car-01__radio:nth-of-type(6):focus-visible~.car-01__thumbs .car-01__thumb:nth-child(6) {
+    outline: 3px solid var(--color-a);
     outline-offset: 2px;
 }
 
@@ -509,11 +521,10 @@ html {
 }
 
 .ad-card-title {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    white-space: normal;
+    display: block;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .ad-card-description {

@@ -9,20 +9,32 @@
             @forelse ($advertisements as $advertisement)
             <div class="col-12 col-md-3 ">
                 <div class="card ad-card">
-                    <img src="https://picsum.photos/180/100" class="card-img-top ad-card-image"
-                        alt="{{ $advertisement->title }}">
+                    <a href="{{ route('advertisement.show', $advertisement) }}" class="d-block">
+                        <img src="https://picsum.photos/180/100" class="card-img-top ad-card-image"
+                            alt="{{ $advertisement->title }}">
+                    </a>
                     <div class="card-body ad-card-body">
                         <h5 class="card-title ubuntu-medium text-uppercase ad-card-title">
-                            {{ $advertisement->title }}
+                            <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset">
+                                {{ $advertisement->title }}
+                            </a>
                         </h5>
-                        <p class="card-text ad-card-description">{{ Str::limit($advertisement->description, 100) }}</p>
-                        <p class="card-text ad-card-price">{{ $advertisement->price }} €</p>
+                        <p class="card-text ad-card-description">
+                            <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset">
+                                {{ Str::limit($advertisement->description, 100) }}
+                            </a>
+                        </p>
+                        <p class="card-text ad-card-price">
+                            <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset">
+                                {{ $advertisement->price }} €
+                            </a>
+                        </p>
                         <p class="card-text ad-card-category">{{ __('ui.' . $advertisement->category->name) }}</p>
                         <p class="ad-card-link"><a href="{{ route('advertisement.show', $advertisement) }}">{{ __('ui.viewListing') }}</a></p>
                         {{-- <button type="button" class="btn ad-card-action" data-bs-theme="dark">
                                                             Acquista
                                                         </button> --}}
-                    </div>
+                </div>
                 </div>
             </div>
             @empty

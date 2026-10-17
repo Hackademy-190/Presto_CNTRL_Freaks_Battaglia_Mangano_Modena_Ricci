@@ -54,9 +54,9 @@
                                 </tr>
                                 <tr>
                                     <td style="padding: 0 18px 16px; color: #292724; font-size: 16px; line-height: 1.5; word-break: break-word;">
-                                        <a href="mailto:{{ $user->email }}" style="color: #82622d; text-decoration: underline;">
+                                        <p style="color: #82622d; text-decoration: underline;">
                                             {{ $user->email }}
-                                        </a>
+                                        </p>
                                     </td>
                                 </tr>
                             </table>
