@@ -74,8 +74,7 @@
                 </div>
                 <div class="col-xl-4 col-md-4">
                     @if (Auth::check() && Auth::user()->is_revisor)
-                        <img src="{{ asset('media/badge.svg') }}" class="ms-5" alt=""
-                            style="width: 300px; height: 300px;">
+                        <img src="{{ asset('media/badge.svg') }}" class="footer-revisor-badge ms-5" alt="">
                     @else
                         <div class="footer-widget">
                             <div class="footer-widget-heading">
