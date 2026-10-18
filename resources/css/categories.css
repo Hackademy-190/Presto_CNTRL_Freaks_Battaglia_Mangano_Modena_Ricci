@@ -1,0 +1,101 @@
+/* From Uiverse.io by SelfMadeSystem */
+.outline {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.rect {
+    stroke-dashoffset: 5;
+    stroke-dasharray: 0 0 10 40 10 40;
+    transition: 0.5s;
+    stroke: #fff;
+}
+
+.nav-category {
+    position: relative;
+    width: 100%;
+    height: 60px;
+}
+
+.container-category {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, 0.222);
+    border-radius: 0.7rem;
+    background: rgba(255, 255, 255, 0.074);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5em;
+}
+
+@media (max-width: 767.98px) {
+    .outline {
+        display: none;
+    }
+
+    .container-category {
+        justify-content: flex-start;
+        gap: 0.25rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+    }
+
+    .container-category::-webkit-scrollbar {
+        display: none;
+    }
+
+    .btn-category {
+        flex: 0 0 auto;
+        padding: 0.5em 0.75em;
+    }
+
+    .btn-category a {
+        white-space: nowrap;
+    }
+}
+
+.btn-category {
+    padding: 0.5em 1.5em;
+    color: #fff;
+    transition: 0.1s;
+}
+
+.btn-category a {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-decoration: none;
+}
+
+.btn-category a:hover {
+    color: #fab570;
+}
+
+.btn-category a:focus-visible {
+    outline: 2px solid #b86500;
+    outline-offset: 3px;
+}
+
+.btn-category:hover {
+    background: #fff3;
+}
+
+@media (max-width: 767.98px) {
+    .btn-category:hover {
+        background: transparent;
+    }
+
+    .btn-category a:hover {
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
