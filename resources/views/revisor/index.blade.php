@@ -25,7 +25,7 @@
                                                                 {{ $advertisement_to_check->title }}
                                                             </h5>
                                                             <p class="card-text ad-card-description">
-                                                                {{ Str::limit($advertisement_to_check->description, 100) }}
+                                                                {{ Str::limit($advertisement_to_check->description, 50) }}
                                                             </p>
                                                             <p class="card-text ad-card-price">
                                                                 {{ $advertisement_to_check->price }} €
