@@ -329,6 +329,16 @@ html {
     transition: transform 750ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
+@media (min-width: 768px) {
+    .pending-review-carousel .carousel-item .row > .col-md-4:first-child:not(:last-child) {
+        transform: translateX(-0.3rem);
+    }
+
+    .pending-review-carousel .carousel-item .row > .col-md-4:last-child:not(:first-child) {
+        transform: translateX(0.3rem);
+    }
+}
+
 .pending-review-carousel .carousel-control-prev,
 .pending-review-carousel .carousel-control-next {
     top: 50%;

@@ -62,7 +62,7 @@
                     <h2>{{ __('ui.featuredListings') }}</h2>
                     <p>{{ __('ui.secondStoryListings') }}</p>
                 </header>
-                <div class="row ad-card-grid ad-card-grid--home g-2">
+                <div class="row ad-card-grid ad-card-grid--home g-3">
                     @forelse ($advertisements as $advertisement)
                         <div class="col-6 col-md-4 ad-card-grid-item">
                             <div class="card ad-card">

@@ -8,6 +8,10 @@
     background-attachment: fixed;
 }
 
+.snap-container.bg-hero {
+    padding-bottom: 8rem;
+}
+
 @media (max-width: 767.98px) {
     .bg-hero {
         background-position: 72% center;
@@ -18,7 +22,7 @@
 .hero-marketplace {
     background: transparent;
     color: var(--color-p);
-    padding: 100px 0 80px;
+    padding: 100px 0 0;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -30,7 +34,11 @@
 .home-advertisements {
     display: flex;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0 0 1rem;
+}
+
+.snap-container.bg-hero > .home-advertisements {
+    padding-top: 2rem;
 }
 
 .home-advertisements .row {
@@ -42,6 +50,27 @@
     margin: 0 auto 1.25rem;
     color: var(--color-p);
     text-align: center;
+}
+
+.revisor-review-heading {
+    width: 96%;
+    border-bottom: 1px solid var(--color-a);
+    padding-bottom: 0.75rem;
+}
+
+.revisor-review-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35em;
+}
+
+.revisor-review-gears {
+    width: 1.35em;
+    height: 1em;
+    flex-shrink: 0;
+    transform: translateY(0.1em);
+    fill: var(--color-a);
 }
 
 .home-advertisements-heading h2 {
@@ -88,7 +117,7 @@
 @media (max-width: 767.98px) {
     .home-advertisements {
         align-items: flex-start;
-        padding: 0.75rem 0;
+        padding: 0 0 0.75rem;
     }
 
     .home-advertisements .container {

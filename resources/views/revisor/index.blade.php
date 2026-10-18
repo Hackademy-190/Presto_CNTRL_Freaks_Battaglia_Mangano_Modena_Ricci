@@ -3,8 +3,16 @@
         <h1 class="revisor-dashboard-label mt-5">{{ __('ui.reviewerDashboard') }}</h1>
         <section class="snap-section home-advertisements py-5">
             <div class="container">
-                <header class="home-advertisements-heading mt-5">
-                    <h2>{{ __('ui.reviewListings') }}</h2>
+                <header class="home-advertisements-heading revisor-review-heading mt-5">
+                    <h2 class="revisor-review-title">
+                        <svg class="revisor-review-gears" viewBox="0 0 100 80" aria-hidden="true">
+                            <g transform="translate(100 0) scale(-1 1)">
+                                <path fill-rule="evenodd" d="M29.68 28.65 30.31 23.41 39.69 23.41 40.32 28.65 46.33 31.14 50.49 27.88 57.12 34.51 53.86 38.67 56.35 44.68 61.59 45.31 61.59 54.69 56.35 55.32 53.86 61.33 57.12 65.49 50.49 72.12 46.33 68.86 40.32 71.35 39.69 76.59 30.31 76.59 29.68 71.35 23.67 68.86 19.51 72.12 12.88 65.49 16.14 61.33 13.65 55.32 8.41 54.69 8.41 45.31 13.65 44.68 16.14 38.67 12.88 34.51 19.51 27.88 23.67 31.14Z M24 50a11 11 0 1 0 22 0 11 11 0 1 0-22 0Z" />
+                                <path fill-rule="evenodd" d="M68.25 5.96 68.70 2.29 75.30 2.29 75.75 5.96 79.98 7.71 82.90 5.44 87.56 10.10 85.29 13.02 87.04 17.25 90.71 17.70 90.71 24.30 87.04 24.75 85.29 28.98 87.56 31.90 82.90 36.56 79.98 34.29 75.75 36.04 75.30 39.71 68.70 39.71 68.25 36.04 64.02 34.29 61.10 36.56 56.44 31.90 58.71 28.98 56.96 24.75 53.29 24.30 53.29 17.70 56.96 17.25 58.71 13.02 56.44 10.10 61.10 5.44 64.02 7.71Z M64.5 21a7.5 7.5 0 1 0 15 0 7.5 7.5 0 1 0-15 0Z" />
+                            </g>
+                        </svg>
+                        {{ __('ui.reviewListings') }}
+                    </h2>
                 </header>
                 @if ($advertisements_to_check->isNotEmpty())
                     <div id="pendingReviewCarousel" class="carousel slide pending-review-carousel py-4">
