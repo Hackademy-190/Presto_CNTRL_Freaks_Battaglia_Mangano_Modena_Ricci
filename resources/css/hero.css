@@ -258,6 +258,10 @@
     box-shadow: 0 0 1.25rem rgba(255, 255, 255, 0.16);
 }
 
+.pending-review-carousel .ad-card:hover {
+    z-index: 3;
+}
+
 .ad-card:hover::before {
     opacity: 1;
     transform: rotate(-45deg) translateY(100%);
