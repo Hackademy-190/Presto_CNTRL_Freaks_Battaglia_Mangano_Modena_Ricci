@@ -3,6 +3,7 @@
 return [
     'confirmed' => 'La confirmación del campo :attribute no coincide.',
     'current_password' => 'La contraseña actual no es correcta.',
+    'dimensions' => 'Las imágenes deben tener dimensiones superiores a 600x600 px.',
     'email' => 'El campo :attribute debe ser una dirección de correo electrónico válida.',
     'image' => 'El campo :attribute debe ser una imagen.',
     'max' => [

@@ -5,6 +5,7 @@ return [
     'array' => 'Il campo :attribute deve essere un elenco valido.',
     'confirmed' => 'La conferma del campo :attribute non corrisponde.',
     'current_password' => 'La password attuale non è corretta.',
+    'dimensions' => 'Le immagini devono avere dimensioni superiori a 600x600 px.',
     'email' => 'Il campo :attribute deve essere un indirizzo email valido.',
     'file' => 'Il campo :attribute deve essere un file.',
     'image' => 'Il campo :attribute deve essere un\'immagine.',

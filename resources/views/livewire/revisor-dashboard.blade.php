@@ -63,7 +63,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="container d-flex position-relative">
+                        <div class="container d-flex ">
                             <button class="carousel-control-prev" type="button" data-bs-target="#pendingReviewCarousel" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">{{ __('pagination.previous') }}</span>

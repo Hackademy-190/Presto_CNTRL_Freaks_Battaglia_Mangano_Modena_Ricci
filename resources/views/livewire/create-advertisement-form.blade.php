@@ -69,7 +69,7 @@
         
         <!-- {{-- inserimento immagini --}} -->
         <div class="mb-3">
-            <div class="image-upload-control">
+            <div class="image-upload-control" wire:key="image-upload-control-{{ $imageUploadKey }}">
                 <label for="temporary_images" class="btn bg-s image-upload-label">
                 {{ __('ui.selectImages') }}
                 </label>
