@@ -159,6 +159,11 @@
     text-align: center;
 }
 
+.revisor-listings-table thead th:nth-child(6),
+.revisor-listings-table tbody td:nth-child(6) {
+    padding-left: 2rem;
+}
+
 .revisor-listing-actions:last-child {
     min-width: 9rem;
 }

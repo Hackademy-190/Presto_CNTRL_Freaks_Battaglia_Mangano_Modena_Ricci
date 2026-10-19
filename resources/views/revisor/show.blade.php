@@ -86,7 +86,38 @@
                     </button> --}}
                 </div>
 
-                <livewire:revisor-advertisement-actions :advertisement="$advertisement" />
+                @if (session()->has('message'))
+                    <div class="alert alert-success text-center shadow rounded small d-inline-block py-2 px-3 mb-2" role="status">
+                        {{ session('message') }}
+                    </div>
+                @endif
+
+                <div class="d-flex gap-2 mt-3">
+                    @if ($advertisement->is_accepted === null)
+                        <form method="POST" action="{{ route('reject', $advertisement) }}">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="btn revisor-action-button revisor-action-button--reject">
+                                {{ __('ui.reject') }}
+                            </button>
+                        </form>
+                        <form method="POST" action="{{ route('accept', $advertisement) }}">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="btn revisor-action-button revisor-action-button--accept">
+                                {{ __('ui.approve') }}
+                            </button>
+                        </form>
+                    @else
+                        <form method="POST" action="{{ route('revision', $advertisement) }}">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="btn revisor-action-button revisor-action-button--pending">
+                                {{ __('ui.sendBackToReview') }}
+                            </button>
+                        </form>
+                    @endif
+                </div>
 
             </div>
 
