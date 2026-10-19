@@ -9,7 +9,7 @@
         </header>
         <div class="row ad-card-grid ad-card-grid--three align-items-stretch pb-4 g-4">
             <div class="col-12">
-                <x-category-nav />
+                <x-category-nav :categories="$categories" />
                 {{-- @foreach ($categories as $category)
                 <a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a>
                 @endforeach --}}

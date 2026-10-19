@@ -13,7 +13,12 @@ class PublicController extends Controller
 {
     public function welcome()
     {
-        $advertisements = Advertisement::where('is_accepted', true)->orderBy('created_at', 'desc')->take(4)->get();
+        $advertisements = Advertisement::query()
+            ->where('is_accepted', true)
+            ->where('language', app()->getLocale())
+            ->orderBy('created_at', 'desc')
+            ->take(4)
+            ->get();
 
         return view('welcome', compact('advertisements'));
     }
@@ -27,18 +32,21 @@ class PublicController extends Controller
         // $advertisements = Advertisement::search($query)->where('is_accepted', true)->paginate(10);
         // return view('advertisement.searched', ['advertisements' => $advertisements, 'query' => $query]);
 
-        $query = $request->input('query');
-        if (! $query) {
+        $searchTerm = $request->input('query');
+        if (! $searchTerm) {
             return back()->withErrors(['generico' => __('ui.emptySearch')]);
         }
 
         $searchField = $request->input('field', 'all');
+        if (! in_array($searchField, ['all', 'title', 'description', 'category'], true)) {
+            $searchField = 'all';
+        }
 
         if ($searchField === 'category') {
             $categoryIds = Category::query()
                 ->get(['id', 'name'])
-                ->filter(function (Category $category) use ($query): bool {
-                    if (Str::contains($category->name, $query, true)) {
+                ->filter(function (Category $category) use ($searchTerm): bool {
+                    if (Str::contains($category->name, $searchTerm, true)) {
                         return true;
                     }
 
@@ -46,7 +54,7 @@ class PublicController extends Controller
                         $translationKey = 'ui.'.$category->name;
 
                         if (Lang::has($translationKey, $locale)
-                            && Str::contains(__($translationKey, [], $locale), $query, true)) {
+                            && Str::contains(__($translationKey, [], $locale), $searchTerm, true)) {
                             return true;
                         }
                     }
@@ -58,49 +66,48 @@ class PublicController extends Controller
             $advertisements = Advertisement::query()
                 ->where('is_accepted', true)
                 ->whereIn('category_id', $categoryIds)
+                ->where('language', app()->getLocale())
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
 
-            return view('advertisement.searched', compact('advertisements', 'query', 'searchField'));
+            return view('advertisement.searched', [
+                'advertisements' => $advertisements,
+                'query' => $searchTerm,
+                'searchField' => $searchField,
+            ]);
         }
 
-        // Se l'utente cerca in un campo specifico, formattiamo la stringa per TNTSearch
-        if ($searchField && $searchField !== 'all') {
-            // TNTSearch permette di specificare il campo direttamente nella stringa della query sintattica
-            // Esempio risultante: "titolo_cercato" (ma filtrato successivamente per precisione)
-
-            // La soluzione più stabile con Scout + TNTSearch per campi specifici senza toccare il DB
-            // consiste nel filtrare la collection restituita tramite una callback di ricerca:
-            $scoutQuery = Advertisement::search($query, function ($tnt, $searchQuery, $isSearchable) {
-                // Logica avanzata booleana opzionale interna a TNTSearch
+        if ($searchField === 'title' || $searchField === 'description') {
+            $scoutQuery = Advertisement::search($searchTerm, function ($tnt, $searchQuery) {
                 return $tnt->search($searchQuery);
             });
         } else {
-            $scoutQuery = Advertisement::search($query);
+            $scoutQuery = Advertisement::search($searchTerm);
         }
 
-        // Applichiamo la condizione di approvazione globale dell'annuncio
-        $scoutQuery->where('is_accepted', true);
+        $matchedAdvertisements = $scoutQuery->get();
 
-        // Eseguiamo la paginazione nativa di Scout
-        $advertisements = $scoutQuery->paginate(10);
-
-        // SE l'utente ha scelto un campo specifico, filtriamo i record recuperati dall'indice per sicurezza
-        if ($searchField && $searchField !== 'all') {
-            $advertisements->setCollection(
-                $advertisements->getCollection()->filter(function ($advertisement) use ($searchField, $query) {
-                    if ($searchField === 'category') {
-                        // Controlla che il nome della relazione contenga la query
-                        return $advertisement->category && str_contains(strtolower($advertisement->category->name), strtolower($query));
-                    }
-
-                    // Controlla dinamicamente le proprietà 'title' o 'description' sul modello caricato
-                    return str_contains(strtolower($advertisement->{$searchField}), strtolower($query));
-                })
-            );
+        if ($searchField !== 'all') {
+            $matchedAdvertisements = $matchedAdvertisements->filter(function (Advertisement $advertisement) use ($searchField, $searchTerm): bool {
+                return str_contains(
+                    strtolower($advertisement->{$searchField}),
+                    strtolower($searchTerm)
+                );
+            });
         }
 
-        return view('advertisement.searched', compact('advertisements', 'query', 'searchField'));
+        $advertisements = Advertisement::query()
+            ->where('is_accepted', true)
+            ->whereIn('id', $matchedAdvertisements->modelKeys())
+            ->where('language', app()->getLocale())
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        return view('advertisement.searched', [
+            'advertisements' => $advertisements,
+            'query' => $searchTerm,
+            'searchField' => $searchField,
+        ]);
     }
 
     public function setLanguage(string $lang): RedirectResponse

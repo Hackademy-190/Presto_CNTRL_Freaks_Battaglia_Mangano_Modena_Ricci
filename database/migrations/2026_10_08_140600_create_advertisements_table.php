@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->string('language', 2)->index();
             $table->float('price', 8, 2);
             $table->timestamps();
             $table->unsignedBigInteger('user_id')->nullable();
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('advertisements');  
+        Schema::dropIfExists('advertisements');
     }
 };

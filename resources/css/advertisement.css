@@ -358,13 +358,21 @@
     justify-content: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1199.98px) {
     .ad-card-grid--three:has(> .ad-card-grid-item:nth-child(3n + 1 of .ad-card-grid-item):last-child):has(> .ad-card-grid-item:nth-child(n + 4 of .ad-card-grid-item):last-child) > .ad-card-grid-item:last-child,
     .ad-card-grid--four:has(> .ad-card-grid-item:nth-child(4n + 1 of .ad-card-grid-item):last-child):has(> .ad-card-grid-item:nth-child(n + 5 of .ad-card-grid-item):last-child) > .ad-card-grid-item:last-child {
         margin-right: auto;
     }
 
     .ad-card-grid--home:has(> .ad-card-grid-item:nth-child(3n + 1 of .ad-card-grid-item):last-child):has(> .ad-card-grid-item:nth-child(n + 4 of .ad-card-grid-item):last-child) > .ad-card-grid-item:last-child {
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    .ad-card-grid--three:has(> .ad-card-grid-item:nth-child(3n + 1 of .ad-card-grid-item):last-child):has(> .ad-card-grid-item:nth-child(n + 4 of .ad-card-grid-item):last-child) > .ad-card-grid-item:last-child,
+    .ad-card-grid--four:has(> .ad-card-grid-item:nth-child(4n + 1 of .ad-card-grid-item):last-child):has(> .ad-card-grid-item:nth-child(n + 5 of .ad-card-grid-item):last-child) > .ad-card-grid-item:last-child,
+    .ad-card-grid--home:has(> .ad-card-grid-item:nth-child(4n + 1 of .ad-card-grid-item):last-child):has(> .ad-card-grid-item:nth-child(n + 5 of .ad-card-grid-item):last-child) > .ad-card-grid-item:last-child {
         margin-right: auto;
     }
 }

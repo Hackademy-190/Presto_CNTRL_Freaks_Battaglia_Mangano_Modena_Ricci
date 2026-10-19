@@ -5,7 +5,7 @@
                     <a href="{{ (route('advertisement.index')) }}" class="btn btn-outline-light mb-3 show-back-link">
                         &larr; {{ __('ui.back') }}
                     </a>
-                    <x-category-nav />
+                    <x-category-nav :categories="$categories" />
                 </div>
             </div>
             <div class="row ad-card-grid ad-card-grid--three align-items-stretch py-4 g-4">

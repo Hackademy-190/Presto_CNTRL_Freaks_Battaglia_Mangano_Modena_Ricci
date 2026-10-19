@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Jobs\ResizeImage;
 use App\Models\Advertisement;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Livewire\Attributes\Validate;
@@ -24,6 +25,9 @@ class CreateAdvertisementForm extends Component
     #[Validate('required')]
     public $category = '';
 
+    #[Validate('required|in:it,en,es')]
+    public $language;
+
     #[Validate([
         'images' => 'array|max:6',
         'images.*' => 'image|max:4096',
@@ -38,6 +42,11 @@ class CreateAdvertisementForm extends Component
 
     use WithFileUploads;
 
+    public function mount(): void
+    {
+        $this->language = app()->getLocale();
+    }
+
     public function store()
     {
         // dd($this->title, $this->description, $this->price, $this->category);
@@ -49,6 +58,7 @@ class CreateAdvertisementForm extends Component
             'price' => $this->price,
             'category_id' => $this->category,
             'user_id' => Auth::id(),
+            'language' => $this->language,
         ]);
 
         // if (count($this->images) > 0) {
@@ -89,7 +99,9 @@ class CreateAdvertisementForm extends Component
 
     public function render()
     {
-        return view('livewire.create-advertisement-form');
+        return view('livewire.create-advertisement-form', [
+            'categories' => Category::all(),
+        ]);
     }
 
     public function updatedTemporaryImages()

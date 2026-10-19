@@ -1,3 +1,5 @@
+@props(['categories' => \App\Models\Category::all()])
+
 <nav class="navbar navbar-expand-lg navbar-cus px-3" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand fs-2" href="{{ route('welcome') }}">

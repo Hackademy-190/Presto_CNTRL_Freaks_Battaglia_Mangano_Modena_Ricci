@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Lang;
 use Laravel\Scout\Searchable;
 
-#[Fillable(['title', 'description', 'price', 'user_id', 'category_id'])]
+#[Fillable(['title', 'description', 'price', 'user_id', 'category_id', 'language'])]
 class Advertisement extends Model
 {
     use Searchable;

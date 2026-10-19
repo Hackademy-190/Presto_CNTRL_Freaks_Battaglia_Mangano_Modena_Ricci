@@ -86,26 +86,7 @@
                     </button> --}}
                 </div>
 
-                <div class="d-flex pb-4 ">
-                    @if ($advertisement->is_accepted === null)
-                        <form action="{{ route('reject', ['advertisement' => $advertisement]) }}" method="POST">
-                            @csrf
-                            @method('patch')
-                            <button class="btn btn-danger py-2 mt-5 px-5 fw-bold me-4">{{ __('ui.reject') }}</button>
-                        </form>
-                        <form action="{{ route('accept', ['advertisement' => $advertisement]) }}" method="POST">
-                            @csrf
-                            @method('patch')
-                            <button class="btn btn-success py-2 mt-5 px-5 fw-bold ">{{ __('ui.approve') }}</button>
-                        </form>
-                    @else
-                        <form action="{{ route('revision', ['advertisement' => $advertisement]) }}" method="POST">
-                            @csrf
-                            @method('patch')
-                            <button class="btn ad-card-action w-100 py-2 mt-5 fw-bold">{{ __('ui.sendBackToReview') }}</button>
-                        </form>
-                    @endif
-                </div>
+                <livewire:revisor-advertisement-actions :advertisement="$advertisement" />
 
             </div>
 

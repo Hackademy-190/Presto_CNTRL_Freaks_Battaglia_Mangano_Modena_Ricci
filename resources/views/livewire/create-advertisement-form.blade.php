@@ -8,6 +8,20 @@
     <form wire:submit="store" class="">
 
         <div class="mb-3">
+            <label for="language" class="form-label">{{ __('ui.advertisementLanguage') }}</label>
+
+            <select id="language" wire:model="language" class="form-control">
+                @foreach (['it', 'en', 'es'] as $languageCode)
+                    <option value="{{ $languageCode }}">{{ __('ui.languageNames.' . $languageCode) }}</option>
+                @endforeach
+            </select>
+
+            @error('language')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="title" class="form-label">{{ __('ui.title') }}</label>
 
             <input id="title" type="text" wire:model.live="title">
