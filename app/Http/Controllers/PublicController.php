@@ -16,7 +16,7 @@ class PublicController extends Controller
         $advertisements = Advertisement::query()
             ->where('is_accepted', true)
             ->where('language', app()->getLocale())
-            ->orderBy('created_at', 'desc')
+            ->orderBy('updated_at', 'desc')
             ->take(4)
             ->get();
 
