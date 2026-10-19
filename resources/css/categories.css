@@ -20,6 +20,10 @@
     height: 60px;
 }
 
+.category-scroll-control {
+    display: none;
+}
+
 .container-category {
     position: absolute;
     inset: 0;
@@ -46,7 +50,12 @@
         gap: 0.25rem;
         overflow-x: auto;
         overflow-y: hidden;
+        padding-right: 2.75rem;
         scrollbar-width: none;
+    }
+
+    .container-category.has-left-scroll {
+        padding-left: 2.75rem;
     }
 
     .container-category::-webkit-scrollbar {
@@ -60,6 +69,41 @@
 
     .btn-category a {
         white-space: nowrap;
+    }
+
+    .category-scroll-control {
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        display: inline-grid;
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        place-items: center;
+        transform: translateY(-50%);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 50%;
+        background: var(--color-s);
+        color: var(--color-p);
+        font-size: 1.1rem;
+        line-height: 1;
+    }
+
+    .category-scroll-control[hidden] {
+        display: none;
+    }
+
+    .category-scroll-control:focus-visible {
+        outline: 2px solid var(--color-a);
+        outline-offset: 2px;
+    }
+
+    .category-scroll-control--left {
+        left: 0.35rem;
+    }
+
+    .category-scroll-control--right {
+        right: 0.35rem;
     }
 }
 
@@ -78,7 +122,11 @@
 }
 
 .btn-category a:hover {
-    color: #fab570;
+    color: var(--color-a);
+}
+
+.btn-category a.is-active {
+    color: var(--color-a);
 }
 
 .btn-category a:focus-visible {
@@ -93,9 +141,5 @@
 @media (max-width: 767.98px) {
     .btn-category:hover {
         background: transparent;
-    }
-
-    .btn-category a:hover {
-        color: rgba(255, 255, 255, 0.9);
     }
 }

@@ -14,6 +14,13 @@ class Advertisement extends Model
 {
     use Searchable;
 
+    protected function casts(): array
+    {
+        return [
+            'is_accepted' => 'boolean',
+        ];
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

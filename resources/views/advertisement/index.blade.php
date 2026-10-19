@@ -7,7 +7,7 @@
                 <div class="alert alert-danger text-center shadow rounded w-50">{{ $message }}</div>
             @enderror
         </header>
-        <div class="row ad-card-grid ad-card-grid--three align-items-stretch pb-4 g-4">
+        <div class="row ad-card-grid ad-card-grid--index pb-4 g-3">
             <div class="col-12">
                 <x-category-nav :categories="$categories" />
                 {{-- @foreach ($categories as $category)
@@ -16,7 +16,7 @@
 
             </div>
             @forelse ($advertisements as $advertisement)
-                <div class="col-12 col-md-4 ad-card-grid-item">
+                <div class="col-6 col-md-4 ad-card-grid-item">
                     <div class="card ad-card">
                         <!-- ad-card-image rimosso dopo il crop delle immagini, check fe -->
                         <a href="{{ route('advertisement.show', $advertisement) }}" class="d-block">

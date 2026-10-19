@@ -3,12 +3,12 @@
 <nav class="navbar navbar-expand-lg navbar-cus px-3" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand fs-2" href="{{ route('welcome') }}">
-    <div style="width: 82px; height: 82px; overflow: hidden; position: relative;">
-        <img src="{{ asset('media/Logo.png') }}" width="100" height="100"
-            class="p-1 rounded" alt="Logo"
-            style="max-width: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-    </div>
-       </a>
+            <div style="width: 82px; height: 82px; overflow: hidden; position: relative;">
+                <img src="{{ asset('media/Logo.png') }}" width="100" height="100"
+                    class="p-1 rounded" alt="Logo"
+                    style="max-width: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="{{ __('ui.toggleNavigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,8 @@
                 @auth
                 @if (auth()->user()->is_revisor)
                 <li class="nav-item">
-                    <a class="nav-link btn position-relative" href="{{ route('revisor.index') }}">{{ __('ui.reviewerDashboard') }}
+                    <a class="nav-link reviewer-dashboard-link position-relative" href="{{ route('revisor.index') }}">
+                        <span>{{ __('ui.reviewerDashboard') }}</span>
                         @livewire('revisor-counter')
                     </a>
                 </li>
@@ -148,11 +149,7 @@
                 {{-- barra ricerca con radio button  --}}
 
                 <!-- scelta lingua -->
-                <li class="nav-item">
-                  <x-_locale lang="it"/>
-                  <x-_locale lang="en"/>
-                  <x-_locale lang="es"/>
-                </li>
+                <x-_locale />
 
             </ul>
 

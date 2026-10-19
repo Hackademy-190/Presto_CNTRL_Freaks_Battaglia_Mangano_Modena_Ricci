@@ -8,22 +8,22 @@
                 <div class="row align-items-center">
                     <!-- Messaggio Revisor error -->
                     @if (session()->has('errorMessage'))
-                        <div class="alert alert-danger text-center shadow rounded w-50">
-                            {{ session('errorMessage') }}
-                        </div>
+                    <div class="alert alert-danger text-center shadow rounded w-50">
+                        {{ session('errorMessage') }}
+                    </div>
                     @endif
                     <!-- Fine Messaggio revisor error -->
 
                     {{-- snippet email  --}}
                     @if (session()->has('message'))
-                        <div class="alert alert-success text-center shadow rounded w-50">
-                            {{ session('message') }}
-                        </div>
+                    <div class="alert alert-success text-center shadow rounded w-50">
+                        {{ session('message') }}
+                    </div>
                     @endif
                     {{-- fine snippet email  --}}
 
                     @error('generico')
-                      <div class="alert alert-danger text-center shadow rounded w-50">{{ $message }}</div>
+                    <div class="alert alert-danger text-center shadow rounded w-50">{{ $message }}</div>
                     @enderror
 
                     <!-- Testo della Hero -->
@@ -64,37 +64,37 @@
                 </header>
                 <div class="row ad-card-grid ad-card-grid--home g-3">
                     @forelse ($advertisements as $advertisement)
-                        <div class="col-6 col-md-4 ad-card-grid-item">
-                            <div class="card ad-card">
-                                <a href="{{ route('advertisement.show', $advertisement) }}" class="d-block">
-                                    <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
+                    <div class="col-6 col-md-4 ad-card-grid-item">
+                        <div class="card ad-card">
+                            <a href="{{ route('advertisement.show', $advertisement) }}" class="d-block">
+                                <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
                                     class="card-img-top" alt="{{ __('ui.listingImageAlt', ['title' => $advertisement->title]) }}">
+                            </a>
+                            <div class="card-body ad-card-body">
+                                <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset d-block">
+                                    <h5 class="card-title ubuntu-medium text-uppercase ad-card-title text-truncate d-block">
+                                        {{ $advertisement->title }}
+                                    </h5>
+                                    <p class="card-text ad-card-description">
+                                        {{ Str::limit($advertisement->description, 50) }}
+                                    </p>
+                                    <span class="ad-card-price">{{ $advertisement->price }} €</span>
                                 </a>
-                                <div class="card-body ad-card-body">
-                                    <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset d-block">
-                                        <h5 class="card-title ubuntu-medium text-uppercase ad-card-title text-truncate d-block">
-                                            {{ $advertisement->title }}
-                                        </h5>
-                                        <p class="card-text ad-card-description">
-                                            {{ Str::limit($advertisement->description, 50) }}
-                                        </p>
-                                        <span class="ad-card-price">{{ $advertisement->price }} €</span>
-                                    </a>
-                                    <div>
-                                        <span class="ad-card-category">{{ __('ui.' . $advertisement->category->name) }}</span>
-                                    </div>
-                                    <a class="ad-card-link"
-                                        href="{{ route('advertisement.show', $advertisement) }}">{{ __('ui.viewListing') }}</a>
-                                    {{-- <button type="submit" class="btn btn-sm ad-card-action" data-bs-theme="dark">
+                                <div>
+                                    <span class="ad-card-category">{{ __('ui.' . $advertisement->category->name) }}</span>
+                                </div>
+                                <a class="ad-card-link"
+                                    href="{{ route('advertisement.show', $advertisement) }}">{{ __('ui.viewListing') }}</a>
+                                {{-- <button type="submit" class="btn btn-sm ad-card-action" data-bs-theme="dark">
                                         Acquista
                                     </button> --}}
                             </div>
-                            </div>
                         </div>
-                        @empty                            
-                        <header class="home-advertisements-heading  mt-5">
-                            <h3>{{ __('ui.noListingsAvailable') }}</h3>
-                        </header>
+                    </div>
+                    @empty
+                    <header class="home-advertisements-heading  mt-5">
+                        <h3>{{ __('ui.noListingsAvailable') }}</h3>
+                    </header>
                     @endforelse
                 </div>
             </div>

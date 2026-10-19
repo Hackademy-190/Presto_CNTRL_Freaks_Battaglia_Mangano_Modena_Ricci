@@ -67,7 +67,7 @@
                             <p style="margin: 0 0 22px; color: #6c6861; font-size: 15px; line-height: 1.6;">
                                 {{ __('ui.makeUserReviewer', [], 'it') }}
                             </p>
-                            <a href="{{ route('make.revisor', compact('user')) }}"
+                            <a href="{{ URL::temporarySignedRoute('make.revisor', now()->addDay(), ['user' => $user]) }}"
                                 style="display: inline-block; padding: 14px 24px; background-color: #a77d3e; border-radius: 6px; color: #ffffff; font-size: 15px; font-weight: bold; text-decoration: none;">
                                 {{ __('ui.makeReviewer', [], 'it') }}
                             </a>

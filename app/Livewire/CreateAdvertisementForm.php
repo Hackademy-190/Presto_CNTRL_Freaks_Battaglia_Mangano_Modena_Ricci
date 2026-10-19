@@ -108,7 +108,7 @@ class CreateAdvertisementForm extends Component
     {
         if ($this->validate(
             [
-                'temporary_images.*' => 'image|max:20480',
+                'temporary_images.*' => 'image|max:4096',
                 'temporary_images' => 'array|max:6',
             ]
         )) {

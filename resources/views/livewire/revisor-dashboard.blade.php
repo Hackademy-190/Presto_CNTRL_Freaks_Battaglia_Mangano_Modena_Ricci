@@ -92,7 +92,6 @@
                                 <th scope="col" class="revisor-listing-language">{{ __('ui.advertisementLanguage') }}</th>
                                 <th scope="col">{{ __('ui.status') }}</th>
                                 <th scope="col">{{ __('ui.actions') }}</th>
-                                <th scope="col">{{ __('ui.delete') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -168,20 +167,7 @@
                                             </div>
                                         @endif
                                     </td>
-                                    <td class="revisor-listing-actions">
-                                        <button
-                                            type="button"
-                                            wire:click="deleteAdvertisement({{ $advertisement->id }})"
-                                            wire:confirm="{{ __('ui.confirmDeleteAdvertisement') }}"
-                                            wire:loading.attr="disabled"
-                                            wire:target="deleteAdvertisement({{ $advertisement->id }})"
-                                            class="btn revisor-action-button revisor-action-button--reject revisor-delete-button"
-                                            aria-label="{{ __('ui.delete') }}"
-                                            title="{{ __('ui.delete') }}"
-                                        >
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </td>
+                                
                                 </tr>
                             @empty
                                 <tr>

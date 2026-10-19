@@ -70,11 +70,6 @@
     .home-advertisements {
         padding: 0;
     }
-
-    .home-advertisements .col-md-4 {
-        flex: 0 0 25%;
-        max-width: 25%;
-    }
 }
 
 @media (max-width: 767.98px) {
@@ -92,10 +87,6 @@
         align-content: flex-start;
     }
 
-    .home-advertisements .col-6 {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
 }
 
 /* Titolo principale */

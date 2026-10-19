@@ -79,8 +79,9 @@
                 </span>
                 <input id="temporary_images" type="file" wire:model.live="temporary_images" multiple
                     class="visually-hidden @error('temporary_images.*') is-invalid @enderror @error('images.*') is-invalid @enderror"
-                    aria-label="{{ __('ui.selectImages') }}" accept="image/*" />
+                    aria-label="{{ __('ui.selectImages') }}" aria-describedby="imageUploadHelp" accept="image/*" />
             </div>
+            <small id="imageUploadHelp" class="form-text d-block mt-2">{{ __('ui.imageUploadLimit') }}</small>
             @error('temporary_images.*')
             <p class="fst-italic text-danger">{{ $message }}</p>
             @enderror

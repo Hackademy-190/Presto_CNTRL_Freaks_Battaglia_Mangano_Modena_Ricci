@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Mail\BecomeRevisor;
 use App\Models\Advertisement;
 use App\Models\User;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -63,9 +64,15 @@ class RevisorController extends Controller
         return redirect()->route('welcome')->with('message', __('ui.reviewerRequestSent'));
     }
 
-    public function makeRevisor(User $user)
+    public function confirmMakeRevisor(User $user): View
     {
-        Artisan::call('app:make-user-revisor', ['email' => $user->email]);
+        return view('revisor.confirm-make', compact('user'));
+    }
+
+    public function makeRevisor(User $user): RedirectResponse
+    {
+        $user->is_revisor = true;
+        $user->save();
 
         return redirect()->route('welcome')->with('message', __('ui.reviewerRoleGranted'));
     }

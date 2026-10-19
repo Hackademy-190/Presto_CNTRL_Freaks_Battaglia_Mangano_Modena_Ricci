@@ -32,6 +32,15 @@
     flex: 0 1 250px;
 }
 
+.reviewer-dashboard-link {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.35rem;
+    text-align: left;
+}
+
 .search-filter-toggle {
     white-space: nowrap;
 }

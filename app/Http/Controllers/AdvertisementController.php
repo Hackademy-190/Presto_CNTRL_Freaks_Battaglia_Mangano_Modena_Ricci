@@ -6,6 +6,7 @@ use App\Models\Advertisement;
 use App\Models\Category;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Auth;
 
 class AdvertisementController extends Controller implements HasMiddleware
 {
@@ -35,6 +36,12 @@ class AdvertisementController extends Controller implements HasMiddleware
 
     public function show(Advertisement $advertisement)
     {
+        $user = Auth::user();
+        $canViewUnapprovedAdvertisement = $user !== null
+            && ($user->is_revisor || $user->id === $advertisement->user_id);
+
+        abort_unless($advertisement->is_accepted === true || $canViewUnapprovedAdvertisement, 404);
+
         return view('advertisement.show', compact('advertisement'));
     }
 }

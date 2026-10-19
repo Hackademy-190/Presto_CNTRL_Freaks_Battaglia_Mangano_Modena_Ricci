@@ -61,6 +61,57 @@ const categoryContainer = document.querySelector('.container-category');
 const categoryOutline = categoryContainer?.querySelector('.outline');
 const categoryOutlineRect = categoryOutline?.querySelector('.rect');
 const categoryButtons = categoryContainer?.querySelectorAll('.btn-category') ?? [];
+const categoryScrollControls = document.querySelectorAll('[data-category-scroll]');
+
+if (categoryContainer) {
+    const leftScrollControl = document.querySelector('[data-category-scroll="left"]');
+    const rightScrollControl = document.querySelector('[data-category-scroll="right"]');
+
+    const updateCategoryScrollControls = () => {
+        const maxScrollLeft = categoryContainer.scrollWidth - categoryContainer.clientWidth;
+        const canScroll = maxScrollLeft > 1;
+        const hasScrolledLeft = categoryContainer.scrollLeft > 1;
+
+        categoryContainer.classList.toggle('has-left-scroll', canScroll && hasScrolledLeft);
+
+        if (leftScrollControl) {
+            leftScrollControl.hidden = !canScroll || !hasScrolledLeft;
+        }
+
+        if (rightScrollControl) {
+            rightScrollControl.hidden = !canScroll || categoryContainer.scrollLeft >= maxScrollLeft - 1;
+        }
+    };
+
+    categoryScrollControls.forEach((control) => {
+        control.addEventListener('click', () => {
+            const direction = control.dataset.categoryScroll === 'right' ? 1 : -1;
+
+            categoryContainer.scrollBy({
+                left: direction * categoryContainer.clientWidth * 0.75,
+                behavior: 'smooth',
+            });
+        });
+    });
+
+    categoryContainer.addEventListener('scroll', updateCategoryScrollControls, { passive: true });
+    window.addEventListener('resize', updateCategoryScrollControls);
+
+    const activeCategoryLink = categoryContainer.querySelector('a.is-active');
+
+    if (activeCategoryLink && window.matchMedia('(max-width: 767.98px)').matches) {
+        const targetScrollLeft = activeCategoryLink.offsetLeft
+            + activeCategoryLink.offsetWidth / 2
+            - categoryContainer.clientWidth / 2;
+
+        categoryContainer.scrollLeft = Math.max(
+            0,
+            Math.min(targetScrollLeft, categoryContainer.scrollWidth - categoryContainer.clientWidth)
+        );
+    }
+
+    updateCategoryScrollControls();
+}
 
 if (categoryContainer && categoryOutline && categoryOutlineRect) {
     let activeCategoryButton = null;
