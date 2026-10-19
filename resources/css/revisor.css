@@ -1,8 +1,5 @@
 .revisor-dashboard-label {
-    position: fixed;
-    top: 5.5rem;
-    left: 1rem;
-    z-index: 998;
+    top:130px;
     margin: 0;
     padding: 0.4rem 0.7rem;
     border-left: 3px solid var(--color-a);
@@ -12,6 +9,18 @@
     font-size: 1.8rem;
     font-weight: 700;
     line-height: 1.2;
+}
+
+@media (max-width: 767.98px) {
+    .revisor-dashboard-container {
+        padding-top: 4rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .revisor-dashboard-label {
+        position: absolute;
+    }
 }
 
 .pending-review-carousel .carousel-inner {

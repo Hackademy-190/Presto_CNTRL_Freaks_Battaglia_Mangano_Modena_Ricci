@@ -28,7 +28,7 @@ class AdvertisementController extends Controller implements HasMiddleware
             ->where('is_accepted', true)
             ->where('language', app()->getLocale())
             ->orderBy('created_at', 'desc')
-            ->paginate(6);
+            ->paginate(8);
         $categories = Category::all();
 
         return view('advertisement.index', compact('advertisements', 'categories'));

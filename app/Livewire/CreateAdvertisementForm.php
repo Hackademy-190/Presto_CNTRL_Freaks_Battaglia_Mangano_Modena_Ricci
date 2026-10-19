@@ -30,8 +30,9 @@ class CreateAdvertisementForm extends Component
 
     #[Validate([
         'images' => 'array|max:6',
-        'images.*' => 'image|max:4096',
+        'images.*' => 'image|max:4096|dimensions:min_width=600,min_height=600|mimes:jpg,jpeg,webp,png'
     ])]
+
     public $images = [];
 
     #[Validate([

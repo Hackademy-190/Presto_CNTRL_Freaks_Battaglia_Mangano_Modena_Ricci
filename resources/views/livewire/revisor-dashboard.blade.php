@@ -1,6 +1,8 @@
 <div>
-    <div class="container-fluid mt-5">
-        <h1 class="revisor-dashboard-label mt-5">{{ __('ui.reviewerDashboard') }}</h1>
+    <div class="container-fluid mt-5 revisor-dashboard-container">
+
+                <h1 class="revisor-dashboard-label">{{ __('ui.reviewerDashboard') }}</h1>
+    
         @if (session()->has('message'))
             <div class="row justify-content-center">
                 <div class="col-5 alert-success text-center shadow rounded">
@@ -8,7 +10,7 @@
                 </div>
             </div>
         @endif
-        <section class="snap-section home-advertisements py-5">
+        <section class="snap-section home-advertisements py-5 mt-5 mt-md-0">
             <div class="container">
                 <header class="home-advertisements-heading revisor-review-heading mt-5">
                     <h2 class="revisor-review-title">
@@ -24,11 +26,11 @@
                 @if ($advertisements_to_check->isNotEmpty())
                     <div id="pendingReviewCarousel" class="carousel slide pending-review-carousel py-4">
                         <div class="carousel-inner">
-                            @foreach ($advertisements_to_check->chunk(3) as $advertisement_group)
+                            @foreach ($advertisements_to_check->chunk(1) as $advertisement_group)
                                 <div class="carousel-item {{ $loop->first ? 'active' : '' }}" wire:key="pending-group-{{ $loop->index }}">
                                     <div class="row justify-content-center align-items-stretch g-4">
                                         @foreach ($advertisement_group as $advertisement_to_check)
-                                            <div class="col-12 col-md-4" wire:key="pending-advertisement-{{ $advertisement_to_check->id }}">
+                                            <div class="col-12 col-md-3" wire:key="pending-advertisement-{{ $advertisement_to_check->id }}">
                                                 <div class="card ad-card">
                                                     <a href="{{ route('revisor.show', ['advertisement' => $advertisement_to_check]) }}" class="d-block">
                                                         <img src="{{ $advertisement_to_check->images->isNotEmpty() ? $advertisement_to_check->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
@@ -61,14 +63,16 @@
                                 </div>
                             @endforeach
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#pendingReviewCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">{{ __('pagination.previous') }}</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#pendingReviewCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">{{ __('pagination.next') }}</span>
-                        </button>
+                        <div class="container d-flex position-relative">
+                            <button class="carousel-control-prev" type="button" data-bs-target="#pendingReviewCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">{{ __('pagination.previous') }}</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#pendingReviewCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">{{ __('pagination.next') }}</span>
+                            </button>
+                        </div>
                     </div>
                 @else
                     <div class="rounded shadow bg-body-secondary p-3">

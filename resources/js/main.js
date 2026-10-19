@@ -61,41 +61,87 @@ const categoryContainer = document.querySelector('.container-category');
 const categoryOutline = categoryContainer?.querySelector('.outline');
 const categoryOutlineRect = categoryOutline?.querySelector('.rect');
 const categoryButtons = categoryContainer?.querySelectorAll('.btn-category') ?? [];
-const categoryScrollControls = document.querySelectorAll('[data-category-scroll]');
+const categoryScrollIndicator = document.querySelector('.category-scroll-indicator');
+const categoryScrollIndicatorThumb = categoryScrollIndicator?.querySelector('.category-scroll-indicator-thumb');
 
 if (categoryContainer) {
-    const leftScrollControl = document.querySelector('[data-category-scroll="left"]');
-    const rightScrollControl = document.querySelector('[data-category-scroll="right"]');
-
-    const updateCategoryScrollControls = () => {
+    const updateCategoryScrollIndicator = () => {
         const maxScrollLeft = categoryContainer.scrollWidth - categoryContainer.clientWidth;
         const canScroll = maxScrollLeft > 1;
-        const hasScrolledLeft = categoryContainer.scrollLeft > 1;
+        const isMobile = window.matchMedia('(max-width: 767.98px)').matches;
 
-        categoryContainer.classList.toggle('has-left-scroll', canScroll && hasScrolledLeft);
-
-        if (leftScrollControl) {
-            leftScrollControl.hidden = !canScroll || !hasScrolledLeft;
+        if (categoryScrollIndicator) {
+            categoryScrollIndicator.hidden = !canScroll || !isMobile;
         }
 
-        if (rightScrollControl) {
-            rightScrollControl.hidden = !canScroll || categoryContainer.scrollLeft >= maxScrollLeft - 1;
+        if (canScroll && isMobile && categoryScrollIndicatorThumb && categoryScrollIndicator) {
+            const trackWidth = categoryScrollIndicator.clientWidth;
+            const thumbWidth = Math.min(
+                trackWidth,
+                Math.max(trackWidth * categoryContainer.clientWidth / categoryContainer.scrollWidth, 32)
+            );
+            const thumbTravel = trackWidth - thumbWidth;
+            const scrollProgress = categoryContainer.scrollLeft / maxScrollLeft;
+
+            categoryScrollIndicatorThumb.style.width = `${thumbWidth}px`;
+            categoryScrollIndicatorThumb.style.transform = `translateX(${thumbTravel * scrollProgress}px)`;
         }
     };
 
-    categoryScrollControls.forEach((control) => {
-        control.addEventListener('click', () => {
-            const direction = control.dataset.categoryScroll === 'right' ? 1 : -1;
+    if (categoryScrollIndicator && categoryScrollIndicatorThumb) {
+        let isDraggingCategoryScrollbar = false;
+        let categoryScrollbarPointerOffset = 0;
 
-            categoryContainer.scrollBy({
-                left: direction * categoryContainer.clientWidth * 0.75,
-                behavior: 'smooth',
-            });
+        const scrollCategoriesToPointer = (event) => {
+            const trackBounds = categoryScrollIndicator.getBoundingClientRect();
+            const trackWidth = categoryScrollIndicator.clientWidth;
+            const thumbWidth = categoryScrollIndicatorThumb.offsetWidth;
+            const thumbTravel = trackWidth - thumbWidth;
+            const maxScrollLeft = categoryContainer.scrollWidth - categoryContainer.clientWidth;
+            const thumbLeft = Math.min(
+                Math.max(event.clientX - trackBounds.left - categoryScrollbarPointerOffset, 0),
+                thumbTravel
+            );
+
+            if (thumbTravel > 0 && maxScrollLeft > 0) {
+                categoryContainer.scrollLeft = thumbLeft / thumbTravel * maxScrollLeft;
+            }
+        };
+
+        categoryScrollIndicator.addEventListener('pointerdown', (event) => {
+            if (categoryScrollIndicator.hidden || event.button !== 0) {
+                return;
+            }
+
+            const thumbBounds = categoryScrollIndicatorThumb.getBoundingClientRect();
+            const isPointerOnThumb = event.target === categoryScrollIndicatorThumb;
+
+            categoryScrollbarPointerOffset = isPointerOnThumb
+                ? event.clientX - thumbBounds.left
+                : categoryScrollIndicatorThumb.offsetWidth / 2;
+            isDraggingCategoryScrollbar = true;
+            categoryScrollIndicator.setPointerCapture(event.pointerId);
+            scrollCategoriesToPointer(event);
+            event.preventDefault();
         });
-    });
 
-    categoryContainer.addEventListener('scroll', updateCategoryScrollControls, { passive: true });
-    window.addEventListener('resize', updateCategoryScrollControls);
+        categoryScrollIndicator.addEventListener('pointermove', (event) => {
+            if (isDraggingCategoryScrollbar) {
+                scrollCategoriesToPointer(event);
+            }
+        });
+
+        const stopDraggingCategoryScrollbar = () => {
+            isDraggingCategoryScrollbar = false;
+        };
+
+        categoryScrollIndicator.addEventListener('pointerup', stopDraggingCategoryScrollbar);
+        categoryScrollIndicator.addEventListener('pointercancel', stopDraggingCategoryScrollbar);
+        categoryScrollIndicator.addEventListener('lostpointercapture', stopDraggingCategoryScrollbar);
+    }
+
+    categoryContainer.addEventListener('scroll', updateCategoryScrollIndicator, { passive: true });
+    window.addEventListener('resize', updateCategoryScrollIndicator);
 
     const activeCategoryLink = categoryContainer.querySelector('a.is-active');
 
@@ -110,7 +156,7 @@ if (categoryContainer) {
         );
     }
 
-    updateCategoryScrollControls();
+    updateCategoryScrollIndicator();
 }
 
 if (categoryContainer && categoryOutline && categoryOutlineRect) {

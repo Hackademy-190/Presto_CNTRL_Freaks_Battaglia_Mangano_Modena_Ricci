@@ -11,17 +11,13 @@
     stroke-dashoffset: 5;
     stroke-dasharray: 0 0 10 40 10 40;
     transition: 0.5s;
-    stroke: #fff;
+    stroke:var(--color-a);
 }
 
 .nav-category {
     position: relative;
     width: 100%;
     height: 60px;
-}
-
-.category-scroll-control {
-    display: none;
 }
 
 .container-category {
@@ -34,13 +30,22 @@
     backdrop-filter: blur(20px);
     color: #fff;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: row; 
     align-items: center;
     padding: 0.5em;
+    justify-content: space-around;
+
+    /* modificate */
+    overflow-x: auto;
+    overflow-y: hidden;
+    
 }
 
 @media (max-width: 767.98px) {
+    .nav-category {
+        height: 76px;
+    }
+
     .outline {
         display: none;
     }
@@ -48,14 +53,9 @@
     .container-category {
         justify-content: flex-start;
         gap: 0.25rem;
-        overflow-x: auto;
-        overflow-y: hidden;
-        padding-right: 2.75rem;
+        bottom: 16px;
+        padding-right: 0.5em;
         scrollbar-width: none;
-    }
-
-    .container-category.has-left-scroll {
-        padding-left: 2.75rem;
     }
 
     .container-category::-webkit-scrollbar {
@@ -71,39 +71,46 @@
         white-space: nowrap;
     }
 
-    .category-scroll-control {
+    .category-scroll-indicator {
         position: absolute;
-        z-index: 3;
-        top: 50%;
-        display: inline-grid;
-        width: 2rem;
-        height: 2rem;
-        padding: 0;
-        place-items: center;
-        transform: translateY(-50%);
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        border-radius: 50%;
-        background: var(--color-s);
-        color: var(--color-p);
-        font-size: 1.1rem;
-        line-height: 1;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 16px;
+        overflow: hidden;
+        border-radius: 999px;
+        touch-action: none;
+        user-select: none;
+        cursor: pointer;
     }
 
-    .category-scroll-control[hidden] {
+    .category-scroll-indicator::before {
+        position: absolute;
+        top: 6px;
+        right: 0;
+        left: 0;
+        height: 4px;
+        border-radius: inherit;
+        background: rgba(255, 255, 255, 0.25);
+        content: '';
+    }
+
+    .category-scroll-indicator[hidden] {
         display: none;
     }
 
-    .category-scroll-control:focus-visible {
-        outline: 2px solid var(--color-a);
-        outline-offset: 2px;
+    .category-scroll-indicator-thumb {
+        position: absolute;
+        top: 6px;
+        left: 0;
+        height: 4px;
+        border-radius: inherit;
+        background: var(--color-a);
+        cursor: grab;
     }
 
-    .category-scroll-control--left {
-        left: 0.35rem;
-    }
-
-    .category-scroll-control--right {
-        right: 0.35rem;
+    .category-scroll-indicator-thumb:active {
+        cursor: grabbing;
     }
 }
 
