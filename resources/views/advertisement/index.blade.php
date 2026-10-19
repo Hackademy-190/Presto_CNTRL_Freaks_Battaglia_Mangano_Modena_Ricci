@@ -29,7 +29,7 @@
                                 {{ $advertisement->title }}
                                 </h5>
                                 <p class="card-text ad-card-description">
-                                {{ Str::limit($advertisement->description, 50) }}
+                                {{ ($advertisement->description) }}
                                 </p>
                                 <p class="card-text ad-card-price">
                                 {{ $advertisement->price }} €

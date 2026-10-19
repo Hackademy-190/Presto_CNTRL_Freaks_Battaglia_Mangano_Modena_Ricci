@@ -8,10 +8,6 @@
     --dark-s: #243642;
 }
 
-.color-s {
-    color: var(--color-s);
-}
-
 .color-p {
     color: var(--color-p);
 }
@@ -24,24 +20,8 @@
     background: var(--color-s);
 }
 
-.bg-p {
-    background: var(--color-p);
-}
-
 .bg-a {
     background: var(--color-a);
-}
-
-.ubuntu-light {
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-}
-
-.ubuntu-regular {
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 400;
-    font-style: normal;
 }
 
 .ubuntu-medium {
@@ -54,30 +34,6 @@
     font-family: "Ubuntu", sans-serif;
     font-weight: 700;
     font-style: normal;
-}
-
-.ubuntu-light-italic {
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 300;
-    font-style: italic;
-}
-
-.ubuntu-regular-italic {
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-}
-
-.ubuntu-medium-italic {
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 500;
-    font-style: italic;
-}
-
-.ubuntu-bold-italic {
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 700;
-    font-style: italic;
 }
 
 body {
