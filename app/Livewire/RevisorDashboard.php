@@ -25,6 +25,14 @@ class RevisorDashboard extends Component
         session()->flash('message', __('ui.reviewerRejected', ['title' => $advertisement->title]));
     }
 
+    public function sendBackToReview(int $advertisementId): void
+    {
+        $advertisement = $this->findAdvertisement($advertisementId);
+        $advertisement->setAccepted(null);
+
+        session()->flash('message', __('ui.reviewerPending', ['title' => $advertisement->title]));
+    }
+
     public function deleteAdvertisement(int $advertisementId): void
     {
         $advertisement = $this->findAdvertisement($advertisementId);
@@ -57,7 +65,7 @@ class RevisorDashboard extends Component
             ->whereNull('is_accepted')
             ->orderByDesc('updated_at')
             ->get();
-        $allAdvertisements = Advertisement::orderByDesc('updated_at')->get();
+        $allAdvertisements = Advertisement::all();
 
         return view('livewire.revisor-dashboard', [
             'advertisements_to_check' => $advertisementsToCheck,

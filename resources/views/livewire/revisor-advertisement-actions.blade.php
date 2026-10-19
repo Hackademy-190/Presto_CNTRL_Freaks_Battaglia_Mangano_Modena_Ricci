@@ -21,7 +21,7 @@
             type="button"
             wire:click="sendBackToReview"
             wire:loading.attr="disabled"
-            class="btn ad-card-action w-100 py-2 mt-5 fw-bold"
+            class="btn btn-sm revisor-action-button revisor-action-button--pending mt-3"
         >
             {{ __('ui.sendBackToReview') }}
         </button>

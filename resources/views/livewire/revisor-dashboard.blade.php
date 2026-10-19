@@ -116,16 +116,56 @@
                                         @endif
                                     </td>
                                     <td class="revisor-listing-actions">
-                                        @if ($advertisement->is_accepted !== null)
-                                            <button
-                                                type="button"
-                                                wire:click="{{ $advertisement->is_accepted ? 'reject' : 'approve' }}({{ $advertisement->id }})"
-                                                wire:loading.attr="disabled"
-                                                wire:target="{{ $advertisement->is_accepted ? 'reject' : 'approve' }}({{ $advertisement->id }})"
-                                                class="btn btn-sm revisor-action-button {{ $advertisement->is_accepted ? 'revisor-action-button--reject' : 'revisor-action-button--accept' }}"
-                                            >
-                                                {{ $advertisement->is_accepted ? __('ui.reject') : __('ui.approve') }}
-                                            </button>
+                                        @if ($advertisement->is_accepted === null)
+                                            <div class="d-flex gap-2">
+                                                <button
+                                                    type="button"
+                                                    wire:click="reject({{ $advertisement->id }})"
+                                                    wire:loading.attr="disabled"
+                                                    wire:target="reject({{ $advertisement->id }})"
+                                                    class="btn btn-sm revisor-action-button revisor-action-button--reject revisor-review-action-button"
+                                                    aria-label="{{ __('ui.reject') }}"
+                                                    title="{{ __('ui.reject') }}"
+                                                >
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    wire:click="approve({{ $advertisement->id }})"
+                                                    wire:loading.attr="disabled"
+                                                    wire:target="approve({{ $advertisement->id }})"
+                                                    class="btn btn-sm revisor-action-button revisor-action-button--accept revisor-review-action-button"
+                                                    aria-label="{{ __('ui.approve') }}"
+                                                    title="{{ __('ui.approve') }}"
+                                                >
+                                                    <span aria-hidden="true">&#10003;</span>
+                                                </button>
+                                            </div>
+                                        @else
+                                            <div class="d-flex gap-2">
+                                                <button
+                                                    type="button"
+                                                    wire:click="{{ $advertisement->is_accepted ? 'reject' : 'approve' }}({{ $advertisement->id }})"
+                                                    wire:loading.attr="disabled"
+                                                    wire:target="{{ $advertisement->is_accepted ? 'reject' : 'approve' }}({{ $advertisement->id }})"
+                                                    class="btn btn-sm revisor-action-button revisor-review-action-button {{ $advertisement->is_accepted ? 'revisor-action-button--reject' : 'revisor-action-button--accept' }}"
+                                                    aria-label="{{ $advertisement->is_accepted ? __('ui.reject') : __('ui.approve') }}"
+                                                    title="{{ $advertisement->is_accepted ? __('ui.reject') : __('ui.approve') }}"
+                                                >
+                                                    <span aria-hidden="true">{{ $advertisement->is_accepted ? '×' : '✓' }}</span>
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    wire:click="sendBackToReview({{ $advertisement->id }})"
+                                                    wire:loading.attr="disabled"
+                                                    wire:target="sendBackToReview({{ $advertisement->id }})"
+                                                    class="btn btn-sm revisor-action-button revisor-review-action-button revisor-action-button--pending"
+                                                    aria-label="{{ __('ui.sendBackToReview') }}"
+                                                    title="{{ __('ui.sendBackToReview') }}"
+                                                >
+                                                    <span aria-hidden="true">&#8635;</span>
+                                                </button>
+                                            </div>
                                         @endif
                                     </td>
                                     <td class="revisor-listing-actions">

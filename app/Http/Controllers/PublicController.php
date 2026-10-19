@@ -64,6 +64,7 @@ class PublicController extends Controller
                 ->modelKeys();
 
             $advertisements = Advertisement::query()
+                ->with(['images', 'category'])
                 ->where('is_accepted', true)
                 ->whereIn('category_id', $categoryIds)
                 ->where('language', app()->getLocale())
@@ -97,6 +98,7 @@ class PublicController extends Controller
         }
 
         $advertisements = Advertisement::query()
+            ->with(['images', 'category'])
             ->where('is_accepted', true)
             ->whereIn('id', $matchedAdvertisements->modelKeys())
             ->where('language', app()->getLocale())

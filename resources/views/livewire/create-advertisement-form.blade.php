@@ -53,6 +53,7 @@
 
         {{-- Categories --}}
         <div class="mb-3">
+            <label for="category" class="form-label">{{ __('ui.category') }}</label>
             <select id="category" wire:model="category" class="form-control">
                 <option value="" disabled selected>{{ __('ui.selectCategory') }}</option>
                 @foreach ($categories as $category)

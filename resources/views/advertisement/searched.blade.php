@@ -10,8 +10,9 @@
             <div class="col-12 col-md-3 ad-card-grid-item">
                 <div class="card ad-card">
                     <a href="{{ route('advertisement.show', $advertisement) }}" class="d-block">
-                        <img src="https://picsum.photos/180/100" class="card-img-top ad-card-image"
-                            alt="{{ $advertisement->title }}">
+                        <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
+                            class="card-img-top ad-card-image"
+                            alt="{{ __('ui.listingImageAlt', ['title' => $advertisement->title]) }}">
                     </a>
                     <div class="card-body ad-card-body">
                         <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset d-block">

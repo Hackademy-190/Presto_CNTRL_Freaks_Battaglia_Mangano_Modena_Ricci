@@ -197,6 +197,27 @@
     color: #fff;
 }
 
+.revisor-action-button--pending {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.revisor-action-button--pending:hover,
+.revisor-action-button--pending:focus-visible {
+    background-color: #e0a800;
+    color: #212529;
+}
+
+.revisor-review-action-button {
+    display: inline-grid;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    place-items: center;
+    font-size: 1rem;
+    line-height: 1;
+}
+
 .revisor-delete-button {
     display: inline-grid;
     width: 2rem;
