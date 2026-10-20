@@ -65,7 +65,9 @@ class RevisorDashboard extends Component
             ->whereNull('is_accepted')
             ->orderByDesc('updated_at')
             ->get();
-        $allAdvertisements = Advertisement::all();
+        $allAdvertisements = Advertisement::with(['images', 'category'])
+            ->orderByDesc('updated_at')
+            ->get();
 
         return view('livewire.revisor-dashboard', [
             'advertisements_to_check' => $advertisementsToCheck,
