@@ -6,7 +6,83 @@
                     &larr; {{ __('ui.back') }}
                 </a>
             </div>
-           <div class="col-12 col-md-6 d-flex justify-content-center mt-5">
+            
+
+             <!-- rating imamgini   -->
+@foreach ($advertisement->images as $key => $image)
+    <div class="col-6">
+        <div class="card mb-3 ">
+            <div class="row g-0 ">
+                <div class="col-md-4">
+                    <img src="{{ $image->getUrl(600, 600) }}"
+                        class="img-fluid rounded-start" alt="Immagine {{ $key + 1 }} dell'articolo '{{ $advertisement->title }}'"
+                    >
+                </div>
+                <div class="col-md-5 ps-3 ">
+                    <div class="card-body">
+                        <h5 class="">Labels</h5>
+                        @if ($image->labels)
+                            @foreach ($image->labels as $label)
+                                #{{ $label }},
+                            @endforeach
+                        @else
+                            <p class="fst-italic">No labels</p>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card-body ">
+                        <h5 class="">Ratings</h5>
+                        <div class="row justify-content-center">
+                            <div class="col-2">
+                                <div class="text-center mx-auto {{ $image->adult }}">
+                                </div>
+                            </div>
+                            <div class="col-10">adult</div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-2">
+                                <div class=" text-center mx-auto {{ $image->violence }}">
+                                </div>
+                            </div>
+                            <div class="col-10">violence</div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-2">
+                                <div class=" text-center mx-auto {{ $image->spoof }}">
+                                </div>
+                            </div>
+                            <div class="col-10">spoof</div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-2">
+                                <div class=" text-center mx-auto {{ $image->racy }}">
+                                </div>
+                            </div>
+                            <div class="col-10">racy</div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-2">
+                                <div class=" text-center mx-auto {{ $image->medical }}">
+                                </div>
+                            </div>
+                            <div class="col-10">medical</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
+
+
+                        
+                  
+
+
+
+
+           <!-- <div class="col-12 col-md-6 d-flex justify-content-center mt-5">
                 <div class="car-01__viewer" data-image-viewer>
                     @forelse ($advertisement->images as $image)
                         <input
@@ -51,7 +127,7 @@
                         </div>
                     @endif
                 </div>
-            </div>
+            </div> -->
                 {{-- @foreach ($advertisement->images as $key => $image )
                     <div class="carousel-item @if($loop->first) active @endif">
                         <img src="{{ $image->getUrl(300, 300) }}" class="d-block w-100 rounded shadow"

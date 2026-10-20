@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Jobs\GoogleVisionLabelImage;
+use App\Jobs\GoogleVisionSafeSearch;
 use App\Jobs\ResizeImage;
 use App\Models\Advertisement;
 use App\Models\Category;
@@ -79,6 +81,8 @@ class CreateAdvertisementForm extends Component
             ]);
 
             dispatch(new ResizeImage($newImage->path, 600, 600));
+            dispatch(new GoogleVisionSafeSearch($newImage->id));
+            dispatch(new GoogleVisionLabelImage($newImage->id));
         }
 
         if ($this->images !== []) {
