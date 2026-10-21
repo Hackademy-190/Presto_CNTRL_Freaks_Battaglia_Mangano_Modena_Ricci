@@ -66,7 +66,7 @@ class RevisorDashboard extends Component
             ->orderByDesc('updated_at')
             ->get();
         $allAdvertisements = Advertisement::with(['images', 'category'])
-            ->orderByDesc('updated_at')
+            ->orderByDesc('created_at')
             ->get();
 
         return view('livewire.revisor-dashboard', [

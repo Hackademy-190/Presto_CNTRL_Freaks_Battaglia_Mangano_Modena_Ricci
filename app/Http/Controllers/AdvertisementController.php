@@ -24,13 +24,23 @@ class AdvertisementController extends Controller implements HasMiddleware
 
     public function index()
     {
+        // $advertisements = Advertisement::query()
+        //     ->where('is_accepted', true)
+        //     ->where('language', app()->getLocale())
+        //     ->orderBy('updated_at', 'desc')
+        //     ->paginate(8);
+        $categories = Category::all();
+       $language = app()->getLocale();
+
         $advertisements = Advertisement::query()
             ->where('is_accepted', true)
-            ->where('language', app()->getLocale())
-            ->orderBy('updated_at', 'desc')
-            ->paginate(8);
-        $categories = Category::all();
-
+            ->orderByRaw(
+                   'CASE WHEN language = ? THEN 0 ELSE 1 END',
+                   [$language]
+                        )
+             ->orderBy('updated_at', 'desc')
+             ->paginate(8);
+             
         return view('advertisement.index', compact('advertisements', 'categories'));
     }
 
