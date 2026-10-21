@@ -43,4 +43,5 @@
                 @endforelse
             </div>
         </div>
+        <!-- aggiungi advertisements links se fai paginate, qui  -->
 </x-layout>
