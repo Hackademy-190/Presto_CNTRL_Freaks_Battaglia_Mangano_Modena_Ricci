@@ -16,6 +16,10 @@ use Livewire\WithFileUploads;
 
 class CreateAdvertisementForm extends Component
 {
+    use WithFileUploads;
+
+    // ---------- Proprietà ----------
+
     #[Validate('required|min:3')]
     public $title;
 
@@ -31,25 +35,55 @@ class CreateAdvertisementForm extends Component
     #[Validate('required|in:it,en,es')]
     public $language;
 
-    #[Validate([
-        'images' => 'array|max:6',
-        'images.*' => 'image|max:4096|dimensions:min_width=600,min_height=600|mimes:jpg,jpeg,webp,png,avif',
-    ])]
+    #[Validate(
+        [
+            'images' => 'array|max:6',
+            'images.*' => 'file|mimes:jpg,jpeg,png,gif,webp,bmp|max:4096',
+        ],
+    )]
+
     public $images = [];
+
+    public $temporary_images = [];
 
     public int $imageUploadKey = 0;
 
-    #[Validate([
-        'temporary_images' => 'array|max:6',
-        'temporary_images.*' => 'image|max:4096',
-    ])]
-    public $temporary_images = [];
-
-    use WithFileUploads;
+    // ---------- Lifecycle ----------
 
     public function mount(): void
     {
         $this->language = app()->getLocale();
+    }
+
+    public function updatedTemporaryImages()
+    {
+        $this->validate([
+            'temporary_images' => 'array|max:6',
+            'temporary_images.*' => 'file|mimes:jpg,jpeg,png,gif,webp,bmp|max:4096',
+        ]);
+
+        if (count($this->images) + count($this->temporary_images) > 6) {
+            $this->addError('temporary_images', __('ui.maxImages'));
+            $this->temporary_images = [];
+
+            return;
+        }
+
+        foreach ($this->temporary_images as $image) {
+            $this->images[] = $image;
+        }
+
+        $this->temporary_images = [];
+    }
+
+    // ---------- Azioni ----------
+
+    public function removeImage($key)
+    {
+        if (in_array($key, array_keys($this->images))) {
+            unset($this->images[$key]);
+            $this->resetErrorBag('temporary_images');
+        }
     }
 
     public function store()
@@ -66,15 +100,6 @@ class CreateAdvertisementForm extends Component
             'language' => $this->language,
         ]);
 
-        // if (count($this->images) > 0) {
-        //     foreach ($this->images as $image) {
-        //         $this->advertisement->images()->create(['path' => $image->store('images', 'public')]);
-        //     }
-        // }
-
-        // session()->flash('success', 'Annuncio creato con successo');
-        // $this->resetInputs();
-
         foreach ($this->images as $image) {
             $directory = "advertisement/{$advertisement->id}";
             $newImage = $advertisement->images()->create([
@@ -82,10 +107,10 @@ class CreateAdvertisementForm extends Component
             ]);
 
             RemoveFaces::withChain([
-            new ResizeImage($newImage->path, 600, 600),
-            new GoogleVisionSafeSearch($newImage->id),
-            new GoogleVisionLabelImage($newImage->id)
-        ])->dispatch($newImage->id);
+                new ResizeImage($newImage->path, 600, 600),
+                new GoogleVisionSafeSearch($newImage->id),
+                new GoogleVisionLabelImage($newImage->id),
+            ])->dispatch($newImage->id);
         }
 
         if ($this->images !== []) {
@@ -98,50 +123,22 @@ class CreateAdvertisementForm extends Component
 
     public function resetInputs()
     {
-
         $this->title = '';
         $this->description = '';
         $this->price = '';
         $this->category = '';
         $this->images = [];
         $this->imageUploadKey++;
+        $this->temporary_images = [];
+        $this->resetValidation();
     }
+
+    // ---------- Render ----------
 
     public function render()
     {
         return view('livewire.create-advertisement-form', [
             'categories' => Category::all(),
         ]);
-    }
-
-    public function updatedTemporaryImages()
-    {
-        if ($this->validate(
-            [
-                'temporary_images.*' => 'image|max:4096',
-                'temporary_images' => 'array|max:6',
-            ]
-        )) {
-            if (count($this->images) + count($this->temporary_images) > 6) {
-                $this->addError('temporary_images', __('ui.maxImages'));
-                $this->temporary_images = [];
-
-                return;
-            }
-
-            foreach ($this->temporary_images as $image) {
-                $this->images[] = $image;
-            }
-
-            $this->temporary_images = [];
-        }
-    }
-
-    public function removeImage($key)
-    {
-        if (in_array($key, array_keys($this->images))) {
-            unset($this->images[$key]);
-            $this->resetErrorBag('temporary_images');
-        }
     }
 }

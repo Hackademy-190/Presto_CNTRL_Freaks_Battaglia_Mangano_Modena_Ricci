@@ -14,7 +14,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('welcome') ? 'active' : '' }}" aria-current="page"
                         href="{{ route('welcome') }}">{{ __('ui.home') }}</a>
@@ -106,6 +106,7 @@
                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ __('ui.filters') }}
                             </button>
+
                             <ul class="dropdown-menu dropdown-menu-end mt-3">
                                 <li class="dropdown-item">
                                     <div class="form-check"><input class="form-check-input" type="radio" name="field"
@@ -113,7 +114,6 @@
                                             {{ request('field', 'all') === 'all' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="searchAll">{{ __('ui.all') }}</label>
                                     </div>
-
 
                                 </li>
                                 <li class="dropdown-item">
@@ -123,7 +123,6 @@
                                         <label class="form-check-label" for="searchTitle">{{ __('ui.titleOnly') }}</label>
                                     </div>
 
-
                                 </li>
                                 <li class="dropdown-item">
                                     <div class="form-check"><input class="form-check-input" type="radio" name="field"
@@ -132,7 +131,6 @@
                                         <label class="form-check-label" for="searchCategory">{{ __('ui.categoryOnly') }}</label>
                                     </div>
 
-
                                 </li>
                                 <li class="dropdown-item">
                                     <div class="form-check"><input class="form-check-input" type="radio" name="field"
@@ -140,7 +138,6 @@
                                             {{ request('field') === 'description' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="searchDescription">{{ __('ui.descriptionOnly') }}</label>
                                     </div>
-
                                 </li>
                             </ul>
                         </div>

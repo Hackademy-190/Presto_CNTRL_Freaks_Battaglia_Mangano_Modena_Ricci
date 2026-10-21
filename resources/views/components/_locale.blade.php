@@ -1,4 +1,4 @@
-<li class="nav-item dropdown language-switcher">
+<li class="nav-item dropdown language-switcher p-0">
     @php($currentLocale = app()->getLocale())
     <button class="nav-link dropdown-toggle d-flex align-items-center gap-2" type="button"
         data-bs-toggle="dropdown" aria-expanded="false" aria-label="{{ __('ui.languageNames.' . $currentLocale) }}">

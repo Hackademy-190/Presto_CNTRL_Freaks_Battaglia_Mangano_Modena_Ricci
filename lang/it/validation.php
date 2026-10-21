@@ -5,12 +5,11 @@ return [
     'array' => 'Il campo :attribute deve essere un elenco valido.',
     'confirmed' => 'La conferma del campo :attribute non corrisponde.',
     'current_password' => 'La password attuale non è corretta.',
-    'dimensions' => 'Le immagini devono avere dimensioni superiori a 600x600 px.',
     'email' => 'Il campo :attribute deve essere un indirizzo email valido.',
     'file' => 'Il campo :attribute deve essere un file.',
     'image' => 'Il campo :attribute deve essere un\'immagine.',
     'max' => [
-        'array' => 'Il campo :attribute non può contenere più di :max elementi.',
+        'array' => "L'anteprima non può contenere più di :max :attribute.",
         'file' => 'Il file :attribute non può superare :max KB.',
         'numeric' => 'Il campo :attribute non può essere maggiore di :max.',
         'string' => 'Il campo :attribute non può contenere più di :max caratteri.',
@@ -32,7 +31,7 @@ return [
     'required' => 'Il campo :attribute è obbligatorio.',
     'string' => 'Il campo :attribute deve essere una stringa di testo.',
     'unique' => 'Il valore del campo :attribute è già in uso.',
-    'uploaded' => 'Il file supera i 4096 KB.',
+    'uploaded' => 'Caricamento del file non riuscito. Controlla formato e dimensione.',
     'attributes' => [
         'name' => 'nome',
         'email' => 'email',
@@ -48,4 +47,18 @@ return [
         'temporary_images' => 'immagini temporanee',
         'temporary_images.*' => 'immagine',
     ],
+    'custom' => [
+    'images' => [
+        'max' => 'Puoi caricare al massimo :max immagini.',
+    ],
+    'images.*' => [
+        'mimes' => 'Formati ammessi: JPG, PNG, GIF, WEBP, BMP.',
+        'max'   => 'Ogni immagine può pesare al massimo 4 MB.',
+        'file'  => 'Il file caricato non è valido.',
+    ],
+    'temporary_images.*' => [
+        'mimes' => 'Formati ammessi: JPG, PNG, GIF, WEBP, BMP.',
+        'max'   => 'Ogni immagine può pesare al massimo 4 MB.',
+    ],
+],
 ];

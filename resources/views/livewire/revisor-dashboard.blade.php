@@ -33,7 +33,7 @@
                                             <div class="col-12 col-md-3" wire:key="pending-advertisement-{{ $advertisement_to_check->id }}">
                                                 <div class="card ad-card">
                                                     <a href="{{ route('revisor.show', ['advertisement' => $advertisement_to_check]) }}" class="d-block">
-                                                        <img src="{{ $advertisement_to_check->images->isNotEmpty() ? $advertisement_to_check->images->first()->getUrl(600, 600) : 'https://picsum.photos/200' }}"
+                                                        <img src="{{ $advertisement_to_check->images->isNotEmpty() ? $advertisement_to_check->images->first()->getUrl(600, 600) : '/media/Logo.png' }}"
                                                             class="card-img-top" alt="{{ __('ui.listingImageAlt', ['title' => $advertisement_to_check->title]) }}">
                                                     </a>
                                                     <div class="card-body ad-card-body">
