@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Advertisement;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +14,7 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('path')->nullable();
-            //Foreign Key
+            // Foreign Key
             $table->unsignedBigInteger('advertisement_id')->nullable();
             $table->foreign('advertisement_id')->references('id')->on('advertisements')->onDelete('cascade');
             $table->timestamps();

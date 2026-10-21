@@ -11,17 +11,16 @@ use Illuminate\Console\Command;
 #[Description('Rende un utente revisore')]
 class MakeUserRevisor extends Command
 {
-    
-
     public function handle()
     {
         $user = User::where('email', $this->argument('email'))->first();
-        if (!$user){
+        if (! $user) {
             $this->error('Utente non trovato');
+
             return;
         }
         $user->is_revisor = true;
         $user->save();
         $this->info("L'utente {$user->name} è ora un Revisore!");
     }
-    }
+}

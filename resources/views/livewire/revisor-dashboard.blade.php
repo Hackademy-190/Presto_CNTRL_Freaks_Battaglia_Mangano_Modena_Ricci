@@ -24,51 +24,22 @@
                     </h2>
                 </header>
                 @if ($advertisements_to_check->isNotEmpty())
-                    <div id="pendingReviewCarousel" class="carousel slide pending-review-carousel py-4">
+                    <div id="pendingReviewCarousel" class="carousel slide pending-review-carousel py-4" data-bs-ride="false" data-bs-touch="true">
                         <div class="carousel-inner">
-                            @foreach ($advertisements_to_check->chunk(1) as $advertisement_group)
-                                <div class="carousel-item {{ $loop->first ? 'active' : '' }}" wire:key="pending-group-{{ $loop->index }}">
-                                    <div class="row justify-content-center align-items-stretch g-4">
-                                        @foreach ($advertisement_group as $advertisement_to_check)
-                                            <div class="col-12 col-md-3" wire:key="pending-advertisement-{{ $advertisement_to_check->id }}">
-                                                <div class="card ad-card">
-                                                    <a href="{{ route('revisor.show', ['advertisement' => $advertisement_to_check]) }}" class="d-block">
-                                                        <img src="{{ $advertisement_to_check->images->isNotEmpty() ? $advertisement_to_check->images->first()->getUrl(600, 600) : '/media/Logo.png' }}"
-                                                            class="card-img-top" alt="{{ __('ui.listingImageAlt', ['title' => $advertisement_to_check->title]) }}">
-                                                    </a>
-                                                    <div class="card-body ad-card-body">
-                                                        <a href="{{ route('revisor.show', ['advertisement' => $advertisement_to_check]) }}" class="text-decoration-none text-reset d-block">
-                                                            <h5 class="card-title ubuntu-medium text-uppercase ad-card-title text-truncate d-block">
-                                                                {{ $advertisement_to_check->title }}
-                                                            </h5>
-                                                            <p class="card-text ad-card-description">
-                                                                {{ Str::limit($advertisement_to_check->description, 50) }}
-                                                            </p>
-                                                            <p class="card-text ad-card-price">
-                                                                {{ $advertisement_to_check->price }} €
-                                                            </p>
-                                                        </a>
-                                                        <p class="card-text ad-card-category">{{ __('ui.' . $advertisement_to_check->category->name) }}</p>
-                                                        <p class="ad-card-link">{{ __('ui.pendingReview') }}</p>
-                                                        <div class="d-flex w-100 gap-2 mt-auto pt-3">
-                                                            <a href="{{ route('revisor.show', ['advertisement' => $advertisement_to_check]) }}" class="btn ad-card-action w-100 py-2 text-decoration-none text-light">
-                                                                {{ __('ui.goToReview') }}
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
+                            @foreach ($advertisements_to_check as $advertisement_to_check)
+                                <div class="carousel-item {{ $loop->first ? 'active' : '' }}" wire:key="pending-advertisement-{{ $advertisement_to_check->id }}">
+                                    @include('revisor._review-card', ['advertisement' => $advertisement_to_check])
                                 </div>
                             @endforeach
                         </div>
-                        <div class="container d-flex ">
-                            <button class="carousel-control-prev" type="button" data-bs-target="#pendingReviewCarousel" data-bs-slide="prev">
+                        <div class="container d-flex justify-content-center mt-3 gap-3">
+                            <button class="carousel-control-prev position-static" type="button" data-bs-target="#pendingReviewCarousel"
+                                data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">{{ __('pagination.previous') }}</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#pendingReviewCarousel" data-bs-slide="next">
+                            <button class="carousel-control-next position-static" type="button" data-bs-target="#pendingReviewCarousel"
+                                data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">{{ __('pagination.next') }}</span>
                             </button>

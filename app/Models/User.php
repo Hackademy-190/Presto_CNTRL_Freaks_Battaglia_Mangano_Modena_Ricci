@@ -30,6 +30,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
     public function advertisements(): HasMany
     {
         return $this->hasMany(Advertisement::class);

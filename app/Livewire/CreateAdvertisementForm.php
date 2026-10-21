@@ -41,7 +41,6 @@ class CreateAdvertisementForm extends Component
             'images.*' => 'file|mimes:jpg,jpeg,png,gif,webp,bmp|max:4096',
         ],
     )]
-
     public $images = [];
 
     public $temporary_images = [];

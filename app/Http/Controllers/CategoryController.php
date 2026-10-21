@@ -13,11 +13,11 @@ class CategoryController extends Controller
         $advertisements = $category->advertisements()
             ->where('is_accepted', true)
             ->orderByRaw(
-                   'CASE WHEN language = ? THEN 0 ELSE 1 END',
-                   [$language]
-                        )
-             ->orderBy('updated_at', 'desc')->get();
-            //  ->paginate(8);
+                'CASE WHEN language = ? THEN 0 ELSE 1 END',
+                [$language]
+            )
+            ->orderBy('updated_at', 'desc')->get();
+        //  ->paginate(8);
         $categories = Category::all();
 
         return view('categories.show', compact('category', 'advertisements', 'categories'));
