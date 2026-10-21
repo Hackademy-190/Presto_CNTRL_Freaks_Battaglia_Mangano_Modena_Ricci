@@ -37,8 +37,8 @@ class ResizeImage implements ShouldQueue
     base_path('public/media/Logo.png'),
     paddingX: 5,
     paddingY: 5,
-    width: 50,
-    height: 50,
+    width: 200,
+    height: 200,
     paddingUnit: Unit::Percent
     )
     ->save($destPath);

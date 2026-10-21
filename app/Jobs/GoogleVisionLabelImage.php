@@ -43,6 +43,7 @@ class GoogleVisionLabelImage implements ShouldQueue
         $googleVisionClient = new ImageAnnotatorClient();
         $google_image = new VisionImage([
             'content' => $image]);
+            
 
         $googleFeature = new Feature();
         $googleFeature->setType(Type::LABEL_DETECTION);
