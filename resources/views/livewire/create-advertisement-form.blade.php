@@ -91,6 +91,9 @@
                     @error('temporary_images')
                         <p class="fst-italic text-danger small mb-1">{{ $message }}</p>
                     @enderror
+                    @error('images')
+                        <p class="fst-italic text-danger small mb-1">{{ $message }}</p>
+                    @enderror
                     @error('temporary_images.*')
                         <p class="fst-italic text-danger small mb-1">{{ $message }}</p>
                     @enderror

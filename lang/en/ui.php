@@ -133,4 +133,5 @@ return [
     'emptySearch' => 'The search field is empty',
     'currentPasswordDoesNotMatch' => 'The provided password does not match your current password.',
     'reviewerApplicationSubject' => 'Reviewer application for :name',
+    'cancel' => 'Cancel',
 ];

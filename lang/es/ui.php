@@ -133,4 +133,5 @@ return [
     'emptySearch' => 'El campo de búsqueda está vacío',
     'currentPasswordDoesNotMatch' => 'La contraseña introducida no coincide con la contraseña actual.',
     'reviewerApplicationSubject' => 'Solicitud para ser revisor: :name',
+    'cancel' => 'Anula',
 ];

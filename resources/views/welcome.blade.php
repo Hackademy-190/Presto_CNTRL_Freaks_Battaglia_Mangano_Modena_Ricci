@@ -67,7 +67,7 @@
                     <div class="col-6 col-md-4 ad-card-grid-item">
                         <div class="card ad-card">
                             <a href="{{ route('advertisement.show', $advertisement) }}" class="d-block">
-                                <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(600, 600) : 'public/media/Logo.png' }}"
+                                <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(600, 600) : asset('media/Logo.png') }}"
                                     class="card-img-top" alt="{{ __('ui.listingImageAlt', ['title' => $advertisement->title]) }}">
                             </a>
                             <div class="card-body ad-card-body">

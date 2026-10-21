@@ -53,7 +53,6 @@ return [
         ],
         'images.*' => [
             'mimes' => 'Formati ammessi: JPG, PNG, GIF, WEBP, BMP.',
-            'max' => 'Ogni immagine può pesare al massimo 4 MB.',
             'file' => 'Il file caricato non è valido.',
         ],
         'temporary_images.*' => [

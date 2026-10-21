@@ -37,7 +37,7 @@ class CreateAdvertisementForm extends Component
 
     #[Validate(
         [
-            'images' => 'array|max:6',
+            'images' => 'required|array|min:1|max:6',
             'images.*' => 'file|mimes:jpg,jpeg,png,gif,webp,bmp|max:4096',
         ],
     )]
