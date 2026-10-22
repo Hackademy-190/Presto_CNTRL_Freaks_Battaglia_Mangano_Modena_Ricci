@@ -13,9 +13,12 @@
                 <div class="col-6">
                     <div class="card mb-3 ">
                         <div class="row g-0 ">
-                            <div class="col-md-4">
-                                <img src="{{ $image->getUrl(600, 600) }}" class="img-fluid rounded-start"
+                            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                <span class="watermarked-image-frame revisor-show-image-frame">
+                                <img src="{{ $image->getUrl() }}" class="img-fluid rounded-start"
                                     alt="Immagine {{ $key + 1 }} dell'articolo '{{ $advertisement->title }}'">
+                                <img src="{{ asset('media/Logo.png') }}" class="image-watermark" alt="" aria-hidden="true">
+                                </span>
                             </div>
                             <div class="col-md-5 ps-3 ">
                                 <div class="card-body">

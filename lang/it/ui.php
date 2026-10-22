@@ -46,7 +46,7 @@ return [
     'exploreListings' => 'Esplora gli oggetti',
     'startSelling' => 'Inizia a vendere',
     'goodPurchase' => 'Un buon acquisto, una nuova storia.',
-    'featuredListings' => 'Annunci in primo piano',
+    'featuredListings' => 'Annunci in evidenza',
     'secondStoryListings' => 'Esplora gli oggetti in cerca di una seconda storia.',
     'viewListing' => 'Visualizza articolo',
     'noListingsAvailable' => 'Non ci sono annunci disponibili',

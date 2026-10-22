@@ -20,9 +20,14 @@
                 <div class="col-6 col-md-3 ad-card-grid-item">
                     <div class="card ad-card">
                         <!-- ad-card-image rimosso dopo il crop delle immagini, check fe -->
-                        <a href="{{ route('advertisement.show', $advertisement) }}" class="d-block">
-                            <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl(600, 600) : '/media/Logo.png' }}"
+                        <a href="{{ route('advertisement.show', $advertisement) }}">
+                            <span class="{{ $advertisement->images->isNotEmpty() ? 'watermarked-image-frame' : '' }}">
+                            <img src="{{ $advertisement->images->isNotEmpty() ? $advertisement->images->first()->getUrl() : '/media/Logo.png' }}"
                                 class="card-img-top" alt="{{ __('ui.listingImageAlt', ['title' => $advertisement->title]) }}">
+                            @if ($advertisement->images->isNotEmpty())
+                                <img src="{{ asset('media/Logo.png') }}" class="image-watermark" alt="" aria-hidden="true">
+                            @endif
+                            </span>
                         </a>
                         <div class="card-body ad-card-body">
                             <a href="{{ route('advertisement.show', $advertisement) }}" class="text-decoration-none text-reset d-block">

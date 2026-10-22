@@ -2,11 +2,14 @@
     <div class="row g-4 align-items-start">
 
         {{-- ===== Colonna sinistra: immagini + analisi ===== --}}
-        <div class="col-12 col-lg-7">
+        <div class="col-12">
             <h2 class="h5 text-light mb-3">
                 {{ $advertisement->title }}
-                <span class="badge bg-secondary ms-1">{{ $advertisement->images->count() }}</span>
+                
             </h2>
+
+        </div>
+        <div class="col-12 col-lg-7">
 
             <div class="vstack gap-3">
                 @forelse ($advertisement->images as $key => $image)
@@ -24,13 +27,16 @@
                     <div class="row g-0">
                         {{-- Immagine cliccabile per ingrandire --}}
                         <div class="col-md-4">
-                            <a href="{{ $image->getUrl(1200, 1200) }}" target="_blank" rel="noopener"
-                                class="d-block h-100" title="{{ __('ui.openFullSize') }}">
-                                <img src="{{ $image->getUrl(600, 600) }}"
+                            <a href="{{ $image->getUrl() }}" target="_blank" rel="noopener"
+                                class="d-flex h-100 align-items-center justify-content-center"
+                                style="min-height: 220px;" title="{{ __('ui.openFullSize') }}">
+                                <span class="watermarked-image-frame">
+                                <img src="{{ $image->getUrl() }}"
                                     loading="lazy"
-                                    class="w-100 h-100"
-                                    style="object-fit: cover; min-height: 180px;"
+                                    style="max-width: 100%; max-height: 220px; width: auto; height: auto; object-fit: contain;"
                                     alt="Immagine {{ $key + 1 }} dell'articolo '{{ $advertisement->title }}'">
+                                <img src="{{ asset('media/Logo.png') }}" class="image-watermark" alt="" aria-hidden="true">
+                                </span>
                             </a>
                         </div>
 
@@ -83,11 +89,16 @@
 
 
         <div class="col-12 col-lg-5">
-            <div class="position-lg-sticky" style="top: 1rem;">
-                <div class="p-4 bg-dark rounded border border-secondary shadow">
-                    <span class="badge text-bg-info mb-2">{{ __('ui.' . $advertisement->category->name) }}</span>
+    <div class="sticky-lg-top" style="top: 1rem;">
+        <div class="p-4 bg-dark rounded border border-secondary shadow">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge text-bg-info">{{ __('ui.' . $advertisement->category->name) }}</span>
+                <span class="badge text-bg-secondary">
+                    <i class="bi bi-images me-1"></i>{{ $advertisement->images->count() }}
+                </span>
+            </div>
 
-                    <h1 class="h3 text-light mb-2">{{ $advertisement->title }}</h1>
+            <h1 class="h3 text-light mb-2">{{ $advertisement->title }}</h1>
 
                     <p class="fs-3 fw-bold text-warning mb-3">
                         {{ number_format($advertisement->price, 2, ',', '.') }} €

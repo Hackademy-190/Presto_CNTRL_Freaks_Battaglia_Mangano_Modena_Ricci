@@ -27,10 +27,11 @@
                                 <img
                                     class="car-01__main {{ $loop->first ? 'is-active' : '' }}"
                                     data-image-index="{{ $loop->index }}"
-                                    src="{{ $image->getUrl(600, 600) }}"
+                                    src="{{ $image->getUrl() }}"
                                     alt="{{ __('ui.listingImageNumberAlt', ['number' => $loop->iteration, 'title' => $advertisement->title]) }}"
                                 >
                             @endforeach
+                            <img src="{{ asset('media/Logo.png') }}" class="image-watermark" alt="" aria-hidden="true">
                         </div>
 
                         <div class="car-01__thumbs" role="presentation">
@@ -40,12 +41,13 @@
                                     for="advertisement-{{ $advertisement->id }}-image-{{ $loop->iteration }}"
                                 >
                                     <img
-                                        src="{{ $image->getUrl(600, 600) }}"
+                                        src="{{ $image->getUrl() }}"
                                         width="160"
                                         height="160"
                                         alt=""
                                         aria-hidden="true"
                                     >
+                                    <img src="{{ asset('media/Logo.png') }}" class="image-watermark" alt="" aria-hidden="true">
                                 </label>
                             @endforeach
                         </div>

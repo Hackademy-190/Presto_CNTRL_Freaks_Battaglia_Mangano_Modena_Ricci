@@ -15,8 +15,7 @@ class PublicController extends Controller
     {
         $advertisements = Advertisement::query()
             ->where('is_accepted', true)
-            ->where('language', app()->getLocale())
-            ->orderBy('updated_at', 'desc')
+            ->orderByDesc('created_at')
             ->take(4)
             ->get();
 
@@ -67,7 +66,6 @@ class PublicController extends Controller
                 ->with(['images', 'category'])
                 ->where('is_accepted', true)
                 ->whereIn('category_id', $categoryIds)
-                ->where('language', app()->getLocale())
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
 
@@ -101,7 +99,6 @@ class PublicController extends Controller
             ->with(['images', 'category'])
             ->where('is_accepted', true)
             ->whereIn('id', $matchedAdvertisements->modelKeys())
-            ->where('language', app()->getLocale())
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
